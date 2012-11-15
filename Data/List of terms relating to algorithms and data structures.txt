@@ -1,0 +1,1385 @@
+Category:Geometric_algorithms
+Category:Quantum_algorithms
+Category:Compression_algorithms
+Category:Cryptographic_algorithms
+British_Museum_algorithm
+Category:Search_algorithms
+Category:Checksum_algorithms
+Category:Routing_algorithms
+Category:Error_detection_and_correction
+Category:Scheduling_algorithms
+Maze_generation_algorithm
+Category:Classification_algorithms
+Tomasulo_algorithm
+Medical_algorithm
+Category:Selection_algorithms
+Category:Approximation_algorithms
+Category:Combinatorial_algorithms
+Run-time_algorithm_specialisation
+Category:Evolutionary_algorithms
+Category:Arbitrary_precision_algorithms
+Category:Algorithms_on_strings
+Category:Statistical_algorithms
+Adaptive_algorithm
+XOR_swap_algorithm
+Category:Networking_algorithms
+Category:Sorting_algorithms
+Category:Data_clustering_algorithms
+Category:Concurrent_algorithms
+Category:Digital_signal_processing
+Category:Data_mining
+Category:Distributed_algorithms
+Category:Memory_management_algorithms
+Category:Computational_number_theory
+Category:Computational_group_theory
+Category:Computer_algebra
+Category:Bioinformatics_algorithms
+Category:Calendar_algorithms
+Category:Online_algorithms
+Category:Computational_physics
+Category:Pattern_matching
+Category:Root-finding_algorithms
+Super-recursive_algorithm
+Streaming_algorithm
+Category:External_memory_algorithms
+Maze_solving_algorithm
+Randomization_function
+Simulation_algorithms_for_atomic_DEVS
+Simulation_algorithms_for_coupled_DEVS
+Category:Heuristic_algorithms
+HAKMEM
+Holographic_algorithm
+Sardinas–Patterson_algorithm
+Sequential_algorithm
+Kronecker_substitution
+The_Art_of_Computer_Programming
+Fourier_division
+One-pass_algorithm
+Out-of-core_algorithm
+Algorism
+Ping-pong_scheme
+Predictor–corrector_method
+Divide_and_conquer_algorithm
+Randomized_rounding
+Category:Algorithm_description_languages
+Method_of_conditional_probabilities
+Reservoir_sampling
+Category:Stochastic_algorithms
+In-place_algorithm
+Category:Computational_statistics
+Timeline_of_algorithms
+Algorithm_characterizations
+Hyphenation_algorithm
+Principle_of_deferred_decision
+Biologically_inspired_algorithms
+PR-CPA_advantage
+Category:Pseudo-polynomial_time_algorithms
+Spreading_activation
+Algorithm_design
+Category:Randomized_algorithms
+Manhattan_address_algorithm
+List_of_algorithm_general_topics
+List_of_algorithms
+Sieve_of_Eratosthenes
+Algorithm_examples
+Category:Machine_learning_algorithms
+Category:Unicode_algorithms
+Category:Optimization_algorithms_and_methods
+Hindley–Milner
+Category:Pseudorandom_number_generators
+Category:Database_algorithms
+Category:Recursion
+Domain_Generation_Algorithm
+Differential_Dynamic_Programming
+Generalized_distributive_law
+Template:Algorithm-begin
+Template:Algorithm-end
+Code_Bisection
+Matching_engine
+Algorithm
+RNA22
+Kinodynamic_planning
+Backfitting_algorithm
+Adaptive_coordinate_descent
+Division_algorithm
+Spaghetti_stack
+Category:Arrays
+Dynamization
+Implicit_data_structure
+Category:Units_of_information
+Serialization
+Category:Hashing
+Persistent_data_structure
+Category:Priority_queues
+Category:Graph_data_structures
+Category:Linked_lists
+Category:Bit_data_structures
+Recordset
+Zipper_(data_structure)
+Sequential_access
+Linked_data_structure
+Category:Probabilistic_data_structures
+Array_data_structure
+Compressed_data_structure
+Control_table
+Disjoint-set_data_structure
+Category:String_data_structures
+Search_data_structure
+Category:Data_types
+Binary_tree
+Search_tree
+Concurrent_data_structure
+Partition_refinement
+Succinct_data_structure
+Data_structure
+Symbol_table
+Synonym_(database)
+Container_(abstract_data_type)
+Category:Functional_data_structures
+Sorted_array
+Collection_(abstract_data_type)
+Category:Geometric_data_structures
+List_of_data_structures
+Category:Database_index_techniques
+Category:Trees_(data_structures)
+Piece_table
+Category:Kinetic_data_structures
+Retroactive_data_structures
+Wavelet_Tree
+Hash_table
+Category:Algorithms
+Category:Analysis_of_algorithms
+Category:Data_structures
+Category:Abstract_data_types
+Dictionary_of_Algorithms_and_Data_Structures
+List_of_terms_relating_to_algorithms_and_data_structures
+Category:Algorithms_and_data_structures_stubs
+Canonical_cover
+Beier-Neely_Morphing_Algorithm
+Data_normalization
+
+absolute performance guarantee
+abstract data type (ADT)
+(a,b)-tree
+accepting state
+Ackermann's function
+active data structure
+acyclic directed graph
+adaptive heap sort
+adaptive Huffman coding
+adaptive k-d tree
+adaptive sort
+address-calculation sort
+adjacency-list representation
+adjacency-matrix representation
+adjacent
+adversary
+algorithm
+algorithm BSTW
+algorithm FGK
+algorithmic efficiency
+algorithmically solvable
+algorithm V
+all pairs shortest path
+alphabet
+Alpha Skip Search algorithm
+alternating path
+alternating Turing machine
+alternation
+American flag sort
+amortized cost
+ancestor
+and
+ANSI
+antichain
+antisymmetric relation
+AP
+Apostolico–Crochemore
+Apostolico–Giancarlo algorithm
+approximate string matching
+approximation algorithm
+arborescence
+arithmetic coding
+array
+array index
+array merging
+array search
+articulation point
+assignment problem
+association list
+associative
+associative array
+asymptotically tight bound
+asymptotic bound
+asymptotic lower bound
+asymptotic space complexity
+asymptotic time complexity
+asymptotic upper bound
+augmenting path
+automaton
+average case
+average-case cost
+AVL tree
+axiomatic semantics
+backtracking
+bag
+balanced binary search tree
+balanced binary tree
+balanced k-way merge sort
+balanced merge sort
+balanced multiway merge
+balanced multiway tree
+balanced quicksort
+balanced tree
+balanced two-way merge sort
+BANG file
+Batcher sort
+Baum Welch algorithm
+BB a tree
+BDD
+BD-tree
+Bellman–Ford algorithm
+Benford's law
+best case
+best-case cost
+best-first search
+biconnected component
+biconnected graph
+bidirectional bubble sort
+big-O notation
+binary function
+binary GCD algorithm
+binary heap
+binary insertion sort
+binary knapsack problem
+binary priority queue
+binary relation
+binary search
+binary search tree
+binary tree
+binary tree representation of trees
+bingo sort
+binomial heap
+binomial tree
+bin packing problem
+bin sort
+bintree
+bipartite graph
+bipartite matching
+bisector
+bitonic sort
+bit vector
+Bk tree
+block
+block addressing index
+blocking flow
+block search
+Bloom filter
+blossom (graph theory)
+bogosort
+boogol
+boolean
+boolean expression
+boolean function
+bottleneck traveling salesman
+bottom-up tree automaton
+boundary-based representation
+bounded error probability in polynomial time
+bounded queue
+bounded stack
+Boyer–Moore string search algorithm
+Boyer–Moore–Horspool algorithm
+bozo sort
+B+ tree
+BPP (complexity)
+Bradford's law
+branch (as in control flow)
+branch (as in revision control)
+branch and bound
+breadth-first search
+Bresenham's algorithm
+brick sort
+bridge
+British Museum algorithm
+brute force attack
+brute force search
+brute force string search
+brute force string search with mismatches
+BSP-tree
+B*-tree
+B-tree
+bubble sort
+bucket
+bucket array
+bucketing method
+bucket sort
+bucket trie
+buddy system
+buddy tree
+build-heap
+Burrows–Wheeler transform (BWT)
+busy beaver
+BV-tree
+Byzantine generals
+cactus stack
+Calculus of Communicating Systems (CCS)
+calendar queue
+candidate consistency testing
+candidate verification
+canonical complexity class
+capacitated facility location
+capacity
+capacity constraint
+cartesian tree
+cascade merge sort
+caverphone
+Cayley–Purser algorithm
+C curve
+cell probe model
+cell tree
+cellular automaton
+centroid
+certificate
+chain (order theory)
+chaining (algorithm)
+child
+Chinese postman problem
+Chinese remainder theorem
+Christofides algorithm
+Christofides heuristic
+chromatic index
+chromatic number
+Church–Turing thesis
+circuit
+circuit complexity
+circuit value problem
+circular list
+circular queue
+clique
+clique problem
+clustering (see hash table)
+clustering free
+coalesced hashing
+coarsening
+cocktail shaker sort
+codeword
+coding tree
+collective recursion
+collision
+collision resolution scheme
+Colussi
+combination
+comb sort
+Communicating Sequential Processes
+commutative
+compact DAWG
+compact trie
+comparison sort
+competitive analysis
+competitive ratio
+complement
+complete binary tree
+complete graph
+completely connected graph
+complete tree
+complexity
+complexity class
+computable
+concave function
+concurrent flow
+concurrent read, concurrent write
+concurrent read, exclusive write
+configuration
+confluently persistent data structure
+conjunction
+connected components
+connected graph
+co-NP
+constant function
+continuous knapsack problem
+Cook reduction
+Cook's theorem
+counting sort
+covering
+CRCW
+Crew (algorithm)
+critical path problem
+CSP (communicating sequential processes)
+CSP (constraint satisfaction problem)
+CTL
+cuckoo hashing
+cut (graph theory)
+cut (logic programming)
+cutting plane
+cutting stock problem
+cutting theorem
+cut vertex
+cycle
+cycle sort
+cyclic redundancy check (CRC)
+D-adjacent
+DAG shortest paths
+Damerau–Levenshtein distance
+data structure
+decidable
+decidable language
+decimation
+decision problem
+decision tree
+decomposable searching problem
+degree
+dense graph
+depoissonization
+depth
+depth-first search (DFS)
+deque
+derangement
+descendant (see tree structure)
+deterministic
+deterministic algorithm
+deterministic finite automata string search
+deterministic finite automaton (DFA)
+deterministic finite state machine
+deterministic finite tree automaton
+deterministic pushdown automaton (DPDA)
+deterministic tree automaton
+Deutsch–Jozsa algorithm
+DFS forest
+DFTA
+diagonalization argument
+diameter
+dichotomic search
+dictionary
+diet (see discrete interval encoding tree below)
+difference (set theory)
+digital search tree
+digital tree
+digraph
+Dijkstra's algorithm
+diminishing increment sort
+dining philosophers
+direct chaining hashing
+directed acyclic graph (DAG)
+directed acyclic word graph (DAWG)
+directed graph
+discrete interval encoding tree
+discrete p-center
+disjoint set
+disjunction
+distributed algorithm
+distributional complexity
+distribution sort
+divide and conquer algorithm
+divide and marriage before conquest
+division method
+Data domain
+don't care
+Doomsday rule
+double-direction bubble sort
+double-ended priority queue
+double hashing
+double left rotation
+Double Metaphone
+double right rotation
+doubly chained tree
+doubly ended queue
+doubly linked list
+Dragon curve
+dual graph
+dual linear program
+Dutch national flag
+dyadic tree
+dynamic array
+dynamic data structure
+dynamic hashing
+dynamic programming
+dynamization transformation
+edge
+edge coloring
+edge connectivity
+edge crossing
+edge-weighted graph
+edit distance
+edit operation
+edit script
+8 queens
+elastic-bucket trie
+element uniqueness
+end-of-string
+enfilade
+epidemic algorithm
+Euclidean algorithm
+Euclidean distance
+Euclidean Steiner tree
+Euclidean traveling salesman problem
+Euclid's algorithm
+Euler cycle
+Eulerian graph
+Eulerian path
+exact string matching
+EXCELL (extendible cell)
+exchange sort
+exclusive or
+exclusive read, concurrent write (ERCW)
+exclusive read, exclusive write (EREW)
+exhaustive search
+existential state
+expandable hashing
+expander graph
+exponential
+extended binary tree
+extended Euclidean algorithm
+extended k-d tree
+extendible hashing
+external index
+external memory algorithm
+external memory data structure
+external merge
+external merge sort
+external node
+external quicksort
+external radix sort
+external sort
+extrapolation search
+extremal
+extreme point
+facility location
+factor (see substring)
+factorial
+fast fourier transform (FFT)
+fathoming
+feasible region
+feasible solution
+feedback edge set
+feedback vertex set
+Ferguson–Forcade algorithm
+Fibonacci number
+Fibonacci search
+Fibonacci tree
+Fibonacci heap
+filial-heir chain
+Find
+find kth least element
+finitary tree
+finite Fourier transform (discrete Fourier transform)
+finite state automaton
+finite state machine
+finite state machine minimization
+finite state transducer
+first child-next sibling binary tree
+first come, first served
+first-in, first-out (FIFO)
+fixed-grid method
+flash sort
+flow
+flow conservation
+flow function
+flow network
+Floyd–Warshall algorithm
+Ford–Bellman algorithm
+Ford–Fulkerson algorithm
+forest
+forest editing problem
+formal language
+formal methods
+formal verification
+forward index
+fractal
+fractional knapsack problem
+fractional solution
+free edge
+free list
+free tree
+free vertex
+frequency count heuristic
+full array
+full binary tree
+full inverted index
+fully dynamic graph problem
+fully persistent data structure
+fully polynomial approximation scheme
+function (programming)
+function (mathematics)
+functional data structure
+Galil–Giancarlo
+Galil–Seiferas
+gamma function
+GBD-tree
+geometric optimization problem
+global optimum
+gnome sort
+goobi
+graph
+graph coloring
+graph concentration
+graph drawing
+graph isomorphism
+graph partition
+Gray code
+greatest common divisor (GCD)
+greedy algorithm
+greedy heuristic
+grid drawing
+grid file
+Grover's algorithm
+halting problem
+Hamiltonian cycle
+Hamiltonian path
+Hamming distance
+Harter–Highway dragon
+hash function
+hash heap
+hash table
+hash table delete
+Hausdorff distance
+hB-tree
+head
+heap
+heapify
+heap property
+heapsort
+heaviest common subsequence
+height
+height-balanced binary search tree
+height-balanced tree
+heuristic
+hidden Markov model
+highest common factor
+Hilbert curve
+histogram sort
+homeomorphic
+horizontal visibility map
+Horner's rule
+Horspool
+Huffman encoding
+Hungarian algorithm
+hybrid algorithm
+hyperedge
+hypergraph
+Identity function
+ideal merge
+implication
+implies
+in-branching
+inclusion-exclusion principle
+inclusive or
+incompressible string
+incremental algorithm
+in-degree
+independent set (graph theory)
+index file
+information theoretic bound
+in-order traversal
+in-place sort
+insertion sort
+instantaneous description
+integer linear program
+integer multi-commodity flow
+integer polyhedron
+interactive proof system
+interior-based representation
+internal node
+internal sort
+interpolation search
+interpolation-sequential search
+interpolation sort
+intersection (set theory)
+interval tree
+intractable
+introsort
+introspective sort
+inverse Ackermann function
+inverted file index
+inverted index
+irreflexive
+isomorphic
+iteration
+Jaro–Winkler distance
+Johnson's algorithm
+Johnson–Trotter algorithm
+J sort
+JSort
+jump list
+jump search
+Karmarkar's algorithm
+Karnaugh map
+Karp–Rabin string search algorithm
+Karp reduction
+k-ary heap
+k-ary Huffman encoding
+k-ary tree
+k-clustering
+k-coloring
+k-connected graph
+k-d-B-tree
+k-dimensional
+K-dominant match
+k-d tree
+key
+KMP
+KmpSkip Search
+knapsack problem
+knight's tour
+Knuth–Morris–Pratt algorithm
+Königsberg bridges problem
+Kolmogorov complexity
+Kraft's inequality
+Kripke structure
+Kruskal's algorithm
+kth order Fibonacci numbers
+kth shortest path
+kth smallest element
+KV diagram
+k-way merge
+k-way merge sort
+k-way tree
+labeled graph
+language
+last-in, first-out (LIFO)
+Las Vegas algorithm
+lattice (group)
+layered graph
+LCS
+leaf
+least common multiple (LCM)
+leftist tree
+left rotation
+Lempel–Ziv–Welch (LZW)
+level-order traversal
+Levenshtein distance
+lexicographical order
+linear
+linear congruential generator
+linear hash
+linear insertion sort
+linear order
+linear probing
+linear probing sort
+linear product
+linear program
+linear quadtree
+linear search
+link
+linked list
+list
+list contraction
+little-o notation
+Lm distance
+load factor (computer science)
+local alignment
+local optimum
+logarithm, logarithmic scale
+longest common subsequence
+longest common substring
+Lotka's law
+lower bound
+lower triangular matrix
+lowest common ancestor
+l-reduction
+Malhotra–Kumar–Maheshwari blocking flow (ru.)
+Manhattan distance
+many-one reduction
+Markov chain
+marriage problem (see assignment problem)
+Master theorem
+matched edge
+matched vertex
+matching (graph theory)
+matrix
+matrix-chain multiplication problem
+max-heap property
+maximal independent set
+maximally connected component
+Maximal Shift
+maximum bipartite matching
+maximum-flow problem
+MAX-SNP
+Mealy machine
+mean
+median
+meld (data structures)
+memoization
+merge algorithm
+merge sort
+meromorphic function
+metaheuristic
+metaphone
+midrange
+Miller–Rabin primality test
+min-heap property
+minimal perfect hashing
+minimum bounding box (MBB)
+minimum cut
+minimum path cover
+minimum spanning tree
+minimum vertex cut
+mixed integer linear program
+mode
+model checking
+model of computation
+moderately exponential
+MODIFIND
+monotone priority queue
+monotonically decreasing
+monotonically increasing
+Monte Carlo algorithm
+Moore machine
+Morris-Pratt
+move (finite-state machine transition)
+move-to-front heuristic
+move-to-root heuristic
+multi-commodity flow
+multigraph
+multilayer grid file
+multiplication method
+multiprefix
+multiprocessor model
+multiset
+multi suffix tree
+multiway decision
+multiway merge
+multiway search tree
+multiway tree
+Munkres' assignment algorithm
+naive string search
+nand
+n-ary function
+NC
+NC many-one reducibility
+nearest neighbor search
+negation
+network flow (see flow network)
+network flow problem
+next state
+NIST
+node
+nonbalanced merge
+nonbalanced merge sort
+nondeterministic
+nondeterministic algorithm
+nondeterministic finite automaton
+nondeterministic finite state machine (NFA)
+nondeterministic finite tree automaton (NFTA)
+nondeterministic polynomial time
+nondeterministic tree automaton
+nondeterministic Turing machine
+nonterminal node
+nor
+not
+Not So Naive
+NP
+NP-complete
+NP-complete language
+NP-hard
+n queens
+nullary function
+null tree
+NYSIIS
+objective function
+occurrence
+octree
+offline algorithm
+offset (computer science)
+omega
+omicron
+one-based indexing
+one-dimensional
+online algorithm
+open addressing
+optimal
+optimal cost
+optimal hashing
+optimal merge
+optimal mismatch
+optimal polygon triangulation problem
+optimal polyphase merge
+optimal polyphase merge sort
+optimal solution
+optimal triangulation problem
+optimal value
+optimization problem
+or
+oracle set
+oracle tape
+oracle Turing machine
+Orders of approximation
+ordered array
+ordered binary decision diagram (OBDD)
+ordered linked list
+ordered tree
+order preserving hash
+order preserving minimal perfect hashing
+oriented acyclic graph
+oriented graph
+oriented tree
+orthogonal drawing
+orthogonal lists
+orthogonally convex rectilinear polygon
+oscillating merge sort
+out-branching
+out-degree
+overlapping subproblems
+packing (see set packing)
+padding argument
+pagoda
+pairing heap
+PAM (point access method)
+parallel computation thesis
+parallel prefix computation
+Parallel Random Access Machine (PRAM)
+parametric searching
+parent
+partial function
+partially decidable problem
+partially dynamic graph problem
+partially ordered set
+partially persistent data structure
+partial order
+partial recursive function
+partition (set theory)
+passive data structure
+patience sorting
+path (graph theory)
+path cover
+path system problem
+Patricia tree
+pattern
+pattern element
+P-complete
+PCP
+Peano curve
+Pearson's hash
+perfect binary tree
+perfect hashing
+perfect k-ary tree
+perfect matching
+perfect shuffle
+performance guarantee
+performance ratio
+permutation
+persistent data structure
+phonetic coding
+pile (data structure)
+pipelined divide and conquer
+planar graph
+planarization
+planar straight-line graph
+PLOP-hashing
+point access method
+pointer jumping
+pointer machine
+poissonization
+polychotomy
+polyhedron
+polylogarithmic
+polynomial
+polynomial-time approximation scheme (PTAS)
+polynomial hierarchy
+polynomial time
+polynomial-time Church–Turing thesis
+polynomial-time reduction
+polyphase merge
+polyphase merge sort
+polytope
+poset
+postfix traversal
+Post machine (see Post–Turing machine)
+postman's sort
+postorder traversal
+Post's correspondence problem
+potential function (see potential method)
+predicate
+prefix
+prefix code
+prefix computation
+prefix sum
+prefix traversal
+preorder traversal
+primary clustering
+primitive recursive
+Prim's algorithm
+principle of optimality
+priority queue
+prisoner's dilemma
+PRNG
+probabilistic algorithm
+probabilistically checkable proof
+probabilistic Turing machine
+probe sequence
+Procedure (computer science)
+process algebra
+proper (see proper subset)
+proper binary tree
+proper coloring
+proper subset
+property list
+prune and search
+pseudo-random number generator
+pth order Fibonacci numbers
+P-tree
+purely functional language
+pushdown automaton (PDA)
+pushdown transducer
+p-way merge sort
+qm sort
+q sort
+quadratic probing
+quadtree
+quadtree complexity theorem
+quad trie
+quantum computation
+queue
+quick search
+quicksort
+Rabin–Karp string search algorithm
+radix quicksort
+radix sort
+ragged matrix
+Raita algorithm
+random access machine
+randomization
+randomized algorithm
+randomized binary search tree
+randomized complexity
+randomized polynomial time
+randomized rounding
+randomized search tree
+Randomized-Select
+random number generator
+random sampling
+range (function)
+range sort
+Rank (graph theory)
+Ratcliff/Obershelp pattern recognition
+reachable
+rebalance
+recognizer
+rectangular matrix
+rectilinear
+rectilinear Steiner tree
+recurrence equations
+recurrence relation
+recursion
+recursion termination
+recursion tree
+recursive (computer science)
+recursive data structure
+recursive doubling
+recursive language
+recursively enumerable language
+recursively solvable
+red-black tree
+reduced basis
+reduced digraph
+reduced ordered binary decision diagram (ROBDD)
+reduction
+reflexive relation
+regular decomposition
+rehashing
+relation (mathematics)
+relational structure
+relative performance guarantee
+relaxation
+relaxed balance
+rescalable
+restricted universe sort
+result cache
+Reverse Colussi
+Reverse Factor
+R-file
+Rice's method
+right rotation
+right-threaded tree
+RNG
+root
+root balance
+rooted tree
+rotate left
+rotate right
+rotation
+rough graph
+RP
+R+-tree
+R*-tree
+R-tree
+run time
+saguaro stack
+saturated edge
+SBB tree
+scan
+scapegoat tree
+search algorithm
+search tree
+search tree property
+secant search
+secondary clustering
+memory segment
+Select algorithm
+select and partition
+selection problem
+selection sort
+select kth element
+select mode
+self-loop
+self-organizing heuristic
+self-organizing list
+self-organizing sequential search
+semidefinite programming
+separate chaining hashing
+separation theorem
+sequential search
+Set (computer science)
+set cover
+set packing
+shadow heap
+shadow merge
+shadow merge insert
+shaker sort
+Shannon–Fano coding
+shared memory
+Shell sort
+Shift-Or
+Shor's algorithm
+shortcutting
+shortest common supersequence
+shortest common superstring
+shortest path
+shortest spanning tree
+shuffle
+shuffle sort
+sibling
+Sierpinski curve
+Sierpinski triangle
+sieve of Eratosthenes
+sift up
+signature
+Simon's algorithm
+simple merge
+simple path
+simple uniform hashing
+simplex communication
+simulated annealing
+simulation theorem
+single-destination shortest-path problem
+single-pair shortest-path problem
+single program multiple data
+single-source shortest-path problem
+singly linked list
+singularity analysis
+sink
+sinking sort
+skd-tree
+skew symmetry
+skip list
+skip search
+slope selection
+Smith algorithm
+Smith–Waterman algorithm
+smoothsort
+solvable problem
+sort algorithm
+sorted array
+sorted list
+sort in place
+sort merge
+soundex
+space-constructible function
+spanning tree
+sparse graph
+sparse matrix
+sparsification
+sparsity
+spatial access method
+spectral test
+splay tree
+SPMD
+square matrix
+square root
+SST (shortest spanning tree)
+stable
+stack (data structure)
+stack tree
+star-shaped polygon
+start state
+state
+state machine
+state transition
+static data structure
+static Huffman encoding
+s-t cut
+st-digraph
+Steiner minimum tree
+Steiner point
+Steiner ratio
+Steiner tree
+Steiner vertex
+Steinhaus–Johnson–Trotter algorithm
+Stirling's approximation
+Stirling's formula
+stooge sort
+straight-line drawing
+strand sort
+strictly decreasing
+strictly increasing
+strictly lower triangular matrix
+strictly upper triangular matrix
+string
+string editing problem
+string matching
+string matching on ordered alphabets
+string matching with errors
+string matching with mismatches
+string searching
+strip packing
+strongly connected component
+strongly connected graph
+strongly NP-hard
+subadditive ergodic theorem
+subgraph isomorphism
+sublinear time algorithm
+subsequence
+subset
+substring
+subtree
+suffix
+suffix array
+suffix automaton
+suffix tree
+superimposed code
+superset
+supersink
+supersource
+symmetric relation
+symmetrically linked list
+symmetric binary B-tree
+symmetric set difference
+symmetry breaking
+symmetric min max heap
+tail
+tail recursion
+target
+temporal logic
+terminal (see Steiner tree)
+terminal node
+ternary search
+ternary search tree (TST)
+text searching
+theta
+threaded binary tree
+threaded tree
+three-dimensional
+three-way merge sort
+three-way radix quicksort
+time-constructible function
+time/space complexity
+top-down radix sort
+top-down tree automaton
+top-node
+topological order
+topological sort
+topology tree
+total function
+totally decidable language
+totally decidable problem
+totally undecidable problem
+total order
+tour
+tournament
+towers of Hanoi
+tractable problem
+transducer
+transition (see finite-state machine)
+transition function (of a finite-state machine or Turing machine)
+transitive relation
+transitive closure
+transitive reduction
+transpose sequential search
+travelling salesman problem (TSP)
+treap
+tree
+tree automaton
+tree contraction
+tree editing problem
+tree sort
+tree transducer
+tree traversal
+triangle inequality
+triconnected graph
+trie
+trinary function
+tripartition
+Turbo-BM
+Turbo Reverse Factor
+Turing machine
+Turing reduction
+Turing transducer
+twin grid file
+two-dimensional
+two-level grid file
+2-3-4 tree
+2-3 tree
+Two Way algorithm
+two-way linked list
+two-way merge sort
+unary function
+unbounded knapsack problem (UKP)
+uncomputable function
+uncomputable problem
+undecidable language
+undecidable problem
+undirected graph
+uniform circuit complexity
+uniform circuit family
+uniform hashing
+uniform matrix
+union
+union of automata
+universal hashing
+universal state
+universal Turing machine
+universe
+UnShuffle sort
+unsolvable problem
+unsorted list
+upper triangular matrix
+van Emde Boas priority queue
+vehicle routing problem
+Veitch diagram
+Venn diagram
+vertex
+vertex coloring
+vertex connectivity
+vertex cover
+vertical visibility map
+virtual hashing
+visibility map
+visible (geometry)
+Viterbi algorithm
+VP-tree
+VRP (vehicle routing problem)
+walk
+weak cluster
+weak-heap
+weak-heap sort
+weight-balanced tree
+weighted, directed graph
+weighted graph
+window
+witness
+work-depth model
+work-efficient
+work-preserving
+worst case
+worst-case cost
+worst-case minimum access
+xor
+Yule–Simon distribution
+Zeller's congruence
+0-ary function
+0-based indexing
+0/1 knapsack problem
+Zhu–Takaoka string matching algorithm
+Zipfian distribution
+Zipf's law
+Zipper (data_structure)
+ZPP
