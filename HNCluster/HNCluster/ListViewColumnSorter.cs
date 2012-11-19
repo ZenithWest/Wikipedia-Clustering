@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
 using System.Windows.Forms;
+using System.Text.RegularExpressions; 
+
 
 
 namespace HNCluster
@@ -26,6 +28,7 @@ namespace HNCluster
 		/// Case insensitive comparer object
 		/// </summary>
 		private CaseInsensitiveComparer ObjectCompare;
+		private NumberCaseInsensitiveComparer NumberCompare;
 
 		/// <summary>
 		/// Class constructor.  Initializes various elements
@@ -40,6 +43,7 @@ namespace HNCluster
 
 			// Initialize the CaseInsensitiveComparer object
 			ObjectCompare = new CaseInsensitiveComparer();
+			NumberCompare = new NumberCaseInsensitiveComparer();
 		}
 
 		/// <summary>
@@ -58,7 +62,14 @@ namespace HNCluster
 			listviewY = (ListViewItem)y;
 
 			// Compare the two items
-			compareResult = ObjectCompare.Compare(listviewX.SubItems[ColumnToSort].Text, listviewY.SubItems[ColumnToSort].Text);
+			if (ColumnToSort == 0)
+			{
+				compareResult = ObjectCompare.Compare(listviewX.SubItems[ColumnToSort].Text, listviewY.SubItems[ColumnToSort].Text);
+			}
+			else
+			{
+				compareResult = NumberCompare.Compare(listviewX.SubItems[ColumnToSort].Text, listviewY.SubItems[ColumnToSort].Text);
+			}
 
 			// Calculate correct return value based on object comparison
 			if (OrderOfSort == SortOrder.Ascending)
@@ -109,5 +120,39 @@ namespace HNCluster
 		}
 
 	}
+	public class NumberCaseInsensitiveComparer : CaseInsensitiveComparer
+	{
+		public NumberCaseInsensitiveComparer()
+		{
+
+		}
+		public new int Compare(object x, object y)
+		{
+			// in case x,y are strings and actually number,
+			// convert them to int and use the base.Compare for comparison
+			if ((x is System.String) && (y is System.String))
+			{
+				double value1;
+				double value2;
+
+
+				if (!double.TryParse((string)x, out value1))
+				{
+					return base.Compare(x, y);
+				}
+				if (!double.TryParse((string)x, out value2))
+				{
+					return base.Compare(x, y);
+				}
+				return base.Compare(System.Convert.ToDouble(x), System.Convert.ToDouble(y));
+			}
+			else
+			{
+				return base.Compare(x, y);
+			}
+		}
+	}
+
+
 
 }

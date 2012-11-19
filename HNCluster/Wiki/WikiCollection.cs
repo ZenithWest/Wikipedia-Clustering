@@ -113,7 +113,7 @@ namespace Wiki
 			foreach (WikiPage page in wikiPages)
 			{
 				double squaredSummed = 0;
-				double summed = 0;
+				//double summed = 0;
 				foreach (string token in page.TF_IDF_Vector.Keys )
 				{
 					WikiToken wikiToken = page.TF_IDF_Vector[token];

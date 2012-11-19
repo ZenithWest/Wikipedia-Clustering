@@ -14,7 +14,6 @@ using MediaWikiEngine.Language;
 
 using DotNetWikiBot;
 using System.Threading;
-using System.Threading.Tasks;
 
 using Wiki;
 
@@ -43,7 +42,7 @@ namespace HNCluster
 		public delegate void AddPageTextDelegate(Page page);
 		public AddPageTextDelegate AddPageText;
 
-		bool pressed = false;
+		//bool pressed = false;
 		int currentPage = 0;
 		PageList pageList;
 		Site site;
