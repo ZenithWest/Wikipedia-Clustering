@@ -159,19 +159,18 @@
 			// 
 			// numericUpDown2
 			// 
-			this.numericUpDown2.Enabled = false;
 			this.numericUpDown2.Location = new System.Drawing.Point(44, 21);
 			this.numericUpDown2.Maximum = new decimal(new int[] {
-            1000000,
+            0,
             0,
             0,
             0});
 			this.numericUpDown2.Name = "numericUpDown2";
-			this.numericUpDown2.ReadOnly = true;
 			this.numericUpDown2.Size = new System.Drawing.Size(56, 20);
 			this.numericUpDown2.TabIndex = 10;
 			this.numericUpDown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			this.numericUpDown2.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
+			this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
 			// 
 			// label2
 			// 
@@ -206,6 +205,7 @@
 			this.listView1.TabIndex = 9;
 			this.listView1.UseCompatibleStateImageBehavior = false;
 			this.listView1.View = System.Windows.Forms.View.Details;
+			this.listView1.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listView1_ColumnClick);
 			// 
 			// radioButton1
 			// 

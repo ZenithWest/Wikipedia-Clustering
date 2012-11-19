@@ -25,6 +25,9 @@ namespace HNCluster
 		public delegate void IncrementPagesLoadedDelegate();
 		public IncrementPagesLoadedDelegate IncrementPagesLoaded;
 
+		public delegate void UpdateTextDelegate();
+		public UpdateTextDelegate UpdateText;
+
 		public delegate void IncrementPagesLoadedByValDelegate(int n);
 		public IncrementPagesLoadedByValDelegate IncrementPagesLoadedByVal;
 
@@ -49,10 +52,15 @@ namespace HNCluster
 		string[] titlesList;
 
 		WikiCollection wikiCollection;
+		private ListViewColumnSorter lvwColumnSorter;
 
 		public Form1()
 		{
 			InitializeComponent();
+
+			lvwColumnSorter = new ListViewColumnSorter();
+			this.listView1.ListViewItemSorter = lvwColumnSorter;
+
 			wikiCollection = new WikiCollection();
 
 			IncrementPagesLoaded = new IncrementPagesLoadedDelegate(IncrementPagesLoadedMethod);
@@ -61,6 +69,7 @@ namespace HNCluster
 			CheckTitlesLoaded = new CheckPageTitlesLoadedDelegate(CheckPageTitlesLoadedMethod);
 			CheckTokenized = new CheckTokenizedDelegate(CheckTokenizedMethod);
 			AddPageText = new AddPageTextDelegate(AddPageTextMethod);
+			UpdateText = new UpdateTextDelegate(UpdateTextMethod);
 			//Task.Factory.StartNew(LoadPages);
 			Task.Factory.StartNew(LoadWikipediaXML);
 
@@ -72,6 +81,8 @@ namespace HNCluster
 			CommandResult result = page.Execute();*/
 
 		}
+
+
 
 		private void button1_Click(object sender, EventArgs e)
 		{/*
@@ -92,6 +103,16 @@ namespace HNCluster
 			wikiCollection.ParseXML();
 			Invoke(IncrementPagesLoadedByVal, wikiCollection.wikiPages.Count);
 			pagesLoaded += wikiCollection.wikiPages.Count;
+			test = true;
+			if (InvokeRequired)
+			{
+				Invoke(UpdateText);
+			}
+			else
+			{
+				UpdateTextMethod();
+			}
+
 			wikiCollection.ExtractTokens();
 			Invoke(CheckTokenized);
 		}
@@ -110,6 +131,17 @@ namespace HNCluster
 			wikiCollection.LoadFromPageList(pageList);
 			Invoke(IncrementPagesLoadedByVal, wikiCollection.wikiPages.Count);
 			pagesLoaded += wikiCollection.wikiPages.Count;
+
+			if (InvokeRequired)
+			{
+				Invoke(UpdateText);
+			}
+			else
+			{
+				UpdateTextMethod();
+			}
+
+
 			Invoke(CheckTitlesLoaded);
 			wikiCollection.ExtractTokens();
 			Invoke(CheckTokenized);
@@ -168,6 +200,7 @@ namespace HNCluster
 		public void IncrementPagesLoadedByValMethod(int val)
 		{
 			numericUpDown1.Value += val;
+			numericUpDown2.Maximum += val;
 		}
 
 		public void CheckSiteLoadedMethod()
@@ -199,8 +232,14 @@ namespace HNCluster
 				textBox1.Text = pageList[currentPage].text;
 				label2.Text = "Title: " + pageList[currentPage].title;*/
 				numericUpDown2.Value = currentPage;
-				textBox1.Text = wikiCollection.wikiPages[currentPage].text;
-				label2.Text = "Title: " + wikiCollection.wikiPages[currentPage].title;
+				if (InvokeRequired)
+				{
+					//Invoke(UpdateText);
+				}
+				else
+				{
+					//UpdateTextMethod();
+				}
 			}
 		}
 
@@ -212,32 +251,13 @@ namespace HNCluster
 				textBox1.Text = pageList[currentPage].text;
 				label2.Text = "Title: " + pageList[currentPage].title;*/
 				numericUpDown2.Value = currentPage;
-				textBox1.Text = wikiCollection.wikiPages[currentPage].text;
-				label2.Text = "Title: " + wikiCollection.wikiPages[currentPage].title;
-				listView1.Items.Clear();
-				
-				listView1.Columns.Clear();
-				listView1.Columns.Add("Token");
-				listView1.Columns.Add("TF_IDF");
-				listView1.Columns.Add("TF");
-				listView1.Columns.Add("DF");
-				
-				foreach (ColumnHeader column in listView1.Columns)
+				if (InvokeRequired)
 				{
-					column.Width = 100;
+					//Invoke(UpdateText);
 				}
-
-				listView1.Columns[0].Width = 300;
-				//listView1.Groups.Clear();
-				//listView1.Groups.Add(new ListViewGroup("Tokens"));
-
-				foreach (string tokenKey in wikiCollection.wikiPages[currentPage].TF_IDF_Vector.Keys)
+				else
 				{
-					WikiToken token = wikiCollection.wikiPages[currentPage].TF_IDF_Vector[tokenKey];
-				ListViewItem item = new ListViewItem(new string[] {token.Token, token.TF_IDF.ToString(), token.TF.ToString(), token.DF.ToString()});
-				//ListViewItem item = new ListViewItem(listView1.Groups[0]);
-				item.Text = token.Token;
-				listView1.Items.Add(item);
+					//UpdateTextMethod();
 				}
 
 			}
@@ -269,6 +289,84 @@ namespace HNCluster
 		{
 
 			listView1.View = View.Details;
+		}
+
+		private void listView1_ColumnClick(object sender, ColumnClickEventArgs e)
+		{
+			// Determine if clicked column is already the column that is being sorted.
+			if (e.Column == lvwColumnSorter.SortColumn)
+			{
+				// Reverse the current sort direction for this column.
+				if (lvwColumnSorter.Order == SortOrder.Ascending)
+				{
+					lvwColumnSorter.Order = SortOrder.Descending;
+				}
+				else
+				{
+					lvwColumnSorter.Order = SortOrder.Ascending;
+				}
+			}
+			else
+			{
+				// Set the column number that is to be sorted; default to ascending.
+				lvwColumnSorter.SortColumn = e.Column;
+				lvwColumnSorter.Order = SortOrder.Ascending;
+			}
+
+			// Perform the sort with these new sort options.
+			this.listView1.Sort();
+
+		}
+
+		private void numericUpDown2_ValueChanged(object sender, EventArgs e)
+		{
+			currentPage = (int)numericUpDown2.Value;
+			if (InvokeRequired)
+			{
+				Invoke(UpdateText);
+			}
+			else
+			{
+				UpdateTextMethod();
+			}
+		}
+		bool test = false;
+		private void UpdateTextMethod()
+		{
+			if (!test)
+			{
+				test = true;
+				return;
+			}
+			textBox1.Text = wikiCollection.wikiPages[currentPage].text;
+			label2.Text = "Title: " + wikiCollection.wikiPages[currentPage].title;
+			listView1.Items.Clear();
+
+			listView1.Columns.Clear();
+			listView1.Columns.Add("Token");
+			listView1.Columns.Add("Stemmed Token");
+			listView1.Columns.Add("TF_IDF");
+			listView1.Columns.Add("TF");
+			listView1.Columns.Add("DF");
+
+			foreach (ColumnHeader column in listView1.Columns)
+			{
+				column.Width = 100;
+			}
+
+			listView1.Columns[0].Width = 150;
+			listView1.Columns[1].Width = 150;
+			//listView1.Groups.Clear();
+			//listView1.Groups.Add(new ListViewGroup("Tokens"));
+
+			foreach (string tokenKey in wikiCollection.wikiPages[currentPage].TF_IDF_Vector.Keys)
+			{
+				WikiToken token = wikiCollection.wikiPages[currentPage].TF_IDF_Vector[tokenKey];
+				ListViewItem item = new ListViewItem(new string[] { token.Token, token.Stemmed, token.TF_IDF.ToString(), token.TF.ToString(), token.DF.ToString() });
+				//ListViewItem item = new ListViewItem(listView1.Groups[0]);
+				item.Text = token.Token;
+				listView1.Items.Add(item);
+			}
 		}
 	}
 }
