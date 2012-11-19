@@ -8,7 +8,8 @@ using DotNetWikiBot;
 
 namespace Wiki
 {
-    public class WikiPage
+		
+	public class WikiPage
     {
 		 public string title = "";
 		 public string ns = "";
@@ -48,6 +49,26 @@ namespace Wiki
 			 timestamp = DateTime.Parse(revision.Element(revision.GetDefaultNamespace() + "timestamp").Value);
 			 text = revision.Element(revision.GetDefaultNamespace() + "text").Value;
 			 TF_IDF_Vector = new Dictionary<string, WikiToken>();
+		 }
+
+		 public double Cosine(WikiPage page)
+		 {
+
+			 return Cosine(TF_IDF_Vector, page.TF_IDF_Vector);
+		 }
+
+
+		 public static double Cosine(Dictionary<string, WikiToken> vec1, Dictionary<string, WikiToken> vec2)
+		 {
+			 double cosine = 0.0;
+			 foreach (string tokenKey in vec1.Keys)
+			 {
+				 if (vec2.ContainsKey(tokenKey)) {
+					 cosine += vec1[tokenKey].TF_IDF * vec2[tokenKey].TF_IDF;
+				 }
+			 }
+
+			 return cosine;
 		 }
     }
 }
