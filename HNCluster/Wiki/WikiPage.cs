@@ -68,11 +68,8 @@ namespace Wiki
 
 		 public double Cosine(WikiPage page)
 		 {
-
 			 return Cosine(TF_IDF_Vector, page.TF_IDF_Vector);
 		 }
-
-
 		 public static double Cosine(Dictionary<string, WikiToken> vec1, Dictionary<string, WikiToken> vec2)
 		 {
 			 double cosine = 0.0;
@@ -84,6 +81,101 @@ namespace Wiki
 			 }
 
 			 return cosine;
+		 }
+
+
+
+		 public double EuclideanDistance(WikiPage page)
+		 {
+			 return EuclideanDistance(TF_IDF_Vector, page.TF_IDF_Vector);
+		 }
+		 public static double EuclideanDistance(Dictionary<string, WikiToken> vec1, Dictionary<string, WikiToken> vec2)
+		 {
+			 return Math.Sqrt(SquaredEuclideanDistance(vec1, vec2));
+		 }
+
+
+		 public double SquaredEuclideanDistance(WikiPage page)
+		 {
+			 return SquaredEuclideanDistance(TF_IDF_Vector, page.TF_IDF_Vector);
+		 }
+		 public static double SquaredEuclideanDistance(Dictionary<string, WikiToken> vec1, Dictionary<string, WikiToken> vec2)
+		 {
+			 double euclidean = 0.0;
+
+			 List<string> tokenKeys = vec1.Keys.ToList<string>();
+			 tokenKeys.AddRange(vec2.Keys.ToList<string>());
+
+			 foreach (string tokenKey in tokenKeys)
+			 {
+				 double value1 = vec1.ContainsKey(tokenKey) ? vec1[tokenKey].TF_IDF : 0.0;
+				 value1 -= vec2.ContainsKey(tokenKey) ? vec2[tokenKey].TF_IDF : 0.0;
+				 value1 *= value1;
+				 euclidean += value1;
+			 }
+
+			 return euclidean;
+		 }
+
+
+		 public double ManhattanDistance(WikiPage page)
+		 {
+			 return ManhattanDistance(TF_IDF_Vector, page.TF_IDF_Vector);
+		 }
+		 public static double ManhattanDistance(Dictionary<string, WikiToken> vec1, Dictionary<string, WikiToken> vec2)
+		 {
+			 double manhattan = 0.0;
+
+			 List<string> tokenKeys = vec1.Keys.ToList<string>();
+			 tokenKeys.AddRange(vec2.Keys.ToList<string>());
+
+			 foreach (string tokenKey in tokenKeys)
+			 {
+				 double value1 = vec1.ContainsKey(tokenKey) ? vec1[tokenKey].TF_IDF : 0.0;
+				 value1 -= vec2.ContainsKey(tokenKey) ? vec2[tokenKey].TF_IDF : 0.0;
+				 manhattan += Math.Abs(value1);
+			 }
+
+			 return manhattan;
+		 }
+
+
+		 public double MaximumDistance(WikiPage page)
+		 {
+			 return MaximumDistance(TF_IDF_Vector, page.TF_IDF_Vector);
+		 }
+		 public static double MaximumDistance(Dictionary<string, WikiToken> vec1, Dictionary<string, WikiToken> vec2)
+		 {
+			 double maximum = 0.0;
+
+			 List<string> tokenKeys = vec1.Keys.ToList<string>();
+			 tokenKeys.AddRange(vec2.Keys.ToList<string>());
+
+			 foreach (string tokenKey in tokenKeys)
+			 {
+				 double value1 = vec1.ContainsKey(tokenKey) ? vec1[tokenKey].TF_IDF : 0.0;
+				 value1 -= vec2.ContainsKey(tokenKey) ? vec2[tokenKey].TF_IDF : 0.0;
+				 value1 = Math.Abs(value1);
+
+				 if (value1 > maximum)
+				 {
+					 maximum = value1;
+				 }
+			 }
+
+			 return maximum;
+		 }
+
+		 public double Magnitude()
+		 {
+			 double magnitude = 0.0;
+
+			 foreach (string tokenKey in TF_IDF_Vector.Keys)
+			 {
+				 magnitude += TF_IDF_Vector[tokenKey].TF_IDF * TF_IDF_Vector[tokenKey].TF_IDF;
+			 }
+
+			 return Math.Sqrt(magnitude);
 		 }
     }
 }
