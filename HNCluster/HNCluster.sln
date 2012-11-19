@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HNCluster", "HNCluster\HNCluster.csproj", "{848A5E9F-F079-41B2-9895-F9DC889CD900}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wiki", "Wiki\Wiki.csproj", "{D845D3F1-E5B9-41AA-9D82-8C22453A3D48}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{848A5E9F-F079-41B2-9895-F9DC889CD900}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{848A5E9F-F079-41B2-9895-F9DC889CD900}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{848A5E9F-F079-41B2-9895-F9DC889CD900}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D845D3F1-E5B9-41AA-9D82-8C22453A3D48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D845D3F1-E5B9-41AA-9D82-8C22453A3D48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D845D3F1-E5B9-41AA-9D82-8C22453A3D48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D845D3F1-E5B9-41AA-9D82-8C22453A3D48}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -23,6 +23,9 @@ namespace HNCluster
 		public delegate void IncrementPagesLoadedDelegate();
 		public IncrementPagesLoadedDelegate IncrementPagesLoaded;
 
+		public delegate void IncrementPagesLoadedByValDelegate(int n);
+		public IncrementPagesLoadedByValDelegate IncrementPagesLoadedByVal;
+
 		public delegate void CheckSiteLoadedDelegate();
 		public CheckSiteLoadedDelegate CheckSiteLoaded;
 
@@ -36,11 +39,15 @@ namespace HNCluster
 		int currentPage = 0;
 		PageList pageList;
 		Site site;
+		int pagesLoaded = 0;
+
+		string[] titlesList;
 
 		public Form1()
 		{
 			InitializeComponent();
 			IncrementPagesLoaded = new IncrementPagesLoadedDelegate(IncrementPagesLoadedMethod);
+			IncrementPagesLoadedByVal = new IncrementPagesLoadedByValDelegate(IncrementPagesLoadedByValMethod);
 			CheckSiteLoaded = new CheckSiteLoadedDelegate(CheckSiteLoadedMethod);
 			CheckTitlesLoaded = new CheckPageTitlesLoadedDelegate(CheckPageTitlesLoadedMethod);
 			AddPageText = new AddPageTextDelegate(AddPageTextMethod);
@@ -62,18 +69,49 @@ namespace HNCluster
             }*/
 		}
 
+		void LoadTitles()
+		{
+			titlesList = System.IO.File.ReadAllLines(@"ComputerScienceWikipediaPagesList");
+		}
+
 		void LoadPages()
 		{
-			site = new Site("http://localhost/index.php/", "ZenithBot", "Bot");
+			//site = new Site("http://localhost/index.php/", "ZenithBot", "Bot");
+			site = new Site("http://en.wikipedia.org/", "HNCluster", "csce470");
 			Invoke(CheckSiteLoaded);
 
-			Page ComputerSciencePage = new Page(site, "Computer science");
-			ComputerSciencePage.Load();
-			//Invoke(AddPageText, new object[] { ComputerSciencePage.text });
 
 			pageList = new PageList(site);
-			pageList.FillFromAllPages("", 0, false, 100000);
+			pageList.FillFromFile(@"ComputerScienceWikipediaPagesList");
 			Invoke(CheckTitlesLoaded);
+			/*
+			int num = 100;
+
+			for (int i = 0; i < pageList.pages.Count; ++i)
+			{
+				if (i + num < pageList.pages.Count)
+				{
+					Parallel.For(i, i + num, n =>
+					{
+						pageList.pages[n].Load();
+					});
+					i += num - 1;
+					pagesLoaded += num;
+					Invoke(IncrementPagesLoadedByVal, num);
+				}
+				else
+				{
+					Parallel.For(i, pageList.pages.Count, n =>
+					{
+						pageList.pages[n].Load();
+					});
+					i += num - 1;
+					pagesLoaded += pageList.pages.Count - i;
+					Invoke(IncrementPagesLoadedByVal, pageList.pages.Count - i);
+				}
+
+			}*/
+
 			foreach (Page page in pageList)
 			{
 				page.Load();
@@ -81,15 +119,27 @@ namespace HNCluster
 				{
 					Invoke(AddPageText, new object[] { pageList[0] });
 				}
+				pagesLoaded += 1;
 				Invoke(IncrementPagesLoaded);
 				//Application.DoEvents();
 			}
 			int a = 1;
 		}
 
+		public void LoadPage(Page page)
+		{
+			page.Load();
+			Invoke(IncrementPagesLoaded);
+		}
+
 		public void IncrementPagesLoadedMethod()
 		{
 			numericUpDown1.Value += 1;
+		}
+
+		public void IncrementPagesLoadedByValMethod(int val)
+		{
+			numericUpDown1.Value += val;
 		}
 
 		public void CheckSiteLoadedMethod()
@@ -115,18 +165,18 @@ namespace HNCluster
 				--currentPage;
 				textBox1.Text = pageList[currentPage].text;
 				label2.Text = "Title: " + pageList[currentPage].title;
-				numericUpDown1.Value = currentPage;
+				numericUpDown2.Value = currentPage;
 			}
 		}
 
 		private void button1_Click_1(object sender, EventArgs e)
 		{
-			if (numericUpDown1.Value > 0 && currentPage < numericUpDown1.Value - 1)
+			if (numericUpDown1.Value > 0 && currentPage < pagesLoaded - 1)
 			{
 				++currentPage;
 				textBox1.Text = pageList[currentPage].text;
 				label2.Text = "Title: " + pageList[currentPage].title;
-				numericUpDown1.Value = currentPage;
+				numericUpDown2.Value = currentPage;
 			}
 		}
 	}

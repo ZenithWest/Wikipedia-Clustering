@@ -36,9 +36,9 @@
 			this.button2 = new System.Windows.Forms.Button();
 			this.button1 = new System.Windows.Forms.Button();
 			this.panel1 = new System.Windows.Forms.Panel();
-			this.label2 = new System.Windows.Forms.Label();
-			this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
 			this.label3 = new System.Windows.Forms.Label();
+			this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+			this.label2 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -46,6 +46,7 @@
 			// 
 			// numericUpDown1
 			// 
+			this.numericUpDown1.Enabled = false;
 			this.numericUpDown1.Location = new System.Drawing.Point(233, 2);
 			this.numericUpDown1.Maximum = new decimal(new int[] {
             1000000,
@@ -139,17 +140,18 @@
 			this.panel1.Size = new System.Drawing.Size(377, 41);
 			this.panel1.TabIndex = 8;
 			// 
-			// label2
+			// label3
 			// 
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(106, 23);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(33, 13);
-			this.label2.TabIndex = 9;
-			this.label2.Text = "Title: ";
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(3, 23);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(38, 13);
+			this.label3.TabIndex = 11;
+			this.label3.Text = "Page: ";
 			// 
 			// numericUpDown2
 			// 
+			this.numericUpDown2.Enabled = false;
 			this.numericUpDown2.Location = new System.Drawing.Point(44, 21);
 			this.numericUpDown2.Maximum = new decimal(new int[] {
             1000000,
@@ -163,14 +165,14 @@
 			this.numericUpDown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			this.numericUpDown2.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
 			// 
-			// label3
+			// label2
 			// 
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(3, 23);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(38, 13);
-			this.label3.TabIndex = 11;
-			this.label3.Text = "Page: ";
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(106, 23);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(33, 13);
+			this.label2.TabIndex = 9;
+			this.label2.Text = "Title: ";
 			// 
 			// Form1
 			// 
