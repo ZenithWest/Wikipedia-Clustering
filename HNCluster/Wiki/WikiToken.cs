@@ -11,8 +11,8 @@ namespace Wiki
 		public string Token { get; set; }
 		public string Stemmed { get; set; }
 		public double TF_IDF { get; set; }
-		public long TF { get; set; }
-		public long DF { get; set; }
+		public int TF { get; set; }
+		public int DF { get; set; }
 
 		public WikiToken()
 		{

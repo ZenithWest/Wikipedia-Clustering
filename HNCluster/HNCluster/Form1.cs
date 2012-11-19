@@ -145,6 +145,14 @@ namespace HNCluster
 			Invoke(CheckTitlesLoaded);
 			wikiCollection.ExtractTokens();
 			Invoke(CheckTokenized);
+			if (InvokeRequired)
+			{
+				Invoke(UpdateText);
+			}
+			else
+			{
+				UpdateTextMethod();
+			}
 			/*
 			int num = 100;
 
