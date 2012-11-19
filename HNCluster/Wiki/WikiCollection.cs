@@ -9,6 +9,8 @@ using System.Xml.Linq;
 using System.Linq;
 using DotNetWikiBot;
 
+using PorterStemmerAlgorithm;
+
 namespace Wiki
 {
 	public class WikiCollection
@@ -30,6 +32,29 @@ namespace Wiki
 			foreach (XElement page in wikipedia.Elements(name))
 			{
 				wikiPages.Add(new WikiPage(page));
+			}
+		}
+		public void ExtractTokens()
+		{
+			string str = "";
+			for (int i = 0; i < 128; ++i)
+			{
+				char ch = (char)i;
+				if (!char.IsLetter(ch) && ch != '\'') {
+					str += ch;
+				}
+			}
+			char[] delimiterChars = str.ToCharArray();
+
+			PorterStemmer stemmer = new PorterStemmer();
+
+			foreach (WikiPage page in wikiPages)
+			{
+				string[] tokenStrings = page.text.Split(delimiterChars, StringSplitOptions.RemoveEmptyEntries);
+				foreach (string tokenString in tokenStrings)
+				{
+					page.TF_IDF_Vector.Add(new WikiToken(tokenString, stemmer.stemTerm(tokenString)));
+				}
 			}
 		}
 

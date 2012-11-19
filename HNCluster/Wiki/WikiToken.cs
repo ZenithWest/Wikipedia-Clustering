@@ -9,6 +9,7 @@ namespace Wiki
 	unsafe public class WikiToken
 	{
 		public string Token { get; set; }
+		public string Stem { get; set; }
 		public long Count { get; set; }
 		public double TF_IDF { get; set; }
 		public double TF { get; set; }
@@ -21,6 +22,12 @@ namespace Wiki
 
 		public WikiToken(string token)
 		{
+			Token = token;
+		}
+
+		public WikiToken(string stem, string token)
+		{
+			Stem = stem;
 			Token = token;
 		}
 

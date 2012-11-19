@@ -1,15 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D845D3F1-E5B9-41AA-9D82-8C22453A3D48}</ProjectGuid>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8F8C88DD-F172-4964-A49C-976437C7B538}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Wiki</RootNamespace>
-    <AssemblyName>Wiki</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>Iveonik.Stemmers</RootNamespace>
+    <AssemblyName>StemmersNet</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -20,7 +21,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,13 +30,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>StemmersNet.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DotNetWikiBot">
-      <HintPath>..\..\Tools\DotNetWikiBot\DotNetWikiBot.dll</HintPath>
-    </Reference>
-    <Reference Include="MediaWikiEngine">
-      <HintPath>..\..\Tools\MediaWikiEngine\MediaWikiEngine.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,11 +46,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PorterStemmer.cs" />
-    <Compile Include="WikiCollection.cs" />
-    <Compile Include="WikiToken.cs" />
-    <Compile Include="WikiPage.cs" />
+    <Compile Include="Among.cs" />
+    <Compile Include="CzechStemmer.cs" />
+    <Compile Include="DanishStemmer.cs" />
+    <Compile Include="DutchStemmer.cs" />
+    <Compile Include="EnglishStemmer.cs" />
+    <Compile Include="FinnishStemmer.cs" />
+    <Compile Include="FrenchStemmer.cs" />
+    <Compile Include="GermanStemmer.cs" />
+    <Compile Include="HungarianStemmer.cs" />
+    <Compile Include="IStemmer.cs" />
+    <Compile Include="ItalianStemmer.cs" />
+    <Compile Include="NorwegianStemmer.cs" />
+    <Compile Include="PortugalStemmer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RomanianStemmer.cs" />
+    <Compile Include="RussianStemmer.cs" />
+    <Compile Include="SpanishStemmer.cs" />
+    <Compile Include="StemmerOperations.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StemmersNet.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

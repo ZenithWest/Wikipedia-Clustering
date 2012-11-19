@@ -21,7 +21,7 @@ namespace Wiki
 		 public string format;
 
 
-		 public WikiToken[] TD_IDF_Vector;
+		 public List<WikiToken> TF_IDF_Vector;
 		 public Page page;
 
 		 public WikiPage(Page pg)
@@ -32,8 +32,7 @@ namespace Wiki
 			 {
 				page.Load();
 			 }
-
-			 TD_IDF_Vector = WikiParser.Parse(this);
+			 TF_IDF_Vector = new List<WikiToken>();
 		 }
 
 		 public WikiPage(XElement page)
@@ -48,6 +47,7 @@ namespace Wiki
 			 catch { }
 			 timestamp = DateTime.Parse(revision.Element(revision.GetDefaultNamespace() + "timestamp").Value);
 			 text = revision.Element(revision.GetDefaultNamespace() + "text").Value;
+			 TF_IDF_Vector = new List<WikiToken>();
 		 }
     }
 }

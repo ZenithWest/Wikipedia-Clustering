@@ -88,6 +88,7 @@ namespace HNCluster
 			wikiCollection.ParseXML();
 			Invoke(IncrementPagesLoadedByVal, wikiCollection.wikiPages.Count);
 			pagesLoaded += wikiCollection.wikiPages.Count;
+			Task.Factory.StartNew(wikiCollection.ExtractTokens);
 		}
 
 		void LoadPages()
