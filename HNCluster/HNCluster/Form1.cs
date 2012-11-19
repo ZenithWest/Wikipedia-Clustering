@@ -34,6 +34,9 @@ namespace HNCluster
 		public delegate void CheckPageTitlesLoadedDelegate();
 		public CheckPageTitlesLoadedDelegate CheckTitlesLoaded;
 
+		public delegate void CheckTokenizedDelegate();
+		public CheckTokenizedDelegate CheckTokenized;
+
 		public delegate void AddPageTextDelegate(Page page);
 		public AddPageTextDelegate AddPageText;
 
@@ -56,6 +59,7 @@ namespace HNCluster
 			IncrementPagesLoadedByVal = new IncrementPagesLoadedByValDelegate(IncrementPagesLoadedByValMethod);
 			CheckSiteLoaded = new CheckSiteLoadedDelegate(CheckSiteLoadedMethod);
 			CheckTitlesLoaded = new CheckPageTitlesLoadedDelegate(CheckPageTitlesLoadedMethod);
+			CheckTokenized = new CheckTokenizedDelegate(CheckTokenizedMethod);
 			AddPageText = new AddPageTextDelegate(AddPageTextMethod);
 			//Task.Factory.StartNew(LoadPages);
 			Task.Factory.StartNew(LoadWikipediaXML);
@@ -88,7 +92,8 @@ namespace HNCluster
 			wikiCollection.ParseXML();
 			Invoke(IncrementPagesLoadedByVal, wikiCollection.wikiPages.Count);
 			pagesLoaded += wikiCollection.wikiPages.Count;
-			Task.Factory.StartNew(wikiCollection.ExtractTokens);
+			wikiCollection.ExtractTokens();
+			Invoke(CheckTokenized);
 		}
 
 		void LoadPages()
@@ -166,6 +171,11 @@ namespace HNCluster
 		public void CheckPageTitlesLoadedMethod()
 		{
 			checkBox2.Checked = true;
+		}
+
+		public void CheckTokenizedMethod()
+		{
+			checkBox3.Checked = true;
 		}
 
 		public void AddPageTextMethod(Page page)

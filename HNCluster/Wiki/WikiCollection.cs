@@ -15,12 +15,12 @@ namespace Wiki
 {
 	public class WikiCollection
 	{
-		public Hashtable tokenTable;
+		public Dictionary<string, int> inverseTokens;
 		public List<WikiPage> wikiPages;
 
 		public WikiCollection()
 		{
-			tokenTable = new Hashtable();
+			inverseTokens = new Dictionary<string, int>();
 			wikiPages = new List<WikiPage>();
 		}
 
@@ -53,7 +53,42 @@ namespace Wiki
 				string[] tokenStrings = page.text.Split(delimiterChars, StringSplitOptions.RemoveEmptyEntries);
 				foreach (string tokenString in tokenStrings)
 				{
-					page.TF_IDF_Vector.Add(new WikiToken(tokenString, stemmer.stemTerm(tokenString)));
+					string stem = stemmer.stemTerm(tokenString).ToLower();
+					if (page.TF_IDF_Vector.ContainsKey(stem))
+					{
+						++page.TF_IDF_Vector[stem].TF;
+					}
+					else
+					{
+						page.TF_IDF_Vector[stem] = new WikiToken(tokenString, stem);
+						if (inverseTokens.ContainsKey(stem))
+						{
+							++inverseTokens[stem];
+						}
+						else
+						{
+							inverseTokens[stem] = 1;
+						}
+					}
+				}
+			}
+
+			foreach (WikiPage page in wikiPages)
+			{
+				double squaredSummed = 0;
+				foreach (string token in page.TF_IDF_Vector.Keys )
+				{
+					WikiToken wikiToken = page.TF_IDF_Vector[token];
+					wikiToken.DF = inverseTokens[wikiToken.Stemmed];
+					wikiToken.TF_IDF = (1+ Math.Log((double)wikiToken.TF, 2)) * Math.Log((double)wikiPages.Count / wikiToken.DF);
+					squaredSummed += wikiToken.TF_IDF * wikiToken.TF_IDF;
+				}
+
+				double magnitude = Math.Sqrt(squaredSummed);
+				foreach (string token in page.TF_IDF_Vector.Keys)
+				{
+					WikiToken wikiToken = page.TF_IDF_Vector[token];
+					wikiToken.TF_IDF /= magnitude;
 				}
 			}
 		}

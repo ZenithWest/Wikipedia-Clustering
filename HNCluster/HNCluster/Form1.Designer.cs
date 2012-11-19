@@ -39,6 +39,7 @@
 			this.label3 = new System.Windows.Forms.Label();
 			this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
 			this.label2 = new System.Windows.Forms.Label();
+			this.checkBox3 = new System.Windows.Forms.CheckBox();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -128,6 +129,7 @@
 			// 
 			// panel1
 			// 
+			this.panel1.Controls.Add(this.checkBox3);
 			this.panel1.Controls.Add(this.label3);
 			this.panel1.Controls.Add(this.numericUpDown2);
 			this.panel1.Controls.Add(this.label2);
@@ -135,9 +137,9 @@
 			this.panel1.Controls.Add(this.numericUpDown1);
 			this.panel1.Controls.Add(this.checkBox2);
 			this.panel1.Controls.Add(this.label1);
-			this.panel1.Location = new System.Drawing.Point(191, 12);
+			this.panel1.Location = new System.Drawing.Point(136, 12);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(377, 41);
+			this.panel1.Size = new System.Drawing.Size(494, 41);
 			this.panel1.TabIndex = 8;
 			// 
 			// label3
@@ -174,6 +176,17 @@
 			this.label2.TabIndex = 9;
 			this.label2.Text = "Title: ";
 			// 
+			// checkBox3
+			// 
+			this.checkBox3.AutoSize = true;
+			this.checkBox3.Enabled = false;
+			this.checkBox3.Location = new System.Drawing.Point(373, 2);
+			this.checkBox3.Name = "checkBox3";
+			this.checkBox3.Size = new System.Drawing.Size(76, 17);
+			this.checkBox3.TabIndex = 12;
+			this.checkBox3.Text = "Tokenized";
+			this.checkBox3.UseVisualStyleBackColor = true;
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -207,6 +220,7 @@
 		  private System.Windows.Forms.Label label2;
 		  private System.Windows.Forms.Label label3;
 		  private System.Windows.Forms.NumericUpDown numericUpDown2;
+		  private System.Windows.Forms.CheckBox checkBox3;
     }
 }
 

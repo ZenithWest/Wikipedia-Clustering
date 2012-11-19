@@ -6,29 +6,55 @@ using System.Threading.Tasks;
 
 namespace Wiki
 {
-	unsafe public class WikiToken
+	public class WikiToken
 	{
 		public string Token { get; set; }
-		public string Stem { get; set; }
-		public long Count { get; set; }
+		public string Stemmed { get; set; }
 		public double TF_IDF { get; set; }
-		public double TF { get; set; }
-		public double* IDF { get; set; }
+		public long TF { get; set; }
+		public long DF { get; set; }
 
 		public WikiToken()
 		{
-
+			TF = 1;
+			DF = 1;
 		}
 
 		public WikiToken(string token)
 		{
 			Token = token;
+			TF = 1;
+			DF = 1;
 		}
 
-		public WikiToken(string stem, string token)
+		public WikiToken(string token, string stemmed)
 		{
-			Stem = stem;
 			Token = token;
+			Stemmed = stemmed;
+			TF = 1;
+			DF = 1;
+		}
+
+		public bool Equals(WikiToken one)
+		{
+			// Adjust according to requirements
+			return StringComparer.InvariantCulture.Compare(one.Stemmed, Stemmed) != 0;
+		}
+	}
+
+	public class WikiTokenComparer : IEqualityComparer<WikiToken>
+	{
+		public bool Equals(WikiToken one, WikiToken two)
+		{
+			// Adjust according to requirements
+			return StringComparer.InvariantCulture.Compare(one.Stemmed, two.Stemmed) != 0;
+		}
+
+
+		public int GetHashCode(WikiToken item)
+		{
+			return StringComparer.InvariantCultureIgnoreCase.GetHashCode(item.Stemmed);
+
 		}
 
 	}
