@@ -92,7 +92,14 @@
     <Content Include="..\..\Data\Wikipedia-ComputerScience.xml">
       <Link>Wikipedia-ComputerScience.xml</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Wiki\Wiki.csproj">
+      <Project>{d845d3f1-e5b9-41aa-9d82-8c22453a3d48}</Project>
+      <Name>Wiki</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

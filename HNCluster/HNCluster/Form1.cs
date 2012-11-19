@@ -16,6 +16,8 @@ using DotNetWikiBot;
 using System.Threading;
 using System.Threading.Tasks;
 
+using Wiki;
+
 namespace HNCluster
 {
 	public partial class Form1 : Form
@@ -43,15 +45,22 @@ namespace HNCluster
 
 		string[] titlesList;
 
+		WikiCollection wikiCollection;
+
 		public Form1()
 		{
 			InitializeComponent();
+			wikiCollection = new WikiCollection();
+
 			IncrementPagesLoaded = new IncrementPagesLoadedDelegate(IncrementPagesLoadedMethod);
 			IncrementPagesLoadedByVal = new IncrementPagesLoadedByValDelegate(IncrementPagesLoadedByValMethod);
 			CheckSiteLoaded = new CheckSiteLoadedDelegate(CheckSiteLoadedMethod);
 			CheckTitlesLoaded = new CheckPageTitlesLoadedDelegate(CheckPageTitlesLoadedMethod);
 			AddPageText = new AddPageTextDelegate(AddPageTextMethod);
-			Task.Factory.StartNew(LoadPages);
+			//Task.Factory.StartNew(LoadPages);
+			Task.Factory.StartNew(LoadWikipediaXML);
+
+
 			/*
 			WikiConnection wiki = new WikiConnection("localhost");
             
@@ -72,6 +81,13 @@ namespace HNCluster
 		void LoadTitles()
 		{
 			titlesList = System.IO.File.ReadAllLines(@"ComputerScienceWikipediaPagesList");
+		}
+
+		void LoadWikipediaXML()
+		{
+			wikiCollection.ParseXML();
+			Invoke(IncrementPagesLoadedByVal, wikiCollection.wikiPages.Count);
+			pagesLoaded += wikiCollection.wikiPages.Count;
 		}
 
 		void LoadPages()
@@ -123,7 +139,6 @@ namespace HNCluster
 				Invoke(IncrementPagesLoaded);
 				//Application.DoEvents();
 			}
-			int a = 1;
 		}
 
 		public void LoadPage(Page page)
@@ -162,10 +177,12 @@ namespace HNCluster
 		{
 			if (numericUpDown1.Value > 0 && currentPage > 0)
 			{
-				--currentPage;
+				--currentPage;/*
 				textBox1.Text = pageList[currentPage].text;
-				label2.Text = "Title: " + pageList[currentPage].title;
+				label2.Text = "Title: " + pageList[currentPage].title;*/
 				numericUpDown2.Value = currentPage;
+				textBox1.Text = wikiCollection.wikiPages[currentPage].text;
+				label2.Text = "Title: " + wikiCollection.wikiPages[currentPage].title;
 			}
 		}
 
@@ -173,10 +190,13 @@ namespace HNCluster
 		{
 			if (numericUpDown1.Value > 0 && currentPage < pagesLoaded - 1)
 			{
-				++currentPage;
+				++currentPage;/*
 				textBox1.Text = pageList[currentPage].text;
-				label2.Text = "Title: " + pageList[currentPage].title;
+				label2.Text = "Title: " + pageList[currentPage].title;*/
 				numericUpDown2.Value = currentPage;
+				textBox1.Text = wikiCollection.wikiPages[currentPage].text;
+				label2.Text = "Title: " + wikiCollection.wikiPages[currentPage].title;
+
 			}
 		}
 	}
