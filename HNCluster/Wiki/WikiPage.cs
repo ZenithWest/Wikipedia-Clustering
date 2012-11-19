@@ -59,6 +59,7 @@ namespace Wiki
 			 catch { }
 			 timestamp = DateTime.Parse(revision.Element(revision.GetDefaultNamespace() + "timestamp").Value);
 			 text = revision.Element(revision.GetDefaultNamespace() + "text").Value;
+			 text = text.Replace("\n", "\r\n");
 			 TF_IDF_Vector = new Dictionary<string, WikiToken>();
 
 			 //this.page = new Page();
