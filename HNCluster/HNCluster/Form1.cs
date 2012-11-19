@@ -102,10 +102,17 @@ namespace HNCluster
 			site = new Site("http://en.wikipedia.org/", "HNCluster", "csce470");
 			Invoke(CheckSiteLoaded);
 
-
+			
 			pageList = new PageList(site);
-			pageList.FillFromFile(@"ComputerScienceWikipediaPagesList");
+			//pageList.FillFromFile(@"ComputerScienceWikipediaPagesList");
+			pageList.FillAndLoadFromXMLDump(@"Wikipedia-ComputerScience.xml");
+
+			wikiCollection.LoadFromPageList(pageList);
+			Invoke(IncrementPagesLoadedByVal, wikiCollection.wikiPages.Count);
+			pagesLoaded += wikiCollection.wikiPages.Count;
 			Invoke(CheckTitlesLoaded);
+			wikiCollection.ExtractTokens();
+			Invoke(CheckTokenized);
 			/*
 			int num = 100;
 
@@ -133,7 +140,7 @@ namespace HNCluster
 				}
 
 			}*/
-
+			/*
 			foreach (Page page in pageList)
 			{
 				page.Load();
@@ -144,7 +151,7 @@ namespace HNCluster
 				pagesLoaded += 1;
 				Invoke(IncrementPagesLoaded);
 				//Application.DoEvents();
-			}
+			}*/
 		}
 
 		public void LoadPage(Page page)
@@ -207,8 +214,61 @@ namespace HNCluster
 				numericUpDown2.Value = currentPage;
 				textBox1.Text = wikiCollection.wikiPages[currentPage].text;
 				label2.Text = "Title: " + wikiCollection.wikiPages[currentPage].title;
+				listView1.Items.Clear();
+				
+				listView1.Columns.Clear();
+				listView1.Columns.Add("Token");
+				listView1.Columns.Add("TF_IDF");
+				listView1.Columns.Add("TF");
+				listView1.Columns.Add("DF");
+				
+				foreach (ColumnHeader column in listView1.Columns)
+				{
+					column.Width = 100;
+				}
+
+				listView1.Columns[0].Width = 300;
+				//listView1.Groups.Clear();
+				//listView1.Groups.Add(new ListViewGroup("Tokens"));
+
+				foreach (string tokenKey in wikiCollection.wikiPages[currentPage].TF_IDF_Vector.Keys)
+				{
+					WikiToken token = wikiCollection.wikiPages[currentPage].TF_IDF_Vector[tokenKey];
+				ListViewItem item = new ListViewItem(new string[] {token.Token, token.TF_IDF.ToString(), token.TF.ToString(), token.DF.ToString()});
+				//ListViewItem item = new ListViewItem(listView1.Groups[0]);
+				item.Text = token.Token;
+				listView1.Items.Add(item);
+				}
 
 			}
+		}
+
+		private void radioButton1_CheckedChanged(object sender, EventArgs e)
+		{
+			listView1.View = View.Tile;
+		}
+
+		private void radioButton2_CheckedChanged(object sender, EventArgs e)
+		{
+			listView1.View = View.List;
+		}
+
+		private void radioButton3_CheckedChanged(object sender, EventArgs e)
+		{
+
+			listView1.View = View.SmallIcon;
+		}
+
+		private void radioButton4_CheckedChanged(object sender, EventArgs e)
+		{
+
+			listView1.View = View.LargeIcon;
+		}
+
+		private void radioButton5_CheckedChanged(object sender, EventArgs e)
+		{
+
+			listView1.View = View.Details;
 		}
 	}
 }

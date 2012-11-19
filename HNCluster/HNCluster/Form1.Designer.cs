@@ -40,6 +40,12 @@
 			this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
 			this.label2 = new System.Windows.Forms.Label();
 			this.checkBox3 = new System.Windows.Forms.CheckBox();
+			this.listView1 = new System.Windows.Forms.ListView();
+			this.radioButton1 = new System.Windows.Forms.RadioButton();
+			this.radioButton2 = new System.Windows.Forms.RadioButton();
+			this.radioButton3 = new System.Windows.Forms.RadioButton();
+			this.radioButton4 = new System.Windows.Forms.RadioButton();
+			this.radioButton5 = new System.Windows.Forms.RadioButton();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -96,15 +102,15 @@
 			// 
 			// textBox1
 			// 
-			this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+			this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.textBox1.Location = new System.Drawing.Point(12, 59);
+			this.textBox1.Location = new System.Drawing.Point(0, 59);
+			this.textBox1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
 			this.textBox1.Multiline = true;
 			this.textBox1.Name = "textBox1";
 			this.textBox1.ReadOnly = true;
 			this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.textBox1.Size = new System.Drawing.Size(738, 594);
+			this.textBox1.Size = new System.Drawing.Size(992, 338);
 			this.textBox1.TabIndex = 5;
 			// 
 			// button2
@@ -187,15 +193,92 @@
 			this.checkBox3.Text = "Tokenized";
 			this.checkBox3.UseVisualStyleBackColor = true;
 			// 
+			// listView1
+			// 
+			this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.listView1.Location = new System.Drawing.Point(0, 397);
+			this.listView1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+			this.listView1.Name = "listView1";
+			this.listView1.ShowGroups = false;
+			this.listView1.Size = new System.Drawing.Size(992, 278);
+			this.listView1.TabIndex = 9;
+			this.listView1.UseCompatibleStateImageBehavior = false;
+			this.listView1.View = System.Windows.Forms.View.Details;
+			// 
+			// radioButton1
+			// 
+			this.radioButton1.AutoSize = true;
+			this.radioButton1.Location = new System.Drawing.Point(765, 7);
+			this.radioButton1.Name = "radioButton1";
+			this.radioButton1.Size = new System.Drawing.Size(42, 17);
+			this.radioButton1.TabIndex = 10;
+			this.radioButton1.Text = "Tile";
+			this.radioButton1.UseVisualStyleBackColor = true;
+			this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+			// 
+			// radioButton2
+			// 
+			this.radioButton2.AutoSize = true;
+			this.radioButton2.Location = new System.Drawing.Point(765, 24);
+			this.radioButton2.Name = "radioButton2";
+			this.radioButton2.Size = new System.Drawing.Size(41, 17);
+			this.radioButton2.TabIndex = 11;
+			this.radioButton2.Text = "List";
+			this.radioButton2.UseVisualStyleBackColor = true;
+			this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+			// 
+			// radioButton3
+			// 
+			this.radioButton3.AutoSize = true;
+			this.radioButton3.Location = new System.Drawing.Point(874, 7);
+			this.radioButton3.Name = "radioButton3";
+			this.radioButton3.Size = new System.Drawing.Size(79, 17);
+			this.radioButton3.TabIndex = 12;
+			this.radioButton3.Text = "Small Icons";
+			this.radioButton3.UseVisualStyleBackColor = true;
+			this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
+			// 
+			// radioButton4
+			// 
+			this.radioButton4.AutoSize = true;
+			this.radioButton4.Location = new System.Drawing.Point(874, 24);
+			this.radioButton4.Name = "radioButton4";
+			this.radioButton4.Size = new System.Drawing.Size(81, 17);
+			this.radioButton4.TabIndex = 13;
+			this.radioButton4.Text = "Large Icons";
+			this.radioButton4.UseVisualStyleBackColor = true;
+			this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
+			// 
+			// radioButton5
+			// 
+			this.radioButton5.AutoSize = true;
+			this.radioButton5.Checked = true;
+			this.radioButton5.Location = new System.Drawing.Point(804, 40);
+			this.radioButton5.Name = "radioButton5";
+			this.radioButton5.Size = new System.Drawing.Size(57, 17);
+			this.radioButton5.TabIndex = 14;
+			this.radioButton5.TabStop = true;
+			this.radioButton5.Text = "Details";
+			this.radioButton5.UseVisualStyleBackColor = true;
+			this.radioButton5.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(762, 665);
+			this.ClientSize = new System.Drawing.Size(992, 677);
+			this.Controls.Add(this.radioButton4);
+			this.Controls.Add(this.radioButton3);
+			this.Controls.Add(this.radioButton2);
+			this.Controls.Add(this.radioButton1);
+			this.Controls.Add(this.textBox1);
+			this.Controls.Add(this.listView1);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.button2);
-			this.Controls.Add(this.textBox1);
+			this.Controls.Add(this.radioButton5);
 			this.Name = "Form1";
 			this.Text = "Form1";
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
@@ -221,6 +304,12 @@
 		  private System.Windows.Forms.Label label3;
 		  private System.Windows.Forms.NumericUpDown numericUpDown2;
 		  private System.Windows.Forms.CheckBox checkBox3;
+		  private System.Windows.Forms.ListView listView1;
+		  private System.Windows.Forms.RadioButton radioButton1;
+		  private System.Windows.Forms.RadioButton radioButton2;
+		  private System.Windows.Forms.RadioButton radioButton3;
+		  private System.Windows.Forms.RadioButton radioButton4;
+		  private System.Windows.Forms.RadioButton radioButton5;
     }
 }
 

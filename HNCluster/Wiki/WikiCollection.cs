@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Collections;
 using System.Xml;
 using System.Xml.Linq;
-using System.Linq;
 using DotNetWikiBot;
 
 using PorterStemmerAlgorithm;
@@ -34,6 +33,16 @@ namespace Wiki
 				wikiPages.Add(new WikiPage(page));
 			}
 		}
+
+
+		public void LoadFromPageList(PageList pageList)
+		{
+			foreach (Page page in pageList)
+			{
+				wikiPages.Add(new WikiPage(page));
+			}
+		}
+
 		public void ExtractTokens()
 		{
 			string str = "";
@@ -92,6 +101,7 @@ namespace Wiki
 				}
 			}
 		}
+
 
 	}
 }

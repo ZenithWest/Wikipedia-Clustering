@@ -28,11 +28,22 @@ namespace Wiki
 		 public WikiPage(Page pg)
 		 {
 			 page = pg;
-
+			 
 			 if (page.text == null || page.text == "")
 			 {
 				page.Load();
 			 }
+
+			 title = page.text;
+			 ns = "";
+			 id = long.Parse(page.pageID);
+
+			 revid = long.Parse(page.lastRevisionID);
+			 try { parentid = long.Parse(page.lastUserID); }
+			 catch { }
+			 timestamp = page.timestamp;
+			 text = page.text;
+
 			 TF_IDF_Vector = new Dictionary<string, WikiToken>();
 		 }
 
@@ -49,6 +60,9 @@ namespace Wiki
 			 timestamp = DateTime.Parse(revision.Element(revision.GetDefaultNamespace() + "timestamp").Value);
 			 text = revision.Element(revision.GetDefaultNamespace() + "text").Value;
 			 TF_IDF_Vector = new Dictionary<string, WikiToken>();
+
+			 //this.page = new Page();
+			 
 		 }
 
 		 public double Cosine(WikiPage page)
