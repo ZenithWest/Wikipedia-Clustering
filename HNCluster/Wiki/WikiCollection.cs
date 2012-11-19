@@ -9,6 +9,7 @@ using System.Xml.Linq;
 using DotNetWikiBot;
 
 using PorterStemmerAlgorithm;
+using System.Text.RegularExpressions;
 
 namespace Wiki
 {
@@ -46,10 +47,11 @@ namespace Wiki
 		public void ExtractTokens()
 		{
 			string str = "";
-			for (int i = 0; i < 128; ++i)
+			for (int i = 0; i < 256; ++i)
 			{
 				char ch = (char)i;
-				if (!char.IsLetter(ch) && ch != '\'') {
+				if (!char.IsLetter(ch) && ch != '\'' )
+				{
 					str += ch;
 				}
 			}
@@ -59,7 +61,28 @@ namespace Wiki
 
 			foreach (WikiPage page in wikiPages)
 			{
-				string[] tokenStrings = page.text.Split(delimiterChars, StringSplitOptions.RemoveEmptyEntries);
+				string temp = "";/*
+				bool test = false;
+				foreach (char ch in page.text)
+				{
+					if (char.GetNumericValue(ch) < 256)
+					{
+						temp += ch;
+						test = false;
+					}
+					else
+					{
+						if (!test)
+						{
+							temp += ' ';
+							test = true;
+						}
+					}
+				}*/
+				temp = Regex.Replace(page.text, @"[^\u0000-\u007F]", " ");
+				temp = temp.Replace("\'\'", " ");
+				string[] tokenStrings = temp.Split(delimiterChars, StringSplitOptions.RemoveEmptyEntries);
+				//string[] tokenStrings = page.text.Split(delimiterChars, StringSplitOptions.RemoveEmptyEntries);
 				foreach (string tokenString in tokenStrings)
 				{
 					string stem = stemmer.stemTerm(tokenString).ToLower();
