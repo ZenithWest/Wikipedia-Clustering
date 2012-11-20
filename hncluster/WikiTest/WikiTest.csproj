@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>f5d0bd3a-0e26-4e36-9fc0-fdcd1d669b59</ProjectGuid>
+    <ProjectGuid>{77EB1F58-4EEB-4F9E-9A4B-8AB55EF3CFFF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WikiTest</RootNamespace>
@@ -50,8 +50,17 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="PorterStemmerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WikiCollectionTests.cs" />
+    <Compile Include="WikiPageTests.cs" />
+    <Compile Include="WikiTokenTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Wiki\Wiki.csproj">
+      <Project>{d845d3f1-e5b9-41aa-9d82-8c22453a3d48}</Project>
+      <Name>Wiki</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

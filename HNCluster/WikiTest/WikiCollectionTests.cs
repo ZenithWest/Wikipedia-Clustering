@@ -1,10 +1,11 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Wiki;
 
 namespace WikiTest
 {
     [TestClass]
-    public class UnitTest1
+    public class WikiCollectionTests
     {
         [TestMethod]
         public void TestMethod1()
