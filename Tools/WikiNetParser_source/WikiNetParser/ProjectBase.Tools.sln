@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBase.Tools", "ProjectBase.Tools\ProjectBase.Tools.csproj", "{967274C3-A95B-428E-849C-6E68410C46FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBase.Test", "ProjectBase.Test\ProjectBase.Test.csproj", "{9802D93C-2B07-4927-A5F3-788B3FD45444}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{032A763E-AB4F-415F-91E0-C244331776AB}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		ProjectBase.Tools.vsmdi = ProjectBase.Tools.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assemblies", "Assemblies", "{02E72E94-F2C0-42FE-941E-B5CB8013DA5E}"
+	ProjectSection(SolutionItems) = preProject
+		Assemblies\Antlr.License.txt = Assemblies\Antlr.License.txt
+		Assemblies\Antlr3.Runtime.dll = Assemblies\Antlr3.Runtime.dll
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBase.ShowCase", "ProjectBase.ShowCase\ProjectBase.ShowCase.csproj", "{9AE301A0-8F8F-4409-9811-161C4B0A6798}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{46419E91-739D-41C1-8794-FEFDAF457AB4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{D4514E56-9699-49B1-852D-95A8EA243D50}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProjectBase.Tools.Wiki", "ProjectBase.Tools.Wiki", "{495929AB-6116-409D-873C-D057145D7BF7}"
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = ProjectBase.Tools.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{967274C3-A95B-428E-849C-6E68410C46FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{967274C3-A95B-428E-849C-6E68410C46FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{967274C3-A95B-428E-849C-6E68410C46FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{967274C3-A95B-428E-849C-6E68410C46FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9802D93C-2B07-4927-A5F3-788B3FD45444}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9802D93C-2B07-4927-A5F3-788B3FD45444}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9802D93C-2B07-4927-A5F3-788B3FD45444}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9802D93C-2B07-4927-A5F3-788B3FD45444}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AE301A0-8F8F-4409-9811-161C4B0A6798}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AE301A0-8F8F-4409-9811-161C4B0A6798}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AE301A0-8F8F-4409-9811-161C4B0A6798}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AE301A0-8F8F-4409-9811-161C4B0A6798}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9AE301A0-8F8F-4409-9811-161C4B0A6798} = {46419E91-739D-41C1-8794-FEFDAF457AB4}
+		{9802D93C-2B07-4927-A5F3-788B3FD45444} = {D4514E56-9699-49B1-852D-95A8EA243D50}
+		{967274C3-A95B-428E-849C-6E68410C46FD} = {495929AB-6116-409D-873C-D057145D7BF7}
+	EndGlobalSection
+EndGlobal

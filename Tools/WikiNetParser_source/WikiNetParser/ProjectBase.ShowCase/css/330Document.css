@@ -1,0 +1,77 @@
+﻿A { text-decoration: underline !important;}
+H1, H2, H3, H4, H5 { border-bottom: 1px solid #ccc; background: #eee; padding: 2px; }
+
+H1    { margin: 40px 0px 20px 2px; font-size:  130%; color: #222; font-weight: bold; font-family: Verdana; padding-left: 5px;}
+H2    { margin: 40px 0px 16px 2px; font-size:  120%; color: #222; font-weight: bold; font-family: Verdana; padding-left: 8px;}
+H3    { margin: 30px 0px 16px 2px; font-size:  120%; color: #225; font-weight: bold; font-family: Verdana; padding-left: 12px;}
+H4    { margin: 30px 0px 16px 2px; font-size:  110%; color: #115; font-weight: bold; font-family: Arial;   padding-left: 16px;}
+H5    { margin: 20px 0px 16px 2px; font-size:  100%; color: #115; font-weight: bold; font-family: Arial;  padding-left: 20px;}
+H6    { margin: 20px 0px 16px 2px; font-size:  100%; color: #005; font-weight: bold; font-family: Arial; padding-left: 25px;}
+
+DIV.document { font-size: 110%; }
+
+DIV.document A { text-decoration: underline;}
+
+DIV.document H1, DIV.document H2, DIV.document H3,
+DIV.document H4, DIV.document H5, DIV.document H6
+        { clear: both; border-width: 0px; background: #fff;
+        padding: 2px; margin: 3px 3px 8px 3px;}
+
+DIV.document LI { padding: 2px;}
+DIV.document P  { padding: 2px 2px 8px 2px; line-height: 22px; margin:3px;}
+
+DIV.document P.p1 { padding-top:  6px }
+DIV.document P.p2 { padding-top: 10px }
+DIV.document P.p3 { padding-top: 14px }
+DIV.document P.pr { background: inherit; text-align: right; clear: both; }
+DIV.document P.pc { background: inherit; text-align: center;}
+
+
+DIV.document BLOCKQUOTE,
+DIV.document PRE            { padding: 5px; margin-bottom: 8px;
+                                background: #fff; border: 1px solid #888; border-top-color: #ddd; border-left-color: #ddd;}
+DIV.document CODE           { background: #efe; padding-bottom: 8px; clear: both;
+                                    border: 1px solid #888; border-top-color: #ddd; border-left-color: #ddd; }
+
+DIV.document CODE SPAN.base      { color: #00f; }
+DIV.document CODE SPAN.type      { color: #00f; font-weight: bold; }
+DIV.document CODE SPAN.spcl      { color: #808; font-weight: normal; }
+DIV.document CODE SPAN.smbl      { color: #00f; font-weight: normal; }
+DIV.document CODE SPAN.flw       { color: #808; font-weight: bold; }
+DIV.document CODE SPAN.cmmnt     { color: #080; font-weight: normal; }
+DIV.document CODE SPAN.qtd       { color: #882; font-weight: normal; }
+
+DIV.document CODE.html SPAN.html { color: Maroon; font-weight: bold; }
+DIV.document CODE.html SPAN.tag  { color: Navy;   font-weight: bold; }
+DIV.document CODE.xml  SPAN.tag  { color: #a11;   font-weight: bold; }
+
+DIV.document SAMP { color: Maroon; font-weight: bold;}
+DIV.document VAR  { color: #808; font-weight: normal; font-family: Consolas, Courier New; }
+DIV.document DFN  { color: #880; font-weight: normal; font-family: Consolas, Courier New; }
+
+
+
+
+
+/* image */
+DIV.document IMG { margin: 20px 10px 20px 10px; }
+DIV.document * IMG { margin: 3px; }
+
+
+/* wiki table */
+DIV.document TABLE           { font-family: Verdana; margin: 5px;
+                                border: 1px solid #ddd; border-top: 1px solid #e5e5e5;}
+DIV.document TABLE  THEAD TD { background: url('bg.png') 0 -8px repeat-x #e5e5e5;
+                                border: 1px solid #ddd; border-left: 1px dotted #888; border-right: 1px dotted #888; }
+
+DIV.document TABLE TD        { background: #fff; color: inherit;  padding: 2px 5px;
+                                    border-bottom: 1px solid #ddd; border-left: 1px dotted #bbb;}
+
+/* comment table */
+DIV.document DIV.author                 { background: #fff;  border-bottom: 3px double #aaa;  padding: 50px 5px 50px 5px; }
+DIV.document DIV.comment TABLE          { width: 100%; background: #ddd;}
+DIV.document DIV.comment TABLE TD       { vertical-align: top; padding: 2px;}
+DIV.document DIV.comment TABLE TD.info  { width: 200px; }
+DIV.document DIV.comment TABLE TD.text  { background: #fff; height: 75px;  padding: 5px;  border: 1px solid #eee; border-top: 1px solid #ddd; border-left: 1px solid #ddd;}
+DIV.document DIV.comment TABLE TD   H6  { padding: 2px 2px 2px 2px; margin: 0px; }
+DIV.document DIV.comment TABLE TD.text PRE { float: left; }

@@ -16,6 +16,7 @@ using DotNetWikiBot;
 using System.Threading;
 
 using Wiki;
+using Clustering;
 
 namespace HNCluster
 {
@@ -39,6 +40,12 @@ namespace HNCluster
 		public delegate void CheckTokenizedDelegate();
 		public CheckTokenizedDelegate CheckTokenized;
 
+		public delegate void CheckCheckBox4Delegate();
+		public CheckCheckBox4Delegate CheckCheckBox4;
+
+		public delegate void CheckCheckBox5Delegate();
+		public CheckCheckBox5Delegate CheckCheckBox5;
+
 		public delegate void AddPageTextDelegate(Page page);
 		public AddPageTextDelegate AddPageText;
 
@@ -52,6 +59,7 @@ namespace HNCluster
 
 		WikiCollection wikiCollection;
 		private ListViewColumnSorter lvwColumnSorter;
+		HierarchicalCluster hierarchicalCluster;
 
 		public Form1()
 		{
@@ -67,6 +75,8 @@ namespace HNCluster
 			CheckSiteLoaded = new CheckSiteLoadedDelegate(CheckSiteLoadedMethod);
 			CheckTitlesLoaded = new CheckPageTitlesLoadedDelegate(CheckPageTitlesLoadedMethod);
 			CheckTokenized = new CheckTokenizedDelegate(CheckTokenizedMethod);
+			CheckCheckBox4 = new CheckCheckBox4Delegate(CheckCheckBox4Method);
+			CheckCheckBox5 = new CheckCheckBox5Delegate(CheckCheckBox5Method);
 			AddPageText = new AddPageTextDelegate(AddPageTextMethod);
 			UpdateText = new UpdateTextDelegate(UpdateTextMethod);
 			//Task.Factory.StartNew(LoadPages);
@@ -114,6 +124,11 @@ namespace HNCluster
 
 			wikiCollection.ExtractTokens();
 			Invoke(CheckTokenized);
+			hierarchicalCluster = new HierarchicalCluster(wikiCollection);
+			hierarchicalCluster.initializeClusters();
+			Invoke(CheckCheckBox4);
+			hierarchicalCluster.Cluster();
+			Invoke(CheckCheckBox5);
 		}
 
 		void LoadPages()
@@ -223,6 +238,16 @@ namespace HNCluster
 		public void CheckTokenizedMethod()
 		{
 			checkBox3.Checked = true;
+		}
+
+		public void CheckCheckBox4Method()
+		{
+			checkBox4.Checked = true;
+		}
+
+		public void CheckCheckBox5Method()
+		{
+			checkBox5.Checked = true;
 		}
 
 		public void AddPageTextMethod(Page page)

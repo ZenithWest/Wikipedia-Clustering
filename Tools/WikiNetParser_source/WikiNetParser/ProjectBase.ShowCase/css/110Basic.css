@@ -1,0 +1,188 @@
+﻿/* I. Common setting for ALL ELEMENTS */
+/*   in this section, are many of the most used CSS properties
+/*   reset to real "DEFAULT" falues !!!
+/*   (so the browser-dependent defaults are no longer problem)
+/*   The Essence is to keep all these settings in OUR HANDS
+/*     and let the browser only to correctly render result
+/* */
+HTML { overflow: hidden; }
+
+BODY, FORM
+, DIV, SPAN, P
+, LEGEND, FIELDSET
+, DL, DT , DD
+, LABEL, INPUT, SELECT, OPTION, BUTTON, TEXTAREA
+, UL, OL, LI
+, H1, H2, H3, H4, H5, H6
+, TABLE, THEAD, TBODY TR, TD, TH, CAPTION
+, CITE, CODE, PRE, BLOCKQUOTE
+, SECTION, NAV, ARTICLE, ASIDE, HEADER, FOOTER
+{
+    padding : 0px;
+
+    width: auto; height: auto;
+    left : auto; top   : auto;  bottom: auto; /* do not set 'right' IE lte 7 will be damaged in some cases */
+    overflow: visible;
+
+    vertical-align : inherit;
+    text-align     : inherit;
+
+    font-family    : inherit;
+    font-weight    : inherit;
+    font-size      : inherit;
+    text-decoration: none;
+}
+BODY, FORM, DIV, SPAN, P, LEGEND, FIELDSET, DL, DT /*, DD */, LABEL, INPUT, SELECT, OPTION, BUTTON, TEXTAREA
+, UL, OL, LI , H1, H2, H3, H4, H5, H6, TABLE, THEAD, TBODY TR, TD, TH, CAPTION
+, CITE, CODE, PRE, BLOCKQUOTE
+, SECTION, NAV, ARTICLE, ASIDE, HEADER, FOOTER
+{
+    margin  : 0px;
+}
+
+BODY, FORM, DIV, SPAN, P, LEGEND FIELDSET, DL, DT, DD, LABEL, INPUT, SELECT, IMG, BUTTON
+, UL, OL, LI, IMG, A, H1, H2, H3, H4, H5, H6, TABLE /*, THEAD, TBODY TR, TD, TH, CAPTION */
+, SECTION, NAV, ARTICLE, ASIDE, HEADER, FOOTER
+{
+    position: relative;
+}
+BODY,  FORM, DIV, /*SPAN, P, LEGEND*/ FIELDSET, /*DL, DT, DD, */ LABEL, INPUT, SELECT, IMG, BUTTON
+/* ,UL, OL, LI, IMG, A, H1, H2, H3, H4, H5, H6, TABLE, THEAD, TBODY TR, TD, TH, CAPTION */
+{
+    display: inline-block;
+}
+
+BODY, FORM, DIV, SPAN, P, LEGEND, /* FIELDSET*/ DL, DT, DD, LABEL /* INPUT, SELECT, BUTTON */
+,UL, OL, LI, IMG, A, H1, H2, H3, H4, H5, H6, TABLE, THEAD, TBODY TR, TD, TH, CAPTION
+{
+    border: 0px solid transparent;
+}
+
+BODY, FORM, DIV, SPAN, P, LEGEND, FIELDSET DL, DT, DD, LABEL /* INPUT, SELECT, BUTTON */, OPTION
+,UL, OL, LI, IMG, A, H1, H2, H3, H4, H5, H6, TABLE, THEAD, TBODY TR, TD, TH, CAPTION
+{
+    color: inherit;
+}
+
+
+/* II. ELEMENT based setting, each above mentioned element
+/*    Can (and sometimes MUST) be adjusted
+/*    - to know all the settings bellow == to safe lots of later adjustments
+/* */
+
+BODY
+{
+    position: absolute;
+    width: 100%; height: 100%;
+    overflow: hidden;
+
+    vertical-align: top;
+    text-align: left;
+
+    font-size: 80%;
+    font-family: Arial, Sans-Serif;
+    font-weight: normal;
+}
+FORM  { overflow: visible; width: 100%; }
+
+DIV   { display: block; }
+SPAN  { }
+P     { margin: 5px 5px 2px 8px; }
+
+SECTION, NAV, ARTICLE, ASIDE, HEADER, FOOTER { display: block; }
+
+CITE        { display: block; padding: 2px; margin: 10px 5px 5px 15px;}
+CODE        { display: block; font-family: Consolas, Courier New; padding: 8px; margin: 8px; }
+PRE         { display: block; font-family: Consolas, Courier New; white-space: pre-wrap; overflow: auto;}
+BLOCKQUOTE  { display: block; padding: 8px; margin: 10px 5px 5px 15px;}
+SAMP        { font-family: Consolas, Courier New; font-size: 100%;}
+
+LEGEND   { position: static; padding: 0px 2px 3px 2px; margin-left: 4px; }
+FIELDSET { vertical-align: top; text-align: left; min-height: inherit; }
+
+DL      { }
+DT      { }
+DD      { }
+
+LABEL   { }
+INPUT   { font-family: Courier New; }
+INPUT[type=hidden]   {display: none; }
+TEXTAREA { font-family: Courier New; display: block; height: 50px; overflow: auto; font-size:100%; }
+
+SELECT  { font-family: Courier New;  }
+SELECT[multiple=multiple] { height: auto; }
+OPTION  { }
+BUTTON  { }
+
+UL  { padding-left: 35px; }
+OL  { padding-left: 35px; }
+LI  { }
+
+IMG           { }
+IMG.imgMedium { width: 16px; height: 16px; }
+
+A
+, A:link
+, A:visited
+, A:hover
+, A:active      { color: #000; padding: 0px; text-decoration: none; cursor: pointer; }
+A:hover         { color: #005; text-decoration: underline; }
+
+
+A.none
+, A.none:link
+, A.none:visited
+, A.none:active
+, A.none:hover  { color: inherit; padding:0px; text-decoration: none !important; background: transparent;}
+
+A.noPointer
+, A.noPointer:link
+, A.noPointer:visited
+, A.noPointer:active
+, A.noPointer:hover { cursor: text !important; }
+
+H1    { margin: 8px 5px 20px  5px; }
+H2    { margin: 12px 4px 8px  8px; }
+H3    { margin: 12px 4px 8px 12px; }
+H4    { margin: 12px 3px 8px 16px; }
+H5    { margin: 12px 3px 8px 10px; }
+H6    { margin: 12px 2px 8px 25px; }
+
+TABLE   { border-collapse: collapse; border-color: #000; font-size: 100%;  }
+THEAD   { font-weight: bold; }
+TBODY   { }
+TR      { }
+TD      { padding-left: 2px; padding-right: 2px; }
+TH      { font-weight: bold; }
+CAPTION { text-align: center; }
+
+HR      { width: 98%; padding: 0px 0px 5px 0px; clear: both !important;}
+
+SCRIPT { display: none !important;}
+/* III. Simple classes,
+/*   This allowes to use class words for setting single CSS
+/* */
+
+.scroller { overflow: auto; }
+
+.redC   { color: red; }      .greenC { color: green; }
+.redB   { background: red; } .greenB { background: green; }
+.greenB { background: green; }
+.bold   { font-weight: bold; }
+.italic { font-style: italic; }
+.cursor { cursor: pointer; }
+.cursorText { cursor: text; }
+.float  { float: left; }
+.clear  { clear: both; }
+.block  { display: block; }
+.inline { display: inline; }
+.inlineBlock { display: inline-block; }
+.hidden { display: none; }
+.wide   { letter-spacing: 1px; }
+.right  { text-align: right;  }
+.left   { text-align: left; }
+.center { text-align: center; }
+.top    { vertical-align: top; }
+.bottom { vertical-align: bottom; }
+.scroll { overflow: scroll; }
+.scrollAuto { overflow: auto;}

@@ -36,16 +36,18 @@
 			this.button2 = new System.Windows.Forms.Button();
 			this.button1 = new System.Windows.Forms.Button();
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.checkBox3 = new System.Windows.Forms.CheckBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
 			this.label2 = new System.Windows.Forms.Label();
-			this.checkBox3 = new System.Windows.Forms.CheckBox();
 			this.listView1 = new System.Windows.Forms.ListView();
 			this.radioButton1 = new System.Windows.Forms.RadioButton();
 			this.radioButton2 = new System.Windows.Forms.RadioButton();
 			this.radioButton3 = new System.Windows.Forms.RadioButton();
 			this.radioButton4 = new System.Windows.Forms.RadioButton();
 			this.radioButton5 = new System.Windows.Forms.RadioButton();
+			this.checkBox4 = new System.Windows.Forms.CheckBox();
+			this.checkBox5 = new System.Windows.Forms.CheckBox();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -135,6 +137,8 @@
 			// 
 			// panel1
 			// 
+			this.panel1.Controls.Add(this.checkBox5);
+			this.panel1.Controls.Add(this.checkBox4);
 			this.panel1.Controls.Add(this.checkBox3);
 			this.panel1.Controls.Add(this.label3);
 			this.panel1.Controls.Add(this.numericUpDown2);
@@ -147,6 +151,17 @@
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(494, 41);
 			this.panel1.TabIndex = 8;
+			// 
+			// checkBox3
+			// 
+			this.checkBox3.AutoSize = true;
+			this.checkBox3.Enabled = false;
+			this.checkBox3.Location = new System.Drawing.Point(373, 2);
+			this.checkBox3.Name = "checkBox3";
+			this.checkBox3.Size = new System.Drawing.Size(76, 17);
+			this.checkBox3.TabIndex = 12;
+			this.checkBox3.Text = "Tokenized";
+			this.checkBox3.UseVisualStyleBackColor = true;
 			// 
 			// label3
 			// 
@@ -180,17 +195,6 @@
 			this.label2.Size = new System.Drawing.Size(33, 13);
 			this.label2.TabIndex = 9;
 			this.label2.Text = "Title: ";
-			// 
-			// checkBox3
-			// 
-			this.checkBox3.AutoSize = true;
-			this.checkBox3.Enabled = false;
-			this.checkBox3.Location = new System.Drawing.Point(373, 2);
-			this.checkBox3.Name = "checkBox3";
-			this.checkBox3.Size = new System.Drawing.Size(76, 17);
-			this.checkBox3.TabIndex = 12;
-			this.checkBox3.Text = "Tokenized";
-			this.checkBox3.UseVisualStyleBackColor = true;
 			// 
 			// listView1
 			// 
@@ -264,6 +268,28 @@
 			this.radioButton5.UseVisualStyleBackColor = true;
 			this.radioButton5.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
 			// 
+			// checkBox4
+			// 
+			this.checkBox4.AutoSize = true;
+			this.checkBox4.Enabled = false;
+			this.checkBox4.Location = new System.Drawing.Point(280, 22);
+			this.checkBox4.Name = "checkBox4";
+			this.checkBox4.Size = new System.Drawing.Size(109, 17);
+			this.checkBox4.TabIndex = 15;
+			this.checkBox4.Text = "Initialized Clusters";
+			this.checkBox4.UseVisualStyleBackColor = true;
+			// 
+			// checkBox5
+			// 
+			this.checkBox5.AutoSize = true;
+			this.checkBox5.Enabled = false;
+			this.checkBox5.Location = new System.Drawing.Point(382, 22);
+			this.checkBox5.Name = "checkBox5";
+			this.checkBox5.Size = new System.Drawing.Size(114, 17);
+			this.checkBox5.TabIndex = 16;
+			this.checkBox5.Text = "Clustering Finished";
+			this.checkBox5.UseVisualStyleBackColor = true;
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -310,6 +336,8 @@
 		  private System.Windows.Forms.RadioButton radioButton3;
 		  private System.Windows.Forms.RadioButton radioButton4;
 		  private System.Windows.Forms.RadioButton radioButton5;
+		  private System.Windows.Forms.CheckBox checkBox5;
+		  private System.Windows.Forms.CheckBox checkBox4;
     }
 }
 
