@@ -37,26 +37,33 @@ namespace Clustering
 				Cluster c1 = clusters[0];
 				Cluster c2 = clusters[1];
 				double maxSim = 0.0;
+				//double minDistance = double.MaxValue;
 				Mutex mutex = new Mutex();
 
 				Parallel.For(1, clusters.Count, i =>
 				{
 					Thread.CurrentThread.Priority = ThreadPriority.Lowest;
 					double sim = clusters[0].Cosine(clusters[i]);
-					if (sim > maxSim)
+					//double distance = clusters[0].EuclideanDistance(clusters[i]);
+					bool test = sim > maxSim;
+					//bool test = distance < minDistance;
+					if (test)
 					{
 						mutex.WaitOne();
-						if (sim > maxSim)
+						test = sim > maxSim;
+						//test = distance < minDistance;
+						if (test)
 						{
 							maxSim = sim;
+							//minDistance = distance;
 							//c1 = clusters[n];
 							c2 = clusters[i];
 						}
 						mutex.ReleaseMutex();
 					}
 				});
-
-				if (maxSim < 0.9 && false)
+				
+				if (false && maxSim < 0.9)
 				{
 					int temp2 = clusters.Count - 1;
 					
@@ -64,7 +71,7 @@ namespace Clustering
 					{
 						Thread.CurrentThread.Priority = ThreadPriority.Lowest;
 						int temp = n+10;
-						if (temp > clusters.Count || maxSim < 0.05 || clusters.Count < 500)
+						if (true || temp > clusters.Count || maxSim < 0.05 || clusters.Count < 500)
 						{
 							temp = clusters.Count;
 						}
@@ -91,13 +98,7 @@ namespace Clustering
 						});
 					});
 				}
-				else
-				{
-					int a = 1;
-
-					++a;
-				}
-
+				
 				Cluster newCluster = new Cluster(c1, c2);
 				clusters.Remove(c1);
 				clusters.Remove(c2);

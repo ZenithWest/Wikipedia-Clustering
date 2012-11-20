@@ -39,12 +39,42 @@ namespace Clustering
 
 			List<string> tokenKeys = c1.TF_IDF_Vector.Keys.ToList<string>();
 			tokenKeys.AddRange(c1.TF_IDF_Vector.Keys.ToList<string>());
-
 			foreach (string tokenKey in tokenKeys)
 			{
+				TF_IDF_Vector[tokenKey] = 0.0;
+			}
+			SumVec(c1, TF_IDF_Vector, tokenKeys);
+			SumVec(c2, TF_IDF_Vector, tokenKeys);
+			double magnitude = Magnitude();
+			foreach (string tokenKey in tokenKeys)
+			{
+				TF_IDF_Vector[tokenKey] /= magnitude;
+			}
+
+			/*foreach (string tokenKey in tokenKeys)
+			{
 				double value1 = c1.TF_IDF_Vector.ContainsKey(tokenKey) ? c1.TF_IDF_Vector[tokenKey] : 0.0;
-				value1 += c1.TF_IDF_Vector.ContainsKey(tokenKey) ? c1.TF_IDF_Vector[tokenKey] : 0.0;
+				value1 += c2.TF_IDF_Vector.ContainsKey(tokenKey) ? c2.TF_IDF_Vector[tokenKey] : 0.0;
 				TF_IDF_Vector[tokenKey] = value1 / 2.0;
+			}*/
+		}
+
+		public void SumVec(Cluster c1, Dictionary<string, double> vec, List<string> tokenKeys)
+		{
+			if (c1 == null) return;
+			if (c1.cluster1 != null) SumVec(c1.cluster1, vec, tokenKeys);
+			if (c1.cluster2 != null) SumVec(c1.cluster2, vec, tokenKeys);
+
+			if (c1.page != null)
+			foreach (string tokenKey in tokenKeys)
+			{
+				double value1 = c1.page.TF_IDF_Vector.ContainsKey(tokenKey) ? c1.page.TF_IDF_Vector[tokenKey].TF_IDF : 0.0;
+				//if (TF_IDF_Vector.ContainsKey(tokenKey))
+					TF_IDF_Vector[tokenKey] += value1;
+				//else
+				//{
+				//	TF_IDF_Vector[tokenKey] = value1;
+				//}
 			}
 		}
 		public double Cosine(Cluster cluster)

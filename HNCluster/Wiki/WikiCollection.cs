@@ -31,7 +31,7 @@ namespace Wiki
 			XName name = nspace + "page";
 			foreach (XElement page in wikipedia.Elements(name))
 			{
-				//string title = page.Element(page.GetDefaultNamespace() + "title").Value;
+				string title = page.Element(page.GetDefaultNamespace() + "title").Value;
 				string ns = page.Element(page.GetDefaultNamespace() + "ns").Value;
 				//if (title.StartsWith("Template:")) continue;
 				//if (title.StartsWith("Portal:")) continue;
@@ -44,6 +44,16 @@ namespace Wiki
 				if (text.StartsWith("#REDIRECT")) continue;
 
 				if (ns != "0") continue;
+				bool test = false;
+				foreach (WikiPage wpage in wikiPages)
+				{
+					if (wpage.title == title)
+					{
+						test = true; break;
+					}
+				}
+				if (test) continue;
+
 				wikiPages.Add(new WikiPage(page));
 			}
 			
