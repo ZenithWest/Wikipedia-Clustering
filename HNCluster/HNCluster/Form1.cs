@@ -113,7 +113,11 @@ namespace HNCluster
 
 		void LoadWikipediaXML()
 		{
-			wikiCollection.ParseXML();
+			
+			wikiCollection.ParseXML(@"Wikipedia-ComputerScience.xml");
+			wikiCollection.ParseXML(@"Wikipedia-Science.xml");
+			wikiCollection.ParseXML(@"Wikipedia-Genetic-Engineering.xml");
+			wikiCollection.ParseXML(@"Wikipedia-Algorithms-and-Data-Structures.xml");
 			Invoke(IncrementPagesLoadedByVal, wikiCollection.wikiPages.Count);
 			pagesLoaded += wikiCollection.wikiPages.Count;
 			test = true;
@@ -268,6 +272,18 @@ namespace HNCluster
 
 		public void AddClustersMethod(TreeNode node, Cluster cluster)
 		{
+			if (cluster.page != null)
+			{
+				if (cluster.cluster1 != null || cluster.cluster2 != null)
+				{
+					TreeNode node3 = new TreeNode(cluster.page.title);
+					node.Nodes.Add(node3);
+				}
+				else
+				{
+					node.Text = cluster.page.title;
+				}
+			}
 			if (cluster.cluster1 != null)
 			{
 				TreeNode node1 = new TreeNode("Cluster");
@@ -279,11 +295,6 @@ namespace HNCluster
 				TreeNode node2 = new TreeNode("Cluster");
 				AddClustersMethod(node2, cluster.cluster2);
 				node.Nodes.Add(node2);
-			}
-			if (cluster.page != null)
-			{
-				TreeNode node3 = new TreeNode(cluster.page.title);
-				node.Nodes.Add(node3);
 			}
 		}
 

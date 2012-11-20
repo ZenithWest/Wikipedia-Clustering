@@ -24,15 +24,27 @@ namespace Wiki
 			wikiPages = new List<WikiPage>();
 		}
 
-		public void ParseXML()
+		public void ParseXML(string path)
 		{
-			XElement wikipedia = XElement.Load("Wikipedia-ComputerScience.xml");
+			XElement wikipedia = XElement.Load(path);
 			XNamespace nspace = wikipedia.GetDefaultNamespace();
 			XName name = nspace + "page";
 			foreach (XElement page in wikipedia.Elements(name))
 			{
+				//string title = page.Element(page.GetDefaultNamespace() + "title").Value;
+				string ns = page.Element(page.GetDefaultNamespace() + "ns").Value;
+				//if (title.StartsWith("Template:")) continue;
+				//if (title.StartsWith("Portal:")) continue;
+				//if (title.StartsWith("Category:")) continue;
+				//if (title.StartsWith("User:")) continue;
+				//if (title.StartsWith("Wikipedia talk:")) continue;
+				//if (title.StartsWith("File:")) continue;
+				if (ns != "0") continue;
 				wikiPages.Add(new WikiPage(page));
 			}
+			
+			int i = 0;
+			i++;
 		}
 
 

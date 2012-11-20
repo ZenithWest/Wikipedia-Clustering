@@ -12,10 +12,10 @@ namespace Wiki
 	public class WikiPage
     {
 		 public string title = "";
-		 public string ns = "";
+		 public int ns = 0;
 		 public long id = 0;
-		 public long revid = 0;
-		 public long parentid = 0;
+		 //public long revid = 0;
+		 //public long parentid = 0;
 		 public DateTime timestamp;
 		 public string text;
 		 public string model;
@@ -35,12 +35,12 @@ namespace Wiki
 			 }
 
 			 title = page.text;
-			 ns = "";
+			 ns = 0;
 			 id = long.Parse(page.pageID);
 
-			 revid = long.Parse(page.lastRevisionID);
-			 try { parentid = long.Parse(page.lastUserID); }
-			 catch { }
+			 //revid = long.Parse(page.lastRevisionID);
+			 //try { parentid = long.Parse(page.lastUserID); }
+			 //catch { }
 			 timestamp = page.timestamp;
 			 text = page.text;
 
@@ -50,13 +50,13 @@ namespace Wiki
 		 public WikiPage(XElement page)
 		 {
 			 title = page.Element(page.GetDefaultNamespace() + "title").Value;
-			 ns = page.Element(page.GetDefaultNamespace() + "ns").Value;
+			 ns = int.Parse(page.Element(page.GetDefaultNamespace() + "ns").Value);
 			 id = long.Parse(page.Element(page.GetDefaultNamespace() + "id").Value);
 
 			 XElement revision = page.Element(page.GetDefaultNamespace() + "revision");
-			 revid = long.Parse(revision.Element(revision.GetDefaultNamespace() + "id").Value);
-			 try { parentid = long.Parse(revision.Element(revision.GetDefaultNamespace() + "parentid").Value); }
-			 catch { }
+			 //revid = long.Parse(revision.Element(revision.GetDefaultNamespace() + "id").Value);
+				//try { parentid = long.Parse(revision.Element(revision.GetDefaultNamespace() + "parentid").Value); }
+			 //catch { }
 			 timestamp = DateTime.Parse(revision.Element(revision.GetDefaultNamespace() + "timestamp").Value);
 			 text = revision.Element(revision.GetDefaultNamespace() + "text").Value;
 			 text = text.Replace("\n", "\r\n");
