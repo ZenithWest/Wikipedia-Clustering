@@ -46,6 +46,9 @@ namespace HNCluster
 		public delegate void CheckCheckBox5Delegate();
 		public CheckCheckBox5Delegate CheckCheckBox5;
 
+		public delegate void AddClustersDelegate();
+		public AddClustersDelegate AddClusters;
+
 		public delegate void AddPageTextDelegate(Page page);
 		public AddPageTextDelegate AddPageText;
 
@@ -79,6 +82,7 @@ namespace HNCluster
 			CheckCheckBox5 = new CheckCheckBox5Delegate(CheckCheckBox5Method);
 			AddPageText = new AddPageTextDelegate(AddPageTextMethod);
 			UpdateText = new UpdateTextDelegate(UpdateTextMethod);
+			AddClusters = new AddClustersDelegate(AddClustersMethod);
 			//Task.Factory.StartNew(LoadPages);
 			Task.Factory.StartNew(LoadWikipediaXML);
 
@@ -129,6 +133,7 @@ namespace HNCluster
 			Invoke(CheckCheckBox4);
 			hierarchicalCluster.Cluster();
 			Invoke(CheckCheckBox5);
+			Invoke(AddClusters);
 		}
 
 		void LoadPages()
@@ -248,6 +253,38 @@ namespace HNCluster
 		public void CheckCheckBox5Method()
 		{
 			checkBox5.Checked = true;
+		}
+
+		public void AddClustersMethod()
+		{
+			foreach (Cluster cluster in hierarchicalCluster.clusters)
+			{
+				TreeNode node = new TreeNode("Cluster");
+				AddClustersMethod(node, cluster);
+				treeView1.Nodes.Add(node);
+			}
+			
+		}
+
+		public void AddClustersMethod(TreeNode node, Cluster cluster)
+		{
+			if (cluster.cluster1 != null)
+			{
+				TreeNode node1 = new TreeNode("Cluster");
+				AddClustersMethod(node1, cluster.cluster1);
+				node.Nodes.Add(node1);
+			}
+			if (cluster.cluster2 != null)
+			{
+				TreeNode node2 = new TreeNode("Cluster");
+				AddClustersMethod(node2, cluster.cluster2);
+				node.Nodes.Add(node2);
+			}
+			if (cluster.page != null)
+			{
+				TreeNode node3 = new TreeNode(cluster.page.title);
+				node.Nodes.Add(node3);
+			}
 		}
 
 		public void AddPageTextMethod(Page page)
@@ -399,6 +436,16 @@ namespace HNCluster
 				item.Text = token.Token;
 				listView1.Items.Add(item);
 			}
+		}
+
+		private void button3_Click(object sender, EventArgs e)
+		{
+			treeView1.ExpandAll();
+		}
+
+		private void button4_Click(object sender, EventArgs e)
+		{
+			treeView1.CollapseAll();
 		}
 	}
 }

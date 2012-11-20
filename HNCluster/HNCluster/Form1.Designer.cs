@@ -36,6 +36,8 @@
 			this.button2 = new System.Windows.Forms.Button();
 			this.button1 = new System.Windows.Forms.Button();
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.checkBox5 = new System.Windows.Forms.CheckBox();
+			this.checkBox4 = new System.Windows.Forms.CheckBox();
 			this.checkBox3 = new System.Windows.Forms.CheckBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
@@ -46,11 +48,14 @@
 			this.radioButton3 = new System.Windows.Forms.RadioButton();
 			this.radioButton4 = new System.Windows.Forms.RadioButton();
 			this.radioButton5 = new System.Windows.Forms.RadioButton();
-			this.checkBox4 = new System.Windows.Forms.CheckBox();
-			this.checkBox5 = new System.Windows.Forms.CheckBox();
+			this.treeView1 = new System.Windows.Forms.TreeView();
+			this.panel2 = new System.Windows.Forms.Panel();
+			this.button3 = new System.Windows.Forms.Button();
+			this.button4 = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+			this.panel2.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// numericUpDown1
@@ -104,20 +109,18 @@
 			// 
 			// textBox1
 			// 
-			this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
 			this.textBox1.Location = new System.Drawing.Point(0, 59);
 			this.textBox1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
 			this.textBox1.Multiline = true;
 			this.textBox1.Name = "textBox1";
 			this.textBox1.ReadOnly = true;
 			this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.textBox1.Size = new System.Drawing.Size(992, 338);
+			this.textBox1.Size = new System.Drawing.Size(679, 340);
 			this.textBox1.TabIndex = 5;
 			// 
 			// button2
 			// 
-			this.button2.Location = new System.Drawing.Point(12, 12);
+			this.button2.Location = new System.Drawing.Point(3, 3);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(100, 41);
 			this.button2.TabIndex = 6;
@@ -127,7 +130,7 @@
 			// 
 			// button1
 			// 
-			this.button1.Location = new System.Drawing.Point(650, 12);
+			this.button1.Location = new System.Drawing.Point(641, 3);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(100, 41);
 			this.button1.TabIndex = 7;
@@ -147,10 +150,32 @@
 			this.panel1.Controls.Add(this.numericUpDown1);
 			this.panel1.Controls.Add(this.checkBox2);
 			this.panel1.Controls.Add(this.label1);
-			this.panel1.Location = new System.Drawing.Point(136, 12);
+			this.panel1.Location = new System.Drawing.Point(127, 3);
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(494, 41);
 			this.panel1.TabIndex = 8;
+			// 
+			// checkBox5
+			// 
+			this.checkBox5.AutoSize = true;
+			this.checkBox5.Enabled = false;
+			this.checkBox5.Location = new System.Drawing.Point(382, 22);
+			this.checkBox5.Name = "checkBox5";
+			this.checkBox5.Size = new System.Drawing.Size(114, 17);
+			this.checkBox5.TabIndex = 16;
+			this.checkBox5.Text = "Clustering Finished";
+			this.checkBox5.UseVisualStyleBackColor = true;
+			// 
+			// checkBox4
+			// 
+			this.checkBox4.AutoSize = true;
+			this.checkBox4.Enabled = false;
+			this.checkBox4.Location = new System.Drawing.Point(280, 22);
+			this.checkBox4.Name = "checkBox4";
+			this.checkBox4.Size = new System.Drawing.Size(109, 17);
+			this.checkBox4.TabIndex = 15;
+			this.checkBox4.Text = "Initialized Clusters";
+			this.checkBox4.UseVisualStyleBackColor = true;
 			// 
 			// checkBox3
 			// 
@@ -198,14 +223,13 @@
 			// 
 			// listView1
 			// 
-			this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+			this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
 			this.listView1.Location = new System.Drawing.Point(0, 397);
 			this.listView1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
 			this.listView1.Name = "listView1";
 			this.listView1.ShowGroups = false;
-			this.listView1.Size = new System.Drawing.Size(992, 278);
+			this.listView1.Size = new System.Drawing.Size(679, 385);
 			this.listView1.TabIndex = 9;
 			this.listView1.UseCompatibleStateImageBehavior = false;
 			this.listView1.View = System.Windows.Forms.View.Details;
@@ -214,7 +238,7 @@
 			// radioButton1
 			// 
 			this.radioButton1.AutoSize = true;
-			this.radioButton1.Location = new System.Drawing.Point(765, 7);
+			this.radioButton1.Location = new System.Drawing.Point(756, -2);
 			this.radioButton1.Name = "radioButton1";
 			this.radioButton1.Size = new System.Drawing.Size(42, 17);
 			this.radioButton1.TabIndex = 10;
@@ -225,7 +249,7 @@
 			// radioButton2
 			// 
 			this.radioButton2.AutoSize = true;
-			this.radioButton2.Location = new System.Drawing.Point(765, 24);
+			this.radioButton2.Location = new System.Drawing.Point(756, 15);
 			this.radioButton2.Name = "radioButton2";
 			this.radioButton2.Size = new System.Drawing.Size(41, 17);
 			this.radioButton2.TabIndex = 11;
@@ -236,7 +260,7 @@
 			// radioButton3
 			// 
 			this.radioButton3.AutoSize = true;
-			this.radioButton3.Location = new System.Drawing.Point(874, 7);
+			this.radioButton3.Location = new System.Drawing.Point(865, -2);
 			this.radioButton3.Name = "radioButton3";
 			this.radioButton3.Size = new System.Drawing.Size(79, 17);
 			this.radioButton3.TabIndex = 12;
@@ -247,7 +271,7 @@
 			// radioButton4
 			// 
 			this.radioButton4.AutoSize = true;
-			this.radioButton4.Location = new System.Drawing.Point(874, 24);
+			this.radioButton4.Location = new System.Drawing.Point(865, 15);
 			this.radioButton4.Name = "radioButton4";
 			this.radioButton4.Size = new System.Drawing.Size(81, 17);
 			this.radioButton4.TabIndex = 13;
@@ -259,7 +283,7 @@
 			// 
 			this.radioButton5.AutoSize = true;
 			this.radioButton5.Checked = true;
-			this.radioButton5.Location = new System.Drawing.Point(804, 40);
+			this.radioButton5.Location = new System.Drawing.Point(795, 31);
 			this.radioButton5.Name = "radioButton5";
 			this.radioButton5.Size = new System.Drawing.Size(57, 17);
 			this.radioButton5.TabIndex = 14;
@@ -268,49 +292,71 @@
 			this.radioButton5.UseVisualStyleBackColor = true;
 			this.radioButton5.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
 			// 
-			// checkBox4
+			// treeView1
 			// 
-			this.checkBox4.AutoSize = true;
-			this.checkBox4.Enabled = false;
-			this.checkBox4.Location = new System.Drawing.Point(280, 22);
-			this.checkBox4.Name = "checkBox4";
-			this.checkBox4.Size = new System.Drawing.Size(109, 17);
-			this.checkBox4.TabIndex = 15;
-			this.checkBox4.Text = "Initialized Clusters";
-			this.checkBox4.UseVisualStyleBackColor = true;
+			this.treeView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.treeView1.Location = new System.Drawing.Point(685, 63);
+			this.treeView1.Name = "treeView1";
+			this.treeView1.Size = new System.Drawing.Size(506, 719);
+			this.treeView1.TabIndex = 15;
 			// 
-			// checkBox5
+			// panel2
 			// 
-			this.checkBox5.AutoSize = true;
-			this.checkBox5.Enabled = false;
-			this.checkBox5.Location = new System.Drawing.Point(382, 22);
-			this.checkBox5.Name = "checkBox5";
-			this.checkBox5.Size = new System.Drawing.Size(114, 17);
-			this.checkBox5.TabIndex = 16;
-			this.checkBox5.Text = "Clustering Finished";
-			this.checkBox5.UseVisualStyleBackColor = true;
+			this.panel2.Controls.Add(this.button4);
+			this.panel2.Controls.Add(this.button3);
+			this.panel2.Controls.Add(this.button2);
+			this.panel2.Controls.Add(this.radioButton5);
+			this.panel2.Controls.Add(this.radioButton4);
+			this.panel2.Controls.Add(this.button1);
+			this.panel2.Controls.Add(this.radioButton3);
+			this.panel2.Controls.Add(this.panel1);
+			this.panel2.Controls.Add(this.radioButton2);
+			this.panel2.Controls.Add(this.radioButton1);
+			this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+			this.panel2.Location = new System.Drawing.Point(0, 0);
+			this.panel2.Name = "panel2";
+			this.panel2.Size = new System.Drawing.Size(1196, 51);
+			this.panel2.TabIndex = 16;
+			// 
+			// button3
+			// 
+			this.button3.Location = new System.Drawing.Point(952, 9);
+			this.button3.Name = "button3";
+			this.button3.Size = new System.Drawing.Size(75, 23);
+			this.button3.TabIndex = 15;
+			this.button3.Text = "Expand All";
+			this.button3.UseVisualStyleBackColor = true;
+			this.button3.Click += new System.EventHandler(this.button3_Click);
+			// 
+			// button4
+			// 
+			this.button4.Location = new System.Drawing.Point(1047, 12);
+			this.button4.Name = "button4";
+			this.button4.Size = new System.Drawing.Size(75, 23);
+			this.button4.TabIndex = 16;
+			this.button4.Text = "Collapse All";
+			this.button4.UseVisualStyleBackColor = true;
+			this.button4.Click += new System.EventHandler(this.button4_Click);
 			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(992, 677);
-			this.Controls.Add(this.radioButton4);
-			this.Controls.Add(this.radioButton3);
-			this.Controls.Add(this.radioButton2);
-			this.Controls.Add(this.radioButton1);
-			this.Controls.Add(this.textBox1);
+			this.ClientSize = new System.Drawing.Size(1196, 784);
 			this.Controls.Add(this.listView1);
-			this.Controls.Add(this.panel1);
-			this.Controls.Add(this.button1);
-			this.Controls.Add(this.button2);
-			this.Controls.Add(this.radioButton5);
+			this.Controls.Add(this.textBox1);
+			this.Controls.Add(this.treeView1);
+			this.Controls.Add(this.panel2);
 			this.Name = "Form1";
 			this.Text = "Form1";
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+			this.panel2.ResumeLayout(false);
+			this.panel2.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -338,6 +384,10 @@
 		  private System.Windows.Forms.RadioButton radioButton5;
 		  private System.Windows.Forms.CheckBox checkBox5;
 		  private System.Windows.Forms.CheckBox checkBox4;
+		  private System.Windows.Forms.TreeView treeView1;
+		  private System.Windows.Forms.Panel panel2;
+		  private System.Windows.Forms.Button button4;
+		  private System.Windows.Forms.Button button3;
     }
 }
 

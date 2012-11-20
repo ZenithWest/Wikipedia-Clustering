@@ -8,11 +8,11 @@ using Wiki;
 
 namespace Clustering
 {
-	class Cluster
+	public class Cluster
 	{
-		Cluster cluster1 = null;
-		Cluster cluster2 = null;
-		WikiPage page = null;
+		public Cluster cluster1 = null;
+		public Cluster cluster2 = null;
+		public WikiPage page = null;
 		public Dictionary<string, double> TF_IDF_Vector;
 
 		public Cluster()
@@ -35,7 +35,7 @@ namespace Clustering
 			cluster1 = c1;
 			cluster2 = c2;
 
-			TF_IDF_Vector = c1.TF_IDF_Vector;
+			TF_IDF_Vector = new Dictionary<string, double>();
 
 			List<string> tokenKeys = c1.TF_IDF_Vector.Keys.ToList<string>();
 			tokenKeys.AddRange(c1.TF_IDF_Vector.Keys.ToList<string>());
