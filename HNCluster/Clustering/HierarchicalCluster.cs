@@ -35,16 +35,17 @@ namespace Clustering
 			{
 				Cluster c1 = clusters[0];
 				Cluster c2 = clusters[1];
-				double minDistance = 10;
+				double maxSim = 0.0;
 
-				for (int n = 0; n < clusters.Count; ++n)
+				int n = 0;
+				for (n = 0; n < clusters.Count; ++n) // Comment out line for faster performance but won't be as good.
 				{
 					for (int i = n+1; i < clusters.Count; ++i)
 					{
-						double distance = clusters[n].Cosine(clusters[i]);
-						if (distance < minDistance)
+						double sim = clusters[n].Cosine(clusters[i]);
+						if (sim > maxSim)
 						{
-							minDistance = distance;
+							maxSim = sim;
 							c1 = clusters[n];
 							c2 = clusters[i];
 						}

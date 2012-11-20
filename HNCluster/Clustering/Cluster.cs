@@ -35,7 +35,7 @@ namespace Clustering
 			cluster1 = c1;
 			cluster2 = c2;
 
-			TF_IDF_Vector = new Dictionary<string, double>();
+			TF_IDF_Vector = c1.TF_IDF_Vector;
 
 			List<string> tokenKeys = c1.TF_IDF_Vector.Keys.ToList<string>();
 			tokenKeys.AddRange(c1.TF_IDF_Vector.Keys.ToList<string>());
