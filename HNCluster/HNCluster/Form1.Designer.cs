@@ -50,8 +50,8 @@
 			this.radioButton5 = new System.Windows.Forms.RadioButton();
 			this.treeView1 = new System.Windows.Forms.TreeView();
 			this.panel2 = new System.Windows.Forms.Panel();
-			this.button3 = new System.Windows.Forms.Button();
 			this.button4 = new System.Windows.Forms.Button();
+			this.button3 = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -297,6 +297,9 @@
 			this.treeView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.treeView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+			this.treeView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.treeView1.ItemHeight = 22;
 			this.treeView1.Location = new System.Drawing.Point(685, 63);
 			this.treeView1.Name = "treeView1";
 			this.treeView1.Size = new System.Drawing.Size(506, 719);
@@ -320,16 +323,6 @@
 			this.panel2.Size = new System.Drawing.Size(1196, 51);
 			this.panel2.TabIndex = 16;
 			// 
-			// button3
-			// 
-			this.button3.Location = new System.Drawing.Point(952, 9);
-			this.button3.Name = "button3";
-			this.button3.Size = new System.Drawing.Size(75, 23);
-			this.button3.TabIndex = 15;
-			this.button3.Text = "Expand All";
-			this.button3.UseVisualStyleBackColor = true;
-			this.button3.Click += new System.EventHandler(this.button3_Click);
-			// 
 			// button4
 			// 
 			this.button4.Location = new System.Drawing.Point(1047, 12);
@@ -339,6 +332,16 @@
 			this.button4.Text = "Collapse All";
 			this.button4.UseVisualStyleBackColor = true;
 			this.button4.Click += new System.EventHandler(this.button4_Click);
+			// 
+			// button3
+			// 
+			this.button3.Location = new System.Drawing.Point(952, 9);
+			this.button3.Name = "button3";
+			this.button3.Size = new System.Drawing.Size(75, 23);
+			this.button3.TabIndex = 15;
+			this.button3.Text = "Expand All";
+			this.button3.UseVisualStyleBackColor = true;
+			this.button3.Click += new System.EventHandler(this.button3_Click);
 			// 
 			// Form1
 			// 

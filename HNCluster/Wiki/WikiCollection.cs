@@ -39,6 +39,10 @@ namespace Wiki
 				//if (title.StartsWith("User:")) continue;
 				//if (title.StartsWith("Wikipedia talk:")) continue;
 				//if (title.StartsWith("File:")) continue;
+				XElement revision = page.Element(page.GetDefaultNamespace() + "revision");
+				string text = revision.Element(revision.GetDefaultNamespace() + "text").Value;
+				if (text.StartsWith("#REDIRECT")) continue;
+
 				if (ns != "0") continue;
 				wikiPages.Add(new WikiPage(page));
 			}
@@ -62,7 +66,7 @@ namespace Wiki
 			for (int i = 0; i < 256; ++i)
 			{
 				char ch = (char)i;
-				if (!char.IsLetter(ch) && ch != '\'' )
+				if (!char.IsLetter(ch) )//&& ch != '\'' )
 				{
 					str += ch;
 				}
@@ -91,10 +95,10 @@ namespace Wiki
 						}
 					}
 				}*/
-				//temp = Regex.Replace(page.text, @"[^\u0000-\u007F]", " ");
-				//temp = Regex.Replace(page.text, @"<math>.*</math>", " ");
-				//temp = Regex.Replace(page.text, @"<ref>.*</ref>", " ");
-				//temp = Regex.Replace(page.text, @"<source.*</source>", " ");
+				temp = Regex.Replace(temp, @"[^\u0000-\u007F]", " ");
+				//temp = Regex.Replace(temp, @"<math>.*</math>", " ");
+				//temp = Regex.Replace(temp, @"<ref>.*</ref>", " ");
+				//temp = Regex.Replace(temp, @"<source.*</source>", " ");
 				temp = temp.Replace("\'\'", " ");
 				temp = temp.Replace(" \'", " ");
 				temp = temp.Replace("\' ", " ");

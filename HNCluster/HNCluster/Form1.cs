@@ -85,8 +85,9 @@ namespace HNCluster
 			AddClusters = new AddClustersDelegate(AddClustersMethod);
 			//Task.Factory.StartNew(LoadPages);
 			Task.Factory.StartNew(LoadWikipediaXML);
-
-
+			
+			treeView1.Font = new Font(FontFamily.GenericSansSerif, 10, FontStyle.Bold | FontStyle.Underline);
+			//treeView1.BackColor = Color.Blue;
 			/*
 			WikiConnection wiki = new WikiConnection("localhost");
             
@@ -270,34 +271,6 @@ namespace HNCluster
 			
 		}
 
-		public void AddClustersMethod(TreeNode node, Cluster cluster)
-		{
-			if (cluster.page != null)
-			{
-				if (cluster.cluster1 != null || cluster.cluster2 != null)
-				{
-					TreeNode node3 = new TreeNode(cluster.page.title);
-					node.Nodes.Add(node3);
-				}
-				else
-				{
-					node.Text = cluster.page.title;
-				}
-			}
-			if (cluster.cluster1 != null)
-			{
-				TreeNode node1 = new TreeNode("Cluster");
-				AddClustersMethod(node1, cluster.cluster1);
-				node.Nodes.Add(node1);
-			}
-			if (cluster.cluster2 != null)
-			{
-				TreeNode node2 = new TreeNode("Cluster");
-				AddClustersMethod(node2, cluster.cluster2);
-				node.Nodes.Add(node2);
-			}
-		}
-
 		public void AddPageTextMethod(Page page)
 		{
 			textBox1.Text = page.text;
@@ -457,6 +430,39 @@ namespace HNCluster
 		private void button4_Click(object sender, EventArgs e)
 		{
 			treeView1.CollapseAll();
+		}
+
+		public void AddClustersMethod(TreeNode node, Cluster cluster)
+		{
+			if (cluster.page != null)
+			{
+				if (cluster.cluster1 != null || cluster.cluster2 != null)
+				{
+					TreeNode node3 = new TreeNode(cluster.page.title);
+					node.Nodes.Add(node3);
+				}
+				else
+				{
+					node.Text = cluster.page.title;
+					node.NodeFont = new Font(FontFamily.GenericSansSerif, 8, FontStyle.Regular);
+					node.ForeColor = Color.White;
+					return;
+				}
+			}
+			if (cluster.cluster1 != null)
+			{
+				TreeNode node1 = new TreeNode("Cluster");
+				AddClustersMethod(node1, cluster.cluster1);
+				node.Nodes.Add(node1);
+			}
+			if (cluster.cluster2 != null)
+			{
+				TreeNode node2 = new TreeNode("Cluster");
+				AddClustersMethod(node2, cluster.cluster2);
+				node.Nodes.Add(node2);
+			}
+			//node.NodeFont = new Font(FontFamily.GenericSansSerif, 10, FontStyle.Bold | FontStyle.Underline);
+			node.ForeColor = Color.Lime;
 		}
 	}
 }

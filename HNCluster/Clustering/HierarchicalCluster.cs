@@ -41,7 +41,7 @@ namespace Clustering
 
 				Parallel.For(1, clusters.Count, i =>
 				{
-
+					Thread.CurrentThread.Priority = ThreadPriority.Lowest;
 					double sim = clusters[0].Cosine(clusters[i]);
 					if (sim > maxSim)
 					{
@@ -56,11 +56,13 @@ namespace Clustering
 					}
 				});
 
-				if (maxSim < 0.9)
+				if (maxSim < 0.9 && false)
 				{
 					int temp2 = clusters.Count - 1;
+					
 					Parallel.For(1, temp2, n =>
 					{
+						Thread.CurrentThread.Priority = ThreadPriority.Lowest;
 						int temp = n+10;
 						if (temp > clusters.Count || maxSim < 0.05 || clusters.Count < 500)
 						{
@@ -73,7 +75,7 @@ namespace Clustering
 						}
 						Parallel.For(n + 1, temp, i =>
 						{
-
+							Thread.CurrentThread.Priority = ThreadPriority.Lowest;
 							double sim = clusters[n].Cosine(clusters[i]);
 							if (sim > maxSim)
 							{
