@@ -8,8 +8,18 @@ namespace WikiTest
     public class WikiCollectionTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void Test_TFIDFValues()
         {
+            // Set up test variables
+            WikiCollection wikiCollection = new WikiCollection();
+            wikiCollection.ParseXML(@"WikiTestData.xml");
+
+            wikiCollection.ExtractTokens();
+
+            int i = 0;
+
+
+
         }
     }
 }
