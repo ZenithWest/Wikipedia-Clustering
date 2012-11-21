@@ -8,7 +8,7 @@ namespace WikiTest
     public class PorterStemmerTests
     {
         [TestMethod]
-        public void Test_Stemmer()
+        public void Test_Stemmer1()
         {
             // Setup testing variables
             string token = "Programming";
