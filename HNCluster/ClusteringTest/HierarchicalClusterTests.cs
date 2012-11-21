@@ -10,7 +10,7 @@ namespace ClusteringTest
     public class HierarchicalClusterTests
     {
         [TestMethod]
-        public HierarchicalClusterTests()
+        public void Test_HierarchicalClusterTests()
         {
             //
             // TODO: Add constructor logic here
