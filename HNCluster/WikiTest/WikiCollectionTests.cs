@@ -16,10 +16,10 @@ namespace WikiTest
 
             wikiCollection.ExtractTokens();
 
-            int i = 0;
-
-
-
+            // Verify test results
+            Assert.AreNotEqual(wikiCollection, null, "Error initializing WikiCollection.");
+            Assert.AreNotEqual(wikiCollection.wikiPages.Count, 0, "Error initializing WikiCollection.");
+            Assert.AreNotEqual(wikiCollection.inverseTokens.Keys.Count, 0, "Error initializing WikiCollection.");
         }
     }
 }
