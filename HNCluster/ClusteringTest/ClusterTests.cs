@@ -8,7 +8,7 @@ namespace ClusteringTest
     public class ClusterTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void ClusterTestMethod1()
         {
         }
     }

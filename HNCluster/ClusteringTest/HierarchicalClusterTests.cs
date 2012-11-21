@@ -3,26 +3,36 @@ using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Clustering;
+using Wiki;
 
 namespace ClusteringTest
 {
     [TestClass]
     public class HierarchicalClusterTests
     {
-        [TestMethod]
-        public HierarchicalClusterTests()
+
+        HierarchicalCluster hierarchicalCluster;
+        WikiCollection wikiCollection;
+
+
+        [TestInitialize]
+        public void Initialize()
         {
-            //
-            // TODO: Add constructor logic here
-            //
+            // Set up wikiCollection test variable
+            wikiCollection = new WikiCollection();
+            wikiCollection.ParseXML(@"WikiTestData.xml");
+            wikiCollection.ExtractTokens();
+
+            // Set up hierarchicalCluster test variable
+            hierarchicalCluster = new HierarchicalCluster(wikiCollection);
+            hierarchicalCluster.initializeClusters();
+            hierarchicalCluster.Cluster();
         }
 
         [TestMethod]
-        public void TestMethod1()
+        public void HACTestMethod1()
         {
-            //
-            // TODO: Add test logic here
-            //
+
         }
     }
 }
