@@ -25,14 +25,31 @@ namespace ClusteringTest
 
             // Set up hierarchicalCluster test variable
             hierarchicalCluster = new HierarchicalCluster(wikiCollection);
-            hierarchicalCluster.initializeClusters();
-            hierarchicalCluster.Cluster();
         }
 
         [TestMethod]
-        public void HACTestMethod1()
+        public void Test_ClusterInitialization()
         {
+            // Initialize clusters
+            hierarchicalCluster.initializeClusters();
 
+            // Expected results
+            int numberOfClusters = hierarchicalCluster.clusters.Count;
+            int expectedNumClusters = 4;
+
+            Assert.AreEqual(numberOfClusters, expectedNumClusters, "Error during hierarchical clustering.");
+        }
+
+        [TestMethod]
+        public void Test_ClusteringAlgorithm()
+        {
+            // Kick off Clustering algorithm
+            hierarchicalCluster.Cluster();
+
+            int numberOfClusters = hierarchicalCluster.clusters.Count;
+            int expectedNumClusters = 1;
+
+            Assert.AreEqual(numberOfClusters, expectedNumClusters, "Error during hierarchical clustering.");
         }
     }
 }
