@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>45d130d0-533d-487c-9dd5-ff5e9eb011ff</ProjectGuid>
+    <ProjectGuid>{C2FC8047-CDC6-4B03-BA18-460361058ECB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ClusteringTest</RootNamespace>
@@ -50,8 +50,20 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="ClusterTests.cs" />
+    <Compile Include="HierarchicalClusterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Clustering\Clustering.csproj">
+      <Project>{ba1da30c-2711-463e-a8dc-5b86712aab45}</Project>
+      <Name>Clustering</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\Data\WikiTestData.xml">
+      <Link>WikiTestData.xml</Link>
+    </Content>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
