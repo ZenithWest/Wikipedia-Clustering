@@ -20,8 +20,8 @@ namespace Wiki
 
 		public WikiCollection()
 		{
-			inverseTokens = new Dictionary<string, int>(1000000);
-			wikiPages = new List<WikiPage>(20000);
+			inverseTokens = new Dictionary<string, int>();
+			wikiPages = new List<WikiPage>();
 		}
 
 		public void ParseXML(string path)
@@ -31,7 +31,7 @@ namespace Wiki
 			XName name = nspace + "page";
 			foreach (XElement page in wikipedia.Elements(name))
 			{
-				string title = page.Element(page.GetDefaultNamespace() + "title").Value;
+				//string title = page.Element(page.GetDefaultNamespace() + "title").Value;
 				string ns = page.Element(page.GetDefaultNamespace() + "ns").Value;
 				//if (title.StartsWith("Template:")) continue;
 				//if (title.StartsWith("Portal:")) continue;
@@ -39,21 +39,7 @@ namespace Wiki
 				//if (title.StartsWith("User:")) continue;
 				//if (title.StartsWith("Wikipedia talk:")) continue;
 				//if (title.StartsWith("File:")) continue;
-				XElement revision = page.Element(page.GetDefaultNamespace() + "revision");
-				string text = revision.Element(revision.GetDefaultNamespace() + "text").Value;
-				if (text.StartsWith("#REDIRECT")) continue;
-
 				if (ns != "0") continue;
-				bool test = false;
-				foreach (WikiPage wpage in wikiPages)
-				{
-					if (wpage.title == title)
-					{
-						test = true; break;
-					}
-				}
-				if (test) continue;
-
 				wikiPages.Add(new WikiPage(page));
 			}
 			
@@ -87,11 +73,12 @@ namespace Wiki
 
 			foreach (WikiPage page in wikiPages)
 			{
-				string temp = page.text;/*
-				bool test = false;
+				string temp = page.text;
+				/*bool test = false;
+				temp = "";
 				foreach (char ch in page.text)
 				{
-					if (char.GetNumericValue(ch) < 256)
+					if (char.GetNumericValue(ch) < 256 )
 					{
 						temp += ch;
 						test = false;
@@ -105,25 +92,26 @@ namespace Wiki
 						}
 					}
 				}*/
-				temp = Regex.Replace(temp, @"[^\u0000-\u007F]", " ");
-				//temp = Regex.Replace(temp, @"<math>.*</math>", " ");
-				//temp = Regex.Replace(temp, @"<ref>.*</ref>", " ");
-				//temp = Regex.Replace(temp, @"<source.*</source>", " ");
-				temp = temp.Replace("\'\'", " ");
-				temp = temp.Replace(" \'", " ");
-				temp = temp.Replace("\' ", " ");
+				temp = Regex.Replace(temp, @"[^\u0000-\u007F]", "");
+				temp = Regex.Replace(temp, @"<math>.*</math>", "");
+				temp = Regex.Replace(temp, @"<ref>.*</ref>", "");
+				temp = Regex.Replace(temp, @"<source.*</source>", "");
+				temp = Regex.Replace(temp, @"{{.*}}", "");
+				//temp = temp.Replace("\'\'", "");
+				//temp = temp.Replace(" \'", " ");
+				//temp = temp.Replace("\' ", " ");
 				string[] tokenStrings = temp.Split(delimiterChars, StringSplitOptions.RemoveEmptyEntries);
 				//string[] tokenStrings = page.text.Split(delimiterChars, StringSplitOptions.RemoveEmptyEntries);
 				foreach (string tokenString in tokenStrings)
 				{
 					string stem = stemmer.stemTerm(tokenString).ToLower();
-					if (page.tfIDF_Vec.ContainsKey(stem))
+					if (page.TF_IDF_Vector.ContainsKey(stem))
 					{
-						++page.tfIDF_Vec[stem].TF;
+						++page.TF_IDF_Vector[stem].TF;
 					}
 					else
 					{
-						page.tfIDF_Vec[stem] = new WikiToken(tokenString, stem);
+						page.TF_IDF_Vector[stem] = new WikiToken(tokenString, stem);
 						if (inverseTokens.ContainsKey(stem))
 						{
 							++inverseTokens[stem];
@@ -140,19 +128,19 @@ namespace Wiki
 			{
 				double squaredSummed = 0;
 				//double summed = 0;
-				foreach (string token in page.tfIDF_Vec.Keys )
+				foreach (string token in page.TF_IDF_Vector.Keys )
 				{
-					WikiToken wikiToken = page.tfIDF_Vec[token];
-					wikiToken.DF = inverseTokens[wikiToken.Stemmed];
-					wikiToken.TF_IDF = (1+ Math.Log((double)wikiToken.TF, 2)) * Math.Log((double)wikiPages.Count / wikiToken.DF, 2);
+					WikiToken wikiToken = page.TF_IDF_Vector[token];
+					//wikiToken.DF = (short)inverseTokens[wikiToken.Stemmed];
+					wikiToken.TF_IDF = (float)((1+ Math.Log((double)wikiToken.TF, 2)) * Math.Log((double)wikiPages.Count / inverseTokens[wikiToken.Stemmed], 2));
 					squaredSummed += wikiToken.TF_IDF * wikiToken.TF_IDF;
 					//summed += wikiToken.TF_IDF;
 				}
 
-				double magnitude = Math.Sqrt(squaredSummed);
-				foreach (string token in page.tfIDF_Vec.Keys)
+				float magnitude = (float)Math.Sqrt(squaredSummed);
+				foreach (string token in page.TF_IDF_Vector.Keys)
 				{
-					WikiToken wikiToken = page.tfIDF_Vec[token];
+					WikiToken wikiToken = page.TF_IDF_Vector[token];
 					wikiToken.TF_IDF /= magnitude;
 					//wikiToken.TF_IDF /= summed;
 				}

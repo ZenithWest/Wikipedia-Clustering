@@ -29,6 +29,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DotNetWikiBot">
@@ -46,7 +47,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DistanceMetric\CosineSimilarity.cs" />
+    <Compile Include="DistanceMetric\EuclideanDistance.cs" />
+    <Compile Include="DistanceMetric\IDistanceMetric.cs" />
+    <Compile Include="DistanceMetric\ManhattanDistance.cs" />
+    <Compile Include="DistanceMetric\MaximumDistance.cs" />
     <Compile Include="PorterStemmer.cs" />
+    <Compile Include="DistanceMetric\SquaredEuclideanDistance.cs" />
+    <Compile Include="TF_IDF_Vector.cs" />
     <Compile Include="WikiCollection.cs" />
     <Compile Include="WikiToken.cs" />
     <Compile Include="WikiPage.cs" />
