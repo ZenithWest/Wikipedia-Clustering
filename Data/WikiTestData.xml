@@ -1,0 +1,44 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <page>
+    <title>Wiki Page 1</title>
+    <ns>0</ns>
+    <id>702582</id>
+    <revision>
+      <id>475909884</id>
+      <parentid>475908580</parentid>
+      <timestamp>2012-02-09T08:54:56Z</timestamp>
+      <text xml:space="preserve" bytes="816">The brown cow jumped over the moon.</text>
+    </revision>
+  </page>
+  <page>
+    <title>Wiki Page 2</title>
+    <ns>0</ns>
+    <id>702600</id>
+    <revision>
+      <id>406582902</id>
+      <timestamp>2011-01-07T23:35:30Z</timestamp>
+      <text xml:space="preserve" bytes="461">Milk is good.</text>
+    </revision>
+  </page>
+  <page>
+    <title>Wiki Page 3</title>
+    <ns>0</ns>
+    <id>702589</id>
+    <revision>
+      <id>514900285</id>
+	  <timestamp>2011-01-07T23:35:30Z</timestamp>
+      <text xml:space="preserve" bytes="812">I am very tired.</text>
+    </revision>
+  </page>
+  <page>
+    <title>Wiki Page 4</title>
+    <ns>0</ns>
+    <id>704483</id>
+    <revision>
+      <id>491520091</id>
+      <parentid>460945715</parentid>
+      <timestamp>2012-05-09T03:50:06Z</timestamp>
+      <text xml:space="preserve" bytes="1368">The cow is white and tired.</text>
+    </revision>
+  </page>
+</mediawiki>

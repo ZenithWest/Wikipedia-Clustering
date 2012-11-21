@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wiki", "Wiki\Wiki.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clustering", "Clustering\Clustering.csproj", "{BA1DA30C-2711-463E-A8DC-5B86712AAB45}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WikiTest", "WikiTest\WikiTest.csproj", "{77EB1F58-4EEB-4F9E-9A4B-8AB55EF3CFFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClusteringTest", "ClusteringTest\ClusteringTest.csproj", "{C2FC8047-CDC6-4B03-BA18-460361058ECB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +29,14 @@ Global
 		{BA1DA30C-2711-463E-A8DC-5B86712AAB45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA1DA30C-2711-463E-A8DC-5B86712AAB45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA1DA30C-2711-463E-A8DC-5B86712AAB45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77EB1F58-4EEB-4F9E-9A4B-8AB55EF3CFFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77EB1F58-4EEB-4F9E-9A4B-8AB55EF3CFFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77EB1F58-4EEB-4F9E-9A4B-8AB55EF3CFFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77EB1F58-4EEB-4F9E-9A4B-8AB55EF3CFFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2FC8047-CDC6-4B03-BA18-460361058ECB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2FC8047-CDC6-4B03-BA18-460361058ECB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2FC8047-CDC6-4B03-BA18-460361058ECB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2FC8047-CDC6-4B03-BA18-460361058ECB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
