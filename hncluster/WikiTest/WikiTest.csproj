@@ -66,6 +66,7 @@
     <Content Include="..\..\Data\WikiTestData.xml">
       <Link>WikiTestData.xml</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <Choose>

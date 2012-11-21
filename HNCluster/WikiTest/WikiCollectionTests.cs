@@ -36,7 +36,7 @@ namespace WikiTest
         }
 
         [TestMethod]
-        public void Test_Doc1Values()
+        public void Test_Doc1_TFIDF()
         {
             // Set up test variables
             //WikiCollection wikiCollection = new WikiCollection();
@@ -72,7 +72,7 @@ namespace WikiTest
         }
 
         [TestMethod]
-        public void Test_Doc2Values()
+        public void Test_Doc2_TFIDF()
         {
             // Set up test variables
             //WikiCollection wikiCollection = new WikiCollection();
@@ -99,7 +99,7 @@ namespace WikiTest
         }
 
         [TestMethod]
-        public void Test_Doc3Values()
+        public void Test_Doc3_TFIDF()
         {
             // Set up test variables
             //WikiCollection wikiCollection = new WikiCollection();
@@ -128,7 +128,7 @@ namespace WikiTest
         }
 
         [TestMethod]
-        public void Test_Doc4Values()
+        public void Test_Doc4_TFIDF()
         {
             // Set up test variables
             //WikiCollection wikiCollection = new WikiCollection();
