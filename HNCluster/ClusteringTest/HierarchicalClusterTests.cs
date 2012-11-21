@@ -25,14 +25,12 @@ namespace ClusteringTest
 
             // Set up hierarchicalCluster test variable
             hierarchicalCluster = new HierarchicalCluster(wikiCollection);
+            hierarchicalCluster.initializeClusters();
         }
 
         [TestMethod]
         public void Test_ClusterInitialization()
         {
-            // Initialize clusters
-            hierarchicalCluster.initializeClusters();
-
             // Expected results
             int numberOfClusters = hierarchicalCluster.clusters.Count;
             int expectedNumClusters = 4;
