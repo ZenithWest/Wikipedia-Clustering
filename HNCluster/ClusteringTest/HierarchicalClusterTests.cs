@@ -2,68 +2,52 @@
 using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Clustering;
+using Wiki;
 
 namespace ClusteringTest
 {
-    /// <summary>
-    /// Summary description for HierarchicalClusterTests
-    /// </summary>
     [TestClass]
     public class HierarchicalClusterTests
     {
-        public HierarchicalClusterTests()
+
+        HierarchicalCluster hierarchicalCluster;
+        WikiCollection wikiCollection;
+
+
+        [TestInitialize]
+        public void Initialize()
         {
-            //
-            // TODO: Add constructor logic here
-            //
+            // Set up wikiCollection test variable
+            wikiCollection = new WikiCollection();
+            wikiCollection.ParseXML(@"WikiTestData.xml");
+            wikiCollection.ExtractTokens();
+
+            // Set up hierarchicalCluster test variable
+            hierarchicalCluster = new HierarchicalCluster(wikiCollection);
+            hierarchicalCluster.initializeClusters();
         }
-
-        private TestContext testContextInstance;
-
-        /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
-        public TestContext TestContext
-        {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
-        }
-
-        #region Additional test attributes
-        //
-        // You can use the following additional attributes as you write your tests:
-        //
-        // Use ClassInitialize to run code before running the first test in the class
-        // [ClassInitialize()]
-        // public static void MyClassInitialize(TestContext testContext) { }
-        //
-        // Use ClassCleanup to run code after all tests in a class have run
-        // [ClassCleanup()]
-        // public static void MyClassCleanup() { }
-        //
-        // Use TestInitialize to run code before running each test 
-        // [TestInitialize()]
-        // public void MyTestInitialize() { }
-        //
-        // Use TestCleanup to run code after each test has run
-        // [TestCleanup()]
-        // public void MyTestCleanup() { }
-        //
-        #endregion
 
         [TestMethod]
-        public void TestMethod1()
+        public void Test_ClusterInitialization()
         {
-            //
-            // TODO: Add test logic here
-            //
+            // Expected results
+            int numberOfClusters = hierarchicalCluster.clusters.Count;
+            int expectedNumClusters = 4;
+
+            Assert.AreEqual(numberOfClusters, expectedNumClusters, "Error during hierarchical clustering.");
+        }
+
+        [TestMethod]
+        public void Test_ClusteringAlgorithm()
+        {
+            // Kick off Clustering algorithm
+            hierarchicalCluster.Cluster();
+
+            int numberOfClusters = hierarchicalCluster.clusters.Count;
+            int expectedNumClusters = 1;
+
+            Assert.AreEqual(numberOfClusters, expectedNumClusters, "Error during hierarchical clustering.");
         }
     }
 }

@@ -8,7 +8,7 @@ namespace WikiTest
     public class WikiPageTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void WikiPageTestMethod1()
         {
         }
     }
