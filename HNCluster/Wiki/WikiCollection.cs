@@ -117,13 +117,13 @@ namespace Wiki
 				foreach (string tokenString in tokenStrings)
 				{
 					string stem = stemmer.stemTerm(tokenString).ToLower();
-					if (page.tfIDF_Vec.ContainsKey(stem))
+					if (page.tf_IDF_Vec.ContainsKey(stem))
 					{
-						++page.tfIDF_Vec[stem].TF;
+						++page.tf_IDF_Vec[stem].TF;
 					}
 					else
 					{
-						page.tfIDF_Vec[stem] = new WikiToken(tokenString, stem);
+						page.tf_IDF_Vec[stem] = new WikiToken(tokenString, stem);
 						if (inverseTokens.ContainsKey(stem))
 						{
 							++inverseTokens[stem];
@@ -138,21 +138,21 @@ namespace Wiki
 
 			foreach (WikiPage page in wikiPages)
 			{
-				double squaredSummed = 0;
-				//double summed = 0;
-				foreach (string token in page.tfIDF_Vec.Keys )
+				float squaredSummed = 0;
+				//float summed = 0;
+				foreach (string token in page.tf_IDF_Vec.Keys )
 				{
-					WikiToken wikiToken = page.tfIDF_Vec[token];
+					WikiToken wikiToken = page.tf_IDF_Vec[token];
 					wikiToken.DF = inverseTokens[wikiToken.Stemmed];
-					wikiToken.TF_IDF = (1+ Math.Log((double)wikiToken.TF, 2)) * Math.Log((double)wikiPages.Count / wikiToken.DF, 2);
+					wikiToken.TF_IDF = (float)(1 + Math.Log((float)wikiToken.TF, 2)) * (float)Math.Log((float)wikiPages.Count / wikiToken.DF, 2);
 					squaredSummed += wikiToken.TF_IDF * wikiToken.TF_IDF;
 					//summed += wikiToken.TF_IDF;
 				}
 
-				double magnitude = Math.Sqrt(squaredSummed);
-				foreach (string token in page.tfIDF_Vec.Keys)
+				float magnitude = (float)Math.Sqrt(squaredSummed);
+				foreach (string token in page.tf_IDF_Vec.Keys)
 				{
-					WikiToken wikiToken = page.tfIDF_Vec[token];
+					WikiToken wikiToken = page.tf_IDF_Vec[token];
 					wikiToken.TF_IDF /= magnitude;
 					//wikiToken.TF_IDF /= summed;
 				}

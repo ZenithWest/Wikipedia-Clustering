@@ -12,8 +12,12 @@ namespace Clustering
 	public class HierarchicalCluster
 	{
 		public WikiCollection wikiCollection;
-
 		public List<Cluster> clusters;
+		public float[,] DistanceMatrix;
+		public float DistanceMatrixTime = 0;
+		public float AverageClusterIterationTime = 0;
+		public long Iterations = 0;
+		public float TotalClusteringTime = 0;
 
 		public HierarchicalCluster(WikiCollection wikis)
 		{
@@ -27,190 +31,91 @@ namespace Clustering
 			{
 				clusters.Add(new Cluster(page));
 			}
-		}
 
-		private void ClusterDoubleParallel()
-		{
-			Cluster c1 = clusters[0];
-			Cluster c2 = clusters[1];
-			System.Diagnostics.Debug.Print(clusters.Count.ToString());
-			double GlobalMinimum = WikiPage.metric.MaxValue();
-			Mutex GlobalMutex = new Mutex();
-			Parallel.For(0, clusters.Count, i =>
+			DistanceMatrix = new float[wikiCollection.wikiPages.Count, wikiCollection.wikiPages.Count];
+			//for (int outer = 0; outer < wikiCollection.wikiPages.Count; ++outer)
+			long timeStart = DateTime.Now.Ticks;
+			Parallel.For(0, wikiCollection.wikiPages.Count, outer =>
 			{
 				Thread.CurrentThread.Priority = ThreadPriority.Lowest;
-				Mutex LocalMutex = new Mutex();
-				double LocalMinimum = WikiPage.metric.MaxValue();
-				int LocalMinimum_n = 1;
-				Parallel.For(i + 1, clusters.Count, n =>
+				for (int inner = 0; inner <= outer; ++inner)
 				{
-					if (i != n)
-					{
-						Thread.CurrentThread.Priority = ThreadPriority.Lowest;
-						double distance = clusters[i].GetDistance(clusters[n]);
-						if (WikiPage.metric.Compare(distance, LocalMinimum))
-						{
-							LocalMutex.WaitOne();
-							if (WikiPage.metric.Compare(distance, LocalMinimum))
-							{
-								LocalMinimum = distance;
-								LocalMinimum_n = n;
-							}
-							LocalMutex.ReleaseMutex();
-						}
-					}
-				});
-				if (WikiPage.metric.Compare(LocalMinimum, GlobalMinimum))
-				{
-					GlobalMutex.WaitOne();
-					if (WikiPage.metric.Compare(LocalMinimum, GlobalMinimum))
-					{
-						GlobalMinimum = LocalMinimum;
-						c1 = clusters[i];
-						c2 = clusters[LocalMinimum_n];
-					}
-					GlobalMutex.ReleaseMutex();
+					DistanceMatrix[outer, inner] = wikiCollection.wikiPages[outer].GetDistance(wikiCollection.wikiPages[inner]);
 				}
-
+				wikiCollection.wikiPages[outer].id = outer;
 			});
-
-			Cluster newCluster = new Cluster(c1, c2);
-			clusters.Remove(c1);
-			clusters.Remove(c2);
-			clusters.Add(newCluster);
-		}
-
-		private void ClusterOuterParallel()
-		{
-			Cluster c1 = clusters[0];
-			Cluster c2 = clusters[1];
-			System.Diagnostics.Debug.Print(clusters.Count.ToString());
-			double GlobalMinimum = WikiPage.metric.MaxValue();
-			Mutex GlobalMutex = new Mutex();
-			Parallel.For(1, clusters.Count, i =>
+			Parallel.For(0, wikiCollection.wikiPages.Count, outer =>
 			{
 				Thread.CurrentThread.Priority = ThreadPriority.Lowest;
-				double LocalMinimum = WikiPage.metric.MaxValue();
-				int LocalMinimum_n = 1;
-				for (int n = 0; n < 1; ++n)
-				//for (int n = i + 1; n < clusters.Count; ++n)
+				for (int inner = 0; inner < outer; ++inner)
 				{
-					Thread.CurrentThread.Priority = ThreadPriority.Lowest;
-					double distance = clusters[i].GetDistance(clusters[n]);
-					if (WikiPage.metric.Compare(distance, LocalMinimum))
-					{
-						LocalMinimum = distance;
-						LocalMinimum_n = n;
-					}
+					DistanceMatrix[inner, outer] = DistanceMatrix[outer, inner];
 				}
-				if (WikiPage.metric.Compare(LocalMinimum, GlobalMinimum))
-				{
-					GlobalMutex.WaitOne();
-					if (WikiPage.metric.Compare(LocalMinimum, GlobalMinimum))
-					{
-						GlobalMinimum = LocalMinimum;
-						c1 = clusters[i];
-						c2 = clusters[LocalMinimum_n];
-					}
-					GlobalMutex.ReleaseMutex();
-				}
-
 			});
-
-			Cluster newCluster = new Cluster(c1, c2);
-			clusters.Remove(c1);
-			clusters.Remove(c2);
-			clusters.Add(newCluster);
-		}
-
-		private void ClusterInnerParallel()
-		{
-			Cluster c1 = clusters[0];
-			Cluster c2 = clusters[1];
-			System.Diagnostics.Debug.Print(clusters.Count.ToString());
-			double GlobalMinimum = WikiPage.metric.MaxValue();
-			Mutex GlobalMutex = new Mutex();
-			for (int i = 0; i < clusters.Count; ++i)
-			{
-				Thread.CurrentThread.Priority = ThreadPriority.Lowest;
-				Mutex LocalMutex = new Mutex();
-				double LocalMinimum = WikiPage.metric.MaxValue();
-				int LocalMinimum_n = 1;
-				Parallel.For(i + 1, clusters.Count, n =>
-				{
-					if (i != n)
-					{
-						Thread.CurrentThread.Priority = ThreadPriority.Lowest;
-						double distance = clusters[i].GetDistance(clusters[n]);
-						if (WikiPage.metric.Compare(distance, LocalMinimum))
-						{
-							LocalMutex.WaitOne();
-							if (WikiPage.metric.Compare(distance, LocalMinimum))
-							{
-								LocalMinimum = distance;
-								LocalMinimum_n = n;
-							}
-							LocalMutex.ReleaseMutex();
-						}
-					}
-				});
-				if (WikiPage.metric.Compare(LocalMinimum, GlobalMinimum))
-				{
-					GlobalMutex.WaitOne();
-					if (WikiPage.metric.Compare(LocalMinimum, GlobalMinimum))
-					{
-						GlobalMinimum = LocalMinimum;
-						c1 = clusters[i];
-						c2 = clusters[LocalMinimum_n];
-					}
-					GlobalMutex.ReleaseMutex();
-				}
-
-			}
-
-			Cluster newCluster = new Cluster(c1, c2);
-			clusters.Remove(c1);
-			clusters.Remove(c2);
-			clusters.Add(newCluster);
-		}
-
-		private void ClusterNoParallel()
-		{
-			Cluster c1 = clusters[0];
-			Cluster c2 = clusters[1];
-			System.Diagnostics.Debug.Print(clusters.Count.ToString());
-			double GlobalMinimum = WikiPage.metric.MaxValue();
-			Mutex GlobalMutex = new Mutex();
-			for (int i = 0; i < clusters.Count; ++i)
-			{
-				for (int n = i + 1; n < clusters.Count; ++n)
-				{
-					double distance = clusters[i].GetDistance(clusters[n]);
-					if (WikiPage.metric.Compare(distance, GlobalMinimum))
-					{
-						GlobalMinimum = distance;
-						c1 = clusters[i];
-						c2 = clusters[n];
-					}
-				}
-			}
-
-			Cluster newCluster = new Cluster(c1, c2);
-			clusters.Remove(c1);
-			clusters.Remove(c2);
-			clusters.Add(newCluster);
+			long time = DateTime.Now.Ticks - timeStart;
+			DistanceMatrixTime = (float)TimeSpan.FromTicks(time).TotalMilliseconds;
+			System.Diagnostics.Debug.Print("Distance Matrix: " + DistanceMatrixTime.ToString() + "ms");
+			int a = 1;
+			++a;
 		}
 
 		public void Cluster()
 		{
+			long timeStart = DateTime.Now.Ticks;
+			long globalTime = DateTime.Now.Ticks;
 			while (clusters.Count > 1)
 			{
-				//ClusterDoubleParallel();
-				ClusterOuterParallel();
-				//ClusterInnerParallel();
-				//ClusterNoParallel();
+				long time = DateTime.Now.Ticks - timeStart;
+				timeStart = DateTime.Now.Ticks;
+				System.Diagnostics.Debug.Print(clusters.Count.ToString() + ", " + TimeSpan.FromTicks(time).TotalMilliseconds.ToString());
+				AverageClusterIterationTime += (float)TimeSpan.FromTicks(time).TotalMilliseconds;
+				++Iterations;
+
+				Cluster c1 = clusters[0];
+				Cluster c2 = clusters[1];
+				float GlobalMinimum = WikiPage.metric.MaxValue();
+				Mutex GlobalMutex = new Mutex();
+
+				Parallel.For(0, clusters.Count, i =>
+				{
+					Thread.CurrentThread.Priority = ThreadPriority.Lowest;
+					float LocalMinimum = WikiPage.metric.MaxValue();
+					int LocalMinimum_n = 1;
+					for (int n = i + 1; n < clusters.Count; ++n)
+					{
+						Thread.CurrentThread.Priority = ThreadPriority.Lowest;
+						float distance = clusters[i].GetDistance(clusters[n], DistanceMatrix);
+						
+						if (WikiPage.metric.Compare(distance, LocalMinimum))
+						{
+							LocalMinimum = distance;
+							LocalMinimum_n = n;
+						}
+					}
+					if (WikiPage.metric.Compare(LocalMinimum, GlobalMinimum))
+					{
+						GlobalMutex.WaitOne();
+						if (WikiPage.metric.Compare(LocalMinimum, GlobalMinimum))
+						{
+							GlobalMinimum = LocalMinimum;
+							c1 = clusters[i];
+							c2 = clusters[LocalMinimum_n];
+						}
+						GlobalMutex.ReleaseMutex();
+					}
+
+				});
+
+				Cluster newCluster = new Cluster(c1, c2);
+				clusters.Remove(c1);
+				clusters.Remove(c2);
+				clusters.Add(newCluster);
 			}
+
+			globalTime = DateTime.Now.Ticks - globalTime;
+			TotalClusteringTime = (float)TimeSpan.FromTicks(globalTime).TotalMilliseconds;
+			AverageClusterIterationTime /= Iterations;
 		}
+
 	}
 }
-

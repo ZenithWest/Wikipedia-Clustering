@@ -8,9 +8,9 @@ namespace Wiki
 {
 	public class CosineSimilarity : IDistanceMetric
 	{
-		public double GetDistance(TF_IDF_Vector vec1, TF_IDF_Vector vec2)
+		public float GetDistance(TF_IDF_Vector vec1, TF_IDF_Vector vec2)
 		{
-			double sim = 0.0;
+			float sim = 0;
 			foreach (string tokenKey in vec1.Keys)
 			{
 				if (vec2.ContainsKey(tokenKey))
@@ -21,13 +21,28 @@ namespace Wiki
 
 			return sim;
 		}
-
-		public double MaxValue()
+		
+		public float MaxValue()
 		{
-			return double.MinValue;
+			return float.MinValue;
 		}
 
-		public bool Compare(double sim1, double sim2)
+		public float MinValue()
+		{
+			return float.MaxValue;
+		}
+
+		public bool LessThan(float sim1, float sim2)
+		{
+			return sim1 > sim2;
+		}
+
+		public bool GreaterThan(float sim1, float sim2)
+		{
+			return sim1 < sim2;
+		}
+
+		public bool Compare(float sim1, float sim2)
 		{
 			return sim1 > sim2;
 		}

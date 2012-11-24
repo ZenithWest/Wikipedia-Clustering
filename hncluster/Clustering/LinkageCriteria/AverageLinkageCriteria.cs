@@ -10,9 +10,9 @@ namespace Clustering
 {
 	public class AverageLinkageCriteria : ILinkageCriteria
 	{
-		public double GetDistance(Cluster c1, Cluster c2)
+		public float GetDistance(Cluster c1, Cluster c2)
 		{
-			double mean = 0.0;
+			float mean = 0;
 			foreach (WikiPage page1 in c1.pages)
 			{
 				foreach (WikiPage page2 in c2.pages)
@@ -25,8 +25,24 @@ namespace Clustering
 
 			return mean;
 		}
+		
+		public float GetDistance(Cluster c1, Cluster c2, float[,] DistanceMatrix)
+		{
+			float mean = 0;
+			foreach (WikiPage page1 in c1.pages)
+			{
+				foreach (WikiPage page2 in c2.pages)
+				{
+					mean += DistanceMatrix[page1.id, page2.id];
+				}
+			}
 
-		public bool Compare(double dist1, double dist2)
+			mean /= c1.pages.Count * c2.pages.Count;
+
+			return mean;
+		}
+
+		public bool Compare(float dist1, float dist2)
 		{
 			return dist1 < dist2;
 		}

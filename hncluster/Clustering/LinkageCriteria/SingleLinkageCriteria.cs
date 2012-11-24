@@ -10,17 +10,17 @@ namespace Clustering
 {
 	public class SingleLinkageCriteria : ILinkageCriteria
 	{
-		public double GetDistance(Cluster c1, Cluster c2)
+		public float GetDistance(Cluster c1, Cluster c2)
 		{
 
 			//return GetDistanceParallel(c1, c2);
 
-			double minimum = WikiPage.metric.MaxValue();
+			float minimum = WikiPage.metric.MaxValue();
 			foreach (WikiPage page1 in c1.pages)
 			{
 				foreach (WikiPage page2 in c2.pages)
 				{
-					double distance = page1.GetDistance(page2);
+					float distance = page1.GetDistance(page2);
 					if (WikiPage.metric.Compare(distance, minimum))
 					{
 						minimum = distance;
@@ -30,19 +30,39 @@ namespace Clustering
 			return minimum;
 		}
 
-		public double GetDistanceParallel(Cluster c1, Cluster c2)
+		public float GetDistance(Cluster c1, Cluster c2, float[,] DistanceMatrix)
 		{
-			double GlobalMinimum = WikiPage.metric.MaxValue();
+
+			//return GetDistanceParallel(c1, c2);
+
+			float minimum = WikiPage.metric.MaxValue();
+			foreach (WikiPage page1 in c1.pages)
+			{
+				foreach (WikiPage page2 in c2.pages)
+				{
+					float distance = DistanceMatrix[page1.id, page2.id];
+					if (WikiPage.metric.Compare(distance, minimum))
+					{
+						minimum = distance;
+					}
+				}
+			}
+			return minimum;
+		}
+
+		public float GetDistanceParallel(Cluster c1, Cluster c2)
+		{
+			float GlobalMinimum = WikiPage.metric.MaxValue();
 			Mutex GlobalMutex = new Mutex();
 			Parallel.For(0, c1.pages.Count, i =>
 			{
 				Thread.CurrentThread.Priority = ThreadPriority.Lowest;
 				Mutex LocalMutex = new Mutex();
-				double LocalMinimum = WikiPage.metric.MaxValue();
+				float LocalMinimum = WikiPage.metric.MaxValue();
 				Parallel.For(0, c2.pages.Count, n =>
 				{
 					Thread.CurrentThread.Priority = ThreadPriority.Lowest;
-					double distance = c1.pages[i].GetDistance(c2.pages[n]);
+					float distance = c1.pages[i].GetDistance(c2.pages[n]);
 					if (WikiPage.metric.Compare(distance, LocalMinimum))
 					{
 						LocalMutex.WaitOne();
@@ -67,7 +87,7 @@ namespace Clustering
 			return GlobalMinimum;
 		}
 
-		public bool Compare(double dist1, double dist2)
+		public bool Compare(float dist1, float dist2)
 		{
 			return WikiPage.metric.Compare(dist1, dist2);
 		}

@@ -22,11 +22,14 @@ namespace Wiki
 		public string model;
 		public string format;
 
+		//public static IDistanceMetric metric = new CosineSimilarity();
+		//public static IDistanceMetric metric = new CosineSimilarity();
 		public static IDistanceMetric metric = new CosineSimilarity();
+		//public static IDistanceMetric metric = new EuclideanDistance();
 
 
 
-		public TF_IDF_Vector tfIDF_Vec;
+		public TF_IDF_Vector tf_IDF_Vec;
 		public Page page;
 
 		public WikiPage(Page pg)
@@ -48,7 +51,7 @@ namespace Wiki
 			timestamp = page.timestamp;
 			text = page.text;
 
-			tfIDF_Vec = new TF_IDF_Vector();
+			tf_IDF_Vec = new TF_IDF_Vector();
 		}
 
 		public WikiPage(XElement page)
@@ -64,18 +67,18 @@ namespace Wiki
 			timestamp = DateTime.Parse(revision.Element(revision.GetDefaultNamespace() + "timestamp").Value);
 			text = revision.Element(revision.GetDefaultNamespace() + "text").Value;
 			text = text.Replace("\n", "\r\n");
-			tfIDF_Vec = new TF_IDF_Vector();
+			tf_IDF_Vec = new TF_IDF_Vector();
 
 			//this.page = new Page();
 
 		}
 
-		public double GetDistance(WikiPage page)
+		public float GetDistance(WikiPage page)
 		{
-			return metric.GetDistance(tfIDF_Vec, page.tfIDF_Vec);
+			return metric.GetDistance(tf_IDF_Vec, page.tf_IDF_Vec);
 		}
 
-		public bool Compare(double dist1, double dist2)
+		public bool Compare(float dist1, float dist2)
 		{
 			return metric.Compare(dist1, dist2);
 		}

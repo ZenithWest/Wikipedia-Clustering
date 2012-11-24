@@ -8,8 +8,11 @@ namespace Wiki
 {
 	public interface IDistanceMetric
 	{
-		double GetDistance(TF_IDF_Vector vec1, TF_IDF_Vector vec2);
-		double MaxValue();
-		bool Compare(double dist1, double dist2);
+		float GetDistance(TF_IDF_Vector vec1, TF_IDF_Vector vec2);
+		float MaxValue();
+		float MinValue();
+		bool LessThan(float dist1, float dist2);
+		bool GreaterThan(float dist1, float dist2);
+		bool Compare(float dist1, float dist2);
 	}
 }

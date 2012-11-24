@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cluster.cs" />
+    <Compile Include="ClusterAlgorithm.cs" />
     <Compile Include="HierarchicalCluster.cs" />
     <Compile Include="LinkageCriteria\AverageLinkageCriteria.cs" />
     <Compile Include="LinkageCriteria\CompleteLinkageCriteria.cs" />

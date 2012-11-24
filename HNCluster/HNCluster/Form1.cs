@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
+
 using MediaWikiEngine;
 using MediaWikiEngine.Command;
 using MediaWikiEngine.Domain;
@@ -64,13 +66,15 @@ namespace HNCluster
 		private ListViewColumnSorter lvwColumnSorter;
 		HierarchicalCluster hierarchicalCluster;
 
+		XElement OutputClusters;
+
 		public Form1()
 		{
 			InitializeComponent();
 
 			lvwColumnSorter = new ListViewColumnSorter();
 			this.listView1.ListViewItemSorter = lvwColumnSorter;
-
+			OutputClusters = new XElement("Clusters");
 			wikiCollection = new WikiCollection();
 
 			IncrementPagesLoaded = new IncrementPagesLoadedDelegate(IncrementPagesLoadedMethod);
@@ -115,10 +119,10 @@ namespace HNCluster
 		void LoadWikipediaXML()
 		{
 			//wikiCollection.ParseXML(@"C:\Users\Zenith\Documents\GitHub\Wikipedia-Clustering\Data\Wikipedia-Popular.xml");
-			/*
+			
 			wikiCollection.ParseXML(@"Wikipedia-ComputerScience.xml");
 			wikiCollection.ParseXML(@"Wikipedia-Science.xml");
-			wikiCollection.ParseXML(@"Wikipedia-Genetic-Engineering.xml");*/
+			wikiCollection.ParseXML(@"Wikipedia-Genetic-Engineering.xml");
 			wikiCollection.ParseXML(@"Wikipedia-Algorithms-and-Data-Structures.xml");
 			Invoke(IncrementPagesLoadedByVal, wikiCollection.wikiPages.Count);
 			pagesLoaded += wikiCollection.wikiPages.Count;
@@ -259,17 +263,6 @@ namespace HNCluster
 		public void CheckCheckBox5Method()
 		{
 			checkBox5.Checked = true;
-		}
-
-		public void AddClustersMethod()
-		{
-			foreach (Cluster cluster in hierarchicalCluster.clusters)
-			{
-				TreeNode node = new TreeNode("Cluster");
-				AddClustersMethod(node, cluster);
-				treeView1.Nodes.Add(node);
-			}
-			
 		}
 
 		public void AddPageTextMethod(Page page)
@@ -413,14 +406,15 @@ namespace HNCluster
 			//listView1.Groups.Clear();
 			//listView1.Groups.Add(new ListViewGroup("Tokens"));
 
-			foreach (string tokenKey in wikiCollection.wikiPages[currentPage].tfIDF_Vec.Keys)
+			foreach (string tokenKey in wikiCollection.wikiPages[currentPage].tf_IDF_Vec.Keys)
 			{
-				WikiToken token = wikiCollection.wikiPages[currentPage].tfIDF_Vec[tokenKey];
+				WikiToken token = wikiCollection.wikiPages[currentPage].tf_IDF_Vec[tokenKey];
 				ListViewItem item = new ListViewItem(new string[] { token.Token, token.Stemmed, token.TF_IDF.ToString(), token.TF.ToString(), token.DF.ToString() });
 				//ListViewItem item = new ListViewItem(listView1.Groups[0]);
 				item.Text = token.Token;
 				listView1.Items.Add(item);
 			}
+
 		}
 
 		private void button3_Click(object sender, EventArgs e)
@@ -433,7 +427,51 @@ namespace HNCluster
 			treeView1.CollapseAll();
 		}
 
-		public void AddClustersMethod(TreeNode node, Cluster cluster)
+		public void AddClustersMethod()
+		{
+			OutputClusters.Add(new XElement("DistanceMetric", Wiki.WikiPage.metric.ToString()));
+			OutputClusters.Add(new XElement("LinkageCriteria", Cluster.criteria.ToString()));
+			OutputClusters.Add(new XElement("DistanceMatrixTime", hierarchicalCluster.DistanceMatrixTime.ToString()));
+			OutputClusters.Add(new XElement("TotalClusteringTime", hierarchicalCluster.TotalClusteringTime.ToString()));
+			OutputClusters.Add(new XElement("AverageClusterIterationTime", hierarchicalCluster.AverageClusterIterationTime.ToString()));
+			OutputClusters.Add(new XElement("Iterations", hierarchicalCluster.Iterations.ToString()));
+			foreach (Cluster cluster in hierarchicalCluster.clusters)
+			{
+				TreeNode node = new TreeNode("Cluster");
+				AddClustersMethod(node, OutputClusters, cluster);
+				treeView1.Nodes.Add(node);
+			}
+
+			string datetime = DateTime.Now.ToString();
+
+			datetime = datetime.Replace("/", "-");
+			datetime = datetime.Replace(":", "_");
+
+			OutputClusters.Save("Clusters " + datetime + ".xml");
+
+		}
+		/*
+		public void TreeCleanUp(TreeNode nodes)
+		{
+			bool nonclusters = false;
+			bool clusters = false;
+			foreach (TreeNode node in nodes.Nodes)
+			{
+				if (node.Text == "Clusters")
+				{
+					clusters = true;
+				}
+				else
+				{
+					nonclusters = true;
+				}
+			}
+
+			i
+
+		}*/
+
+		public void AddClustersMethod(TreeNode node, XElement element, Cluster cluster)
 		{
 			if (cluster.page != null)
 			{
@@ -441,10 +479,63 @@ namespace HNCluster
 				{
 					TreeNode node3 = new TreeNode(cluster.page.title);
 					node.Nodes.Add(node3);
+
+					XElement element3 = new XElement("Cluster");
+					element3.SetValue(cluster.page.title);
+					element.Add(element3);
 				}
 				else
 				{
-					node.Text = cluster.page.title;
+
+					/*
+					TreeNode parent = node.Parent;
+					bool test =false;
+					while (true)
+					{
+						if (parent != null && parent.Parent != null)
+						{
+							int blah = -1;
+							if (parent.Nodes[0].Text != "Cluster")
+							{
+								blah = 0;
+							}
+							else if (parent.Nodes.Count > 1 && parent.Nodes[1].Text != "Cluster")
+							{
+								blah = 1;
+							}
+							if (blah != -1)
+							{
+								foreach (TreeNode nd in parent.Nodes[1 - blah].Nodes)
+								{
+									parent.Nodes.Add(nd);
+								}
+								parent.Nodes.Remove(parent.Nodes[1 - blah]);
+								node = parent;
+								parent = node.Parent;
+								test = true;
+							}
+							else
+							{
+								break;
+							}
+						}
+						else
+						{
+							break;
+						}
+					}
+					if (test)
+					{
+						TreeNode node3 = new TreeNode(cluster.page.title);
+						node.Nodes.Add(node3);
+						node = node3;
+					}
+					else*/
+					{
+						node.Text = cluster.page.title;
+						element.SetValue(cluster.page.title);
+						element.Name = "Cluster";
+					}
 					node.NodeFont = new Font(FontFamily.GenericSansSerif, 8, FontStyle.Regular);
 					node.ForeColor = Color.White;
 					return;
@@ -452,15 +543,24 @@ namespace HNCluster
 			}
 			if (cluster.cluster1 != null)
 			{
+
 				TreeNode node1 = new TreeNode("Cluster");
-				AddClustersMethod(node1, cluster.cluster1);
 				node.Nodes.Add(node1);
+
+				XElement element1 = new XElement("Cluster");
+				element.Add(element1);
+
+				AddClustersMethod(node1, element1, cluster.cluster1);
 			}
 			if (cluster.cluster2 != null)
 			{
 				TreeNode node2 = new TreeNode("Cluster");
-				AddClustersMethod(node2, cluster.cluster2);
 				node.Nodes.Add(node2);
+
+				XElement element2 = new XElement("Cluster");
+				element.Add(element2);
+
+				AddClustersMethod(node2, element2, cluster.cluster2);
 			}
 			//node.NodeFont = new Font(FontFamily.GenericSansSerif, 10, FontStyle.Bold | FontStyle.Underline);
 			node.ForeColor = Color.Lime;

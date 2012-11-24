@@ -10,14 +10,14 @@ namespace Clustering
 {
 	public class MinimumEnergyLinkageCriteria : ILinkageCriteria
 	{
-		public double GetDistance(Cluster c1, Cluster c2)
+		public float GetDistance(Cluster c1, Cluster c2)
 		{
-			double maximum = double.MinValue;
+			float maximum = float.MinValue;
 			foreach (WikiPage page1 in c1.pages)
 			{
 				foreach (WikiPage page2 in c2.pages)
 				{
-					double distance = page1.GetDistance(page2);
+					float distance = page1.GetDistance(page2);
 					if (WikiPage.metric.Compare(distance, maximum))
 					{
 						maximum = distance;
@@ -27,7 +27,24 @@ namespace Clustering
 			return maximum;
 		}
 
-		public bool Compare(double dist1, double dist2)
+		public float GetDistance(Cluster c1, Cluster c2, float[,] DistanceMatrix)
+		{
+			float maximum = float.MinValue;
+			foreach (WikiPage page1 in c1.pages)
+			{
+				foreach (WikiPage page2 in c2.pages)
+				{
+					float distance = DistanceMatrix[page1.id, page2.id];
+					if (WikiPage.metric.Compare(distance, maximum))
+					{
+						maximum = distance;
+					}
+				}
+			}
+			return maximum;
+		}
+
+		public bool Compare(float dist1, float dist2)
 		{
 			return dist1 < dist2;
 		}

@@ -10,7 +10,8 @@ namespace Clustering
 {
 	public interface ILinkageCriteria
 	{
-		double GetDistance(Cluster c1, Cluster c2);
-		bool Compare(double dist1, double dist2);
+		float GetDistance(Cluster c1, Cluster c2);
+		float GetDistance(Cluster c1, Cluster c2, float[,] DistanceMatrix);
+		bool Compare(float dist1, float dist2);
 	}
 }

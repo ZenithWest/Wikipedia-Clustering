@@ -11,7 +11,7 @@ namespace Wiki
 	{
 		public string Token { get; set; }
 		public string Stemmed { get; set; }
-		public double TF_IDF { get; set; }
+		public float TF_IDF { get; set; }
 		public int TF { get; set; }
 		public int DF { get; set; }
 
@@ -36,7 +36,7 @@ namespace Wiki
 			DF = 1;
 		}
 
-		public static implicit operator double(WikiToken token)
+		public static implicit operator float(WikiToken token)
 		{
 			return token.TF_IDF;
 		}
