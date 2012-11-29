@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WikiTest", "WikiTest\WikiTe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClusteringTest", "ClusteringTest\ClusteringTest.csproj", "{C2FC8047-CDC6-4B03-BA18-460361058ECB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recommender", "Recommender\Recommender.csproj", "{7A550942-DB67-40A7-8D6C-DA25751361BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIControlLibrary", "UIControlLibrary\UIControlLibrary.csproj", "{F2FA7C28-C966-4379-8E3F-8185AF8B3BA6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +41,14 @@ Global
 		{C2FC8047-CDC6-4B03-BA18-460361058ECB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2FC8047-CDC6-4B03-BA18-460361058ECB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2FC8047-CDC6-4B03-BA18-460361058ECB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A550942-DB67-40A7-8D6C-DA25751361BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A550942-DB67-40A7-8D6C-DA25751361BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A550942-DB67-40A7-8D6C-DA25751361BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A550942-DB67-40A7-8D6C-DA25751361BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2FA7C28-C966-4379-8E3F-8185AF8B3BA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2FA7C28-C966-4379-8E3F-8185AF8B3BA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2FA7C28-C966-4379-8E3F-8185AF8B3BA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2FA7C28-C966-4379-8E3F-8185AF8B3BA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
