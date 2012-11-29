@@ -120,10 +120,10 @@ namespace HNCluster
 		{
 			//wikiCollection.ParseXML(@"C:\Users\Zenith\Documents\GitHub\Wikipedia-Clustering\Data\Wikipedia-Popular.xml");
 			
-			wikiCollection.ParseXML(@"Wikipedia-ComputerScience.xml");
+			//wikiCollection.ParseXML(@"Wikipedia-ComputerScience.xml");
 			wikiCollection.ParseXML(@"Wikipedia-Science.xml");
-			wikiCollection.ParseXML(@"Wikipedia-Genetic-Engineering.xml");
-			wikiCollection.ParseXML(@"Wikipedia-Algorithms-and-Data-Structures.xml");
+			//wikiCollection.ParseXML(@"Wikipedia-Genetic-Engineering.xml");
+			//wikiCollection.ParseXML(@"Wikipedia-Algorithms-and-Data-Structures.xml");
 			Invoke(IncrementPagesLoadedByVal, wikiCollection.wikiPages.Count);
 			pagesLoaded += wikiCollection.wikiPages.Count;
 			test = true;
