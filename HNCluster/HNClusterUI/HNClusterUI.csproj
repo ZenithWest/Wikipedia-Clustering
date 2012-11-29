@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F2FA7C28-C966-4379-8E3F-8185AF8B3BA6}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{1B059255-5382-40B4-BCB9-FE7A6C4F6EB6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UIControlLibrary</RootNamespace>
-    <AssemblyName>UIControlLibrary</AssemblyName>
+    <RootNamespace>HNClusterUI</RootNamespace>
+    <AssemblyName>HNClusterUI</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -36,39 +38,58 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PageDisplay.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="HNClusterUI.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PageDisplay.Designer.cs">
-      <DependentUpon>PageDisplay.cs</DependentUpon>
+    <Compile Include="HNClusterUI.Designer.cs">
+      <DependentUpon>HNClusterUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TreeCluster.cs">
-      <SubType>UserControl</SubType>
+    <EmbeddedResource Include="HNClusterUI.resx">
+      <DependentUpon>HNClusterUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="TreeCluster.Designer.cs">
-      <DependentUpon>TreeCluster.cs</DependentUpon>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Clustering\Clustering.csproj">
       <Project>{ba1da30c-2711-463e-a8dc-5b86712aab45}</Project>
       <Name>Clustering</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="PageDisplay.resx">
-      <DependentUpon>PageDisplay.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TreeCluster.resx">
-      <DependentUpon>TreeCluster.cs</DependentUpon>
-    </EmbeddedResource>
+    <ProjectReference Include="..\Recommender\Recommender.csproj">
+      <Project>{7a550942-db67-40a7-8d6c-da25751361bb}</Project>
+      <Name>Recommender</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UIControlLibrary\UIControlLibrary.csproj">
+      <Project>{f2fa7c28-c966-4379-8e3f-8185af8b3ba6}</Project>
+      <Name>UIControlLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

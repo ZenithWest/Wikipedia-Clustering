@@ -28,10 +28,48 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			components = new System.ComponentModel.Container();
+			this.treeViewClusters = new System.Windows.Forms.TreeView();
+			this.listViewClusters = new System.Windows.Forms.ListView();
+			this.SuspendLayout();
+			// 
+			// treeViewClusters
+			// 
+			this.treeViewClusters.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+			this.treeViewClusters.Dock = System.Windows.Forms.DockStyle.Top;
+			this.treeViewClusters.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.treeViewClusters.ItemHeight = 22;
+			this.treeViewClusters.Location = new System.Drawing.Point(0, 0);
+			this.treeViewClusters.Margin = new System.Windows.Forms.Padding(0);
+			this.treeViewClusters.Name = "treeViewClusters";
+			this.treeViewClusters.Size = new System.Drawing.Size(400, 300);
+			this.treeViewClusters.TabIndex = 16;
+			// 
+			// listViewClusters
+			// 
+			this.listViewClusters.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.listViewClusters.Location = new System.Drawing.Point(0, 300);
+			this.listViewClusters.Margin = new System.Windows.Forms.Padding(0);
+			this.listViewClusters.Name = "listViewClusters";
+			this.listViewClusters.Size = new System.Drawing.Size(400, 300);
+			this.listViewClusters.TabIndex = 17;
+			this.listViewClusters.UseCompatibleStateImageBehavior = false;
+			// 
+			// TreeCluster
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.Controls.Add(this.listViewClusters);
+			this.Controls.Add(this.treeViewClusters);
+			this.Margin = new System.Windows.Forms.Padding(0);
+			this.Name = "TreeCluster";
+			this.Size = new System.Drawing.Size(400, 600);
+			this.ResumeLayout(false);
+
 		}
 
 		#endregion
+
+		private System.Windows.Forms.TreeView treeViewClusters;
+		private System.Windows.Forms.ListView listViewClusters;
 	}
 }
