@@ -15,24 +15,67 @@ namespace HNClusterUI
 	public partial class HNClusterUI : Form
 	{
 		WikiCollection wikiCollection;
-		HierarchicalCluster hierarchicalCluster;
+		HierarchicalCluster HAC;
+		public delegate void ClusteringWikipediaFinishedHandler();
+		public event ClusteringWikipediaFinishedHandler ClusteringWikipediaFinished;
+		GraphUI graphUI = new GraphUI();
 
 		public HNClusterUI()
 		{
 			InitializeComponent();
+			graphUI = new GraphUI();
 			wikiCollection = new WikiCollection();
+			ClusteringWikipediaFinished += new ClusteringWikipediaFinishedHandler(OnClusteringWikipediaFinished);
+			treeCluster.treeViewClusters.AfterSelect += treeViewClusters_AfterSelect;
+			treeCluster.listViewClusters.ItemActivate += listViewClusters_ItemActivate;
+
+			Task.Factory.StartNew(ClusterWikipedia);
 		}
 
-		private void startToolStripMenuItem_Click(object sender, EventArgs e)
+		public void ClusterWikipedia()
 		{
+			//wikiCollection.ParseXML(@"Wikipedia-ComputerScience.xml");
 			wikiCollection.ParseXML(@"Wikipedia-Science.xml");
+			//wikiCollection.ParseXML(@"Wikipedia-Genetic-Engineering.xml");
+			//wikiCollection.ParseXML(@"Wikipedia-Algorithms-and-Data-Structures.xml");
 			wikiCollection.ExtractTokens();
-			hierarchicalCluster = new HierarchicalCluster(wikiCollection);
-			hierarchicalCluster.initializeClusters();
-			hierarchicalCluster.Cluster();
-			GraphUI gui = new GraphUI();
-			gui.Show();
-			gui.GenerateGraph(hierarchicalCluster);
+			HAC = new HierarchicalCluster(wikiCollection);
+			HAC.initializeClusters();
+			HAC.Cluster();
+			this.Invoke(ClusteringWikipediaFinished);
 		}
+
+		public void OnClusteringWikipediaFinished()
+		{
+			graphUI.GenerateGraph(HAC);
+			treeCluster.LoadClusters(HAC);
+			graphUI.Show();
+		}
+
+		public void treeViewClusters_AfterSelect(object sender, TreeViewEventArgs e)
+		{
+			TreeView treeViewCluster = (TreeView)sender;
+			if (e.Node.Text == "Cluster")
+			{
+				ListView listView = treeCluster.listViewClusters;
+				listView.Items.Clear();
+				treeCluster.AddPagesFromCluster(e.Node);
+
+			}
+
+		}
+
+		private void listViewClusters_ItemActivate(object sender, EventArgs e)
+		{
+			ListView listView = (ListView)sender;
+
+			if (listView.SelectedItems.Count > 0)
+			{
+				pageDisplay1.LoadPage(listView.SelectedItems[0].Text);
+			}
+		}
+
+		
+
 	}
 }

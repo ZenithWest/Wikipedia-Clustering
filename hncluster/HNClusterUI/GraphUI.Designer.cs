@@ -36,14 +36,14 @@
 			this.graphDisplay1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.graphDisplay1.Location = new System.Drawing.Point(0, 0);
 			this.graphDisplay1.Name = "graphDisplay1";
-			this.graphDisplay1.Size = new System.Drawing.Size(705, 549);
+			this.graphDisplay1.Size = new System.Drawing.Size(1174, 771);
 			this.graphDisplay1.TabIndex = 0;
 			// 
 			// GraphUI
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(705, 549);
+			this.ClientSize = new System.Drawing.Size(1174, 771);
 			this.Controls.Add(this.graphDisplay1);
 			this.Name = "GraphUI";
 			this.Text = "GraphUI";

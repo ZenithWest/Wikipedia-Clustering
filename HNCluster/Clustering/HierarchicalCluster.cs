@@ -54,7 +54,7 @@ namespace Clustering
 			});
 			long time = DateTime.Now.Ticks - timeStart;
 			DistanceMatrixTime = (float)TimeSpan.FromTicks(time).TotalMilliseconds;
-			System.Diagnostics.Debug.Print("Distance Matrix: " + DistanceMatrixTime.ToString() + "ms");
+			System.Diagnostics.Debug.Print(String.Format("Distance Matrix: {0}ms", DistanceMatrixTime));
 			int a = 1;
 			++a;
 		}
@@ -67,7 +67,7 @@ namespace Clustering
 			{
 				long time = DateTime.Now.Ticks - timeStart;
 				timeStart = DateTime.Now.Ticks;
-				System.Diagnostics.Debug.Print(clusters.Count.ToString() + ", " + TimeSpan.FromTicks(time).TotalMilliseconds.ToString());
+				System.Diagnostics.Debug.Print(String.Format("{0}, {1}", clusters.Count, TimeSpan.FromTicks(time).TotalMilliseconds));
 				AverageClusterIterationTime += (float)TimeSpan.FromTicks(time).TotalMilliseconds;
 				++Iterations;
 

@@ -64,10 +64,10 @@ namespace UIControlLibrary
 				}
 				else
 				{
-					string NodeName = cluster.page.title;
+					string NodeName = cluster.page.title + " ";
 
-					NodeName = NodeName.Replace(".", "_");
-					NodeName = NodeName.Replace("'", "_");
+					//NodeName = NodeName.Replace(".", "_");
+					//NodeName = NodeName.Replace("'", "_");
 					
 					//NodeName = NodeName.Replace(":", "_");
 					//NodeName = NodeName.Replace("/", "_");
@@ -77,8 +77,8 @@ namespace UIControlLibrary
 
 
 
-					NodeName = NodeName.Replace("–", "-");
-					NodeName = NodeName.Replace("–", "-");
+					//NodeName = NodeName.Replace("–", "-");
+					//NodeName = NodeName.Replace("–", "-");
 
 
 

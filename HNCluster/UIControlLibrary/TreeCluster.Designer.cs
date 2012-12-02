@@ -46,6 +46,7 @@
 			// 
 			// listViewClusters
 			// 
+			this.listViewClusters.Activation = System.Windows.Forms.ItemActivation.OneClick;
 			this.listViewClusters.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.listViewClusters.Location = new System.Drawing.Point(0, 300);
 			this.listViewClusters.Margin = new System.Windows.Forms.Padding(0);
@@ -53,6 +54,7 @@
 			this.listViewClusters.Size = new System.Drawing.Size(400, 300);
 			this.listViewClusters.TabIndex = 17;
 			this.listViewClusters.UseCompatibleStateImageBehavior = false;
+			this.listViewClusters.View = System.Windows.Forms.View.List;
 			// 
 			// TreeCluster
 			// 
@@ -69,7 +71,8 @@
 
 		#endregion
 
-		private System.Windows.Forms.TreeView treeViewClusters;
-		private System.Windows.Forms.ListView listViewClusters;
+		public System.Windows.Forms.TreeView treeViewClusters;
+		public System.Windows.Forms.ListView listViewClusters;
+
 	}
 }
