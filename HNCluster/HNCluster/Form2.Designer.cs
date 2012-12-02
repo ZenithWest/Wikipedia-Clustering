@@ -35,12 +35,15 @@
 			// 
 			// webBrowser1
 			// 
+			this.webBrowser1.CausesValidation = false;
 			this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.webBrowser1.IsWebBrowserContextMenuEnabled = false;
 			this.webBrowser1.Location = new System.Drawing.Point(0, 0);
 			this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
 			this.webBrowser1.Name = "webBrowser1";
 			this.webBrowser1.Size = new System.Drawing.Size(1120, 858);
 			this.webBrowser1.TabIndex = 0;
+			this.webBrowser1.WebBrowserShortcutsEnabled = false;
 			// 
 			// button1
 			// 
@@ -73,6 +76,7 @@
 			this.Text = "Form2";
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form2_KeyDown_KeyUp);
 			this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form2_KeyDown_KeyUp);
+			this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.Form2_PreviewKeyDown);
 			this.ResumeLayout(false);
 
 		}

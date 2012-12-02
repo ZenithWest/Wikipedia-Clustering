@@ -32,6 +32,8 @@
 			this.treeCluster1 = new UIControlLibrary.TreeCluster();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+			this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// pageDisplay1
@@ -53,6 +55,8 @@
 			// 
 			// menuStrip1
 			// 
+			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.startToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.Size = new System.Drawing.Size(1000, 24);
@@ -67,6 +71,13 @@
 			this.statusStrip1.TabIndex = 3;
 			this.statusStrip1.Text = "statusStrip1";
 			// 
+			// startToolStripMenuItem
+			// 
+			this.startToolStripMenuItem.Name = "startToolStripMenuItem";
+			this.startToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+			this.startToolStripMenuItem.Text = "Start";
+			this.startToolStripMenuItem.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
+			// 
 			// HNClusterUI
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -79,6 +90,8 @@
 			this.MainMenuStrip = this.menuStrip1;
 			this.Name = "HNClusterUI";
 			this.Text = "Form1";
+			this.menuStrip1.ResumeLayout(false);
+			this.menuStrip1.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -90,6 +103,7 @@
 		private UIControlLibrary.TreeCluster treeCluster1;
 		private System.Windows.Forms.MenuStrip menuStrip1;
 		private System.Windows.Forms.StatusStrip statusStrip1;
+		private System.Windows.Forms.ToolStripMenuItem startToolStripMenuItem;
 
 	}
 }

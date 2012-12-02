@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GraphvizDot">
+      <HintPath>..\..\Tools\xglore-r051\GraphvizDot.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,6 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GraphDisplay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GraphDisplay.Designer.cs">
+      <DependentUpon>GraphDisplay.cs</DependentUpon>
+    </Compile>
     <Compile Include="PageDisplay.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -61,14 +70,35 @@
       <Project>{ba1da30c-2711-463e-a8dc-5b86712aab45}</Project>
       <Name>Clustering</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Wiki\Wiki.csproj">
+      <Project>{d845d3f1-e5b9-41aa-9d82-8c22453a3d48}</Project>
+      <Name>Wiki</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="GraphDisplay.resx">
+      <DependentUpon>GraphDisplay.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PageDisplay.resx">
       <DependentUpon>PageDisplay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TreeCluster.resx">
       <DependentUpon>TreeCluster.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="WINGRAPHVIZLib">
+      <Guid>{052DB09C-95F7-43BD-B7F8-492373D1151E}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

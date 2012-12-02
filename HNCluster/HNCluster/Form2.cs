@@ -16,6 +16,7 @@ using Xglore.Plugin.Graphviz;
 using WINGRAPHVIZLib;
 using Microsoft.VisualBasic;
 using System.IO;
+using System.Xml.Linq;
 //using Microsoft.Glee;
 //using Microsoft.Glee.Splines;
 
@@ -60,9 +61,27 @@ namespace HNCluster
 		{
 			InitializeComponent();
 			this.MouseWheel += new System.Windows.Forms.MouseEventHandler(Form2_MouseWheel);
+			this.KeyDown += Form2_KeyDown_KeyUp;
+			this.KeyUp += Form2_KeyDown_KeyUp;
+			this.KeyPreview = true;
+			webBrowser1.WebBrowserShortcutsEnabled = false;
+			webBrowser1.IsWebBrowserContextMenuEnabled = false;
+			webBrowser1.PreviewKeyDown += webBrowser1_PreviewKeyDown;
+			Control c = webBrowser1;
+			c.KeyDown += Form2_KeyDown_KeyUp;
+			c.KeyUp += Form2_KeyDown_KeyUp;
+			//c.Enabled = false;
+			/*
+			foreach (Control control in this.Controls)
+			{
+				control.KeyDown += new KeyEventHandler(Form2_KeyDown_KeyUp);
+				control.KeyUp += new KeyEventHandler(Form2_KeyDown_KeyUp);
+				//control.KeyPress += new KeyEventHandler(Form2_KeyDown_KeyUp);
+			}*/
 
 			graph = new Xglore.Plugin.Graphviz.RootGraph("Clusters", false, false);
-			AddNode("Clusters");
+			string MainNode = " _3D.P–r,i:nt–ing'L13_01111111101-- 010Noro–Frenkel_law_of_corresponding___stat&es+ ";
+			AddNode(MainNode);
 
 			AddNode("0");
 			AddNode("00");
@@ -83,8 +102,8 @@ namespace HNCluster
 			AddNode("111");
 
 
-			AddEdge("Clusters", "0");
-			AddEdge("Clusters", "1");
+			AddEdge(MainNode, "0");
+			AddEdge(MainNode, "1");
 
 			AddEdge("0", "00");
 			AddEdge("00", "000");
@@ -114,14 +133,36 @@ namespace HNCluster
 			}
 
 
-
-			graph.ToDotFile("DOTFILE.dot");
+			string dotPath = String.Format("{0}\\DOTFILE.dot", Application.UserAppDataPath);
+			graph.ToDotFile(dotPath);
 						
 			DOT dotfile = new DOT();
-			string strBlah3 = System.IO.File.ReadAllText("DOTFILE.dot");
+			string strBlah3 = System.IO.File.ReadAllText(dotPath);
+			
 			string svg = dotfile.ToSvg(strBlah3);
-			System.IO.File.WriteAllText("SVG.svg", svg);
-			webBrowser1.Url = new Uri(@"C:\Users\Zenith\Documents\GitHub\Wikipedia-Clustering\HNCluster\HNCluster\bin\Debug\" + "SVG.svg");
+
+			System.IO.File.WriteAllText(String.Format("{0}\\SVG.svg", Application.UserAppDataPath), svg);
+
+			//webBrowser1.Url = new Uri(@"C:\Users\Zenith\Documents\GitHub\Wikipedia-Clustering\HNCluster\HNCluster\bin\Debug\" + "SVG.svg");
+			Uri url = new Uri(String.Format("{0}\\SVG.svg", Application.UserAppDataPath));
+			webBrowser1.Url = url;
+			XDocument doc = XDocument.Parse(svg);
+			SVGFile = (XElement)doc.LastNode;
+			//SVGFile = XDocument.Parse(svg).Element("svg");
+			this.Focus();
+			
+		}
+
+		void webBrowser1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+		{
+			Control c = webBrowser1;
+			c.Enabled = false;
+
+		}
+
+		XElement SVGFile;
+		void SaveToSVGFile()
+		{
 
 		}
 
@@ -153,7 +194,14 @@ namespace HNCluster
 		bool CtrlIsDown = false;
 		private void Form2_KeyDown_KeyUp(object sender, KeyEventArgs e)
 		{
+		
+			
 			CtrlIsDown = e.Control;
+			if (!CtrlIsDown)
+			{
+				Control c = webBrowser1;
+				c.Enabled = true;
+			}
 		}
 
 		private void Form2_MouseWheel(object sender, MouseEventArgs e)
@@ -164,6 +212,7 @@ namespace HNCluster
 			}
 		}
 		float ZoomSize = 1.0f;
+		Size WBSize = new Size(1727, 1044);
 		private void Zoom(int direction)
 		{
 			if (direction < 0)
@@ -174,7 +223,37 @@ namespace HNCluster
 			{
 				ZoomSize += 0.1f;
 			}
-			webBrowser1.Scale(new SizeF(ZoomSize, ZoomSize));
+			Size size = new Size((int)(ZoomSize * WBSize.Width), (int)(ZoomSize * WBSize.Height));
+			SVGFile.SetAttributeValue("viewBox", String.Format("0 0 {0} {1}", size.Width, size.Height));
+			//SVGFile.Attribute("width").SetValue((int)(ZoomSize * WBSize.Width));
+			//SVGFile.Attribute("height").SetValue((int)(ZoomSize * WBSize.Height));
+			SVGFile.Save("SVG.svg");
+			webBrowser1.Refresh();
+			
+			//webBrowser1.Scale(new SizeF(ZoomSize, ZoomSize));
 		}
+
+		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+		{
+			if (msg.Msg == 0x100)
+			{
+				if (keyData == Keys.Control)
+				{
+					int a;
+					
+				}
+
+			}
+			return false;
+		}
+
+		private void Form2_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+		{
+			if (e.Control)
+			{
+				e.IsInputKey = true;
+			}
+		}
+
 	}
 }
