@@ -15,26 +15,27 @@ namespace Clustering
 		public List<WikiPage> pages = new List<WikiPage>();
 		//public HashSet<string> tokenKeys = new HashSet<string>();
 		public WikiPage page = null;
-		public Dictionary<string, float> tfIDF_Vec;
+		//public Dictionary<string, float> tfIDF_Vec;
 
 		public static ILinkageCriteria criteria = new CompleteLinkageCriteria();
 		//public static ILinkageCriteria criteria = new AverageLinkageCriteria();
 		//public static ILinkageCriteria criteria = new SingleLinkageCriteria();
-		public float MeanDistance = 0;
+		//public float MeanDistance = 0;
 
 		public Cluster()
 		{
-			tfIDF_Vec = new Dictionary<string, float>();
+			//tfIDF_Vec = new Dictionary<string, float>();
 		}
 
 		public Cluster(WikiPage pg)
 		{
 			page = pg;
-			tfIDF_Vec = new Dictionary<string, float>();
 			pages.Add(pg);
+			/*
+			tfIDF_Vec = new Dictionary<string, float>();
 			foreach(string tokenkey in page.tf_IDF_Vec.Keys) {
 				tfIDF_Vec[tokenkey] = page.tf_IDF_Vec[tokenkey];
-			}
+			}*/
 		}
 
 		public Cluster(Cluster c1, Cluster c2)
@@ -79,7 +80,7 @@ namespace Clustering
 		}
 
 
-
+		/*
 		public float Magnitude()
 		{
 			float magnitude = 0;
@@ -90,6 +91,6 @@ namespace Clustering
 			}
 
 			return (float)Math.Sqrt(magnitude);
-		}
+		}*/
 	}
 }

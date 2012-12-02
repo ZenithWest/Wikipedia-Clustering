@@ -56,7 +56,14 @@ namespace UIControlLibrary
 			{
 				if (cluster.page == null)
 				{
-					string NodeName = String.Format("L{0}_{1}", depth, LR);
+					int num = 0;
+					int count = 0;
+					foreach (char ch in LR)
+					{
+						num += int.Parse(ch.ToString()) * (int)Math.Pow(2.0, count);
+						++count;
+					}
+					string NodeName = String.Format("L{0}_{1}", depth, num);
 					AddNode(NodeName);
 					AddEdge(ParentNode, NodeName);
 					GenerateGraph(cluster.cluster1, NodeName, depth + 1, LR + "0");
