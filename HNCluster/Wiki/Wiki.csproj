@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DistanceMetric\AngularDistance.cs" />
     <Compile Include="DistanceMetric\CosineSimilarity.cs" />
     <Compile Include="DistanceMetric\EuclideanDistance.cs" />
     <Compile Include="DistanceMetric\IDistanceMetric.cs" />
