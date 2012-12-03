@@ -58,12 +58,23 @@ namespace UIControlLibrary
 				{
 					int num = 0;
 					int count = 0;
-					foreach (char ch in LR)
+					string str = "";
+					for (int i = 0; i < LR.Length; i++)
 					{
-						num += int.Parse(ch.ToString()) * (int)Math.Pow(2.0, count);
-						++count;
+						num += int.Parse(LR[i].ToString()) * (int)Math.Pow(2.0, count++);
+						if (count >= 6)
+						{
+							count = 0;
+								str += char.ConvertFromUtf32(num + 'À');
+							num = 0;
+						}
 					}
-					string NodeName = String.Format("L{0}_{1}", depth, num);
+					if (count < 6)
+					{
+							str += char.ConvertFromUtf32(num + 'À');
+					}
+					string NodeName = String.Format("L{0}_{1}", depth, str);
+					cluster.SVGNodeName = NodeName;
 					AddNode(NodeName);
 					AddEdge(ParentNode, NodeName);
 					GenerateGraph(cluster.cluster1, NodeName, depth + 1, LR + "0");
@@ -72,37 +83,7 @@ namespace UIControlLibrary
 				else
 				{
 					string NodeName = cluster.page.title + " ";
-
-					//NodeName = NodeName.Replace(".", "_");
-					//NodeName = NodeName.Replace("'", "_");
-					
-					//NodeName = NodeName.Replace(":", "_");
-					//NodeName = NodeName.Replace("/", "_");
-
-
-
-
-
-
-					//NodeName = NodeName.Replace("–", "-");
-					//NodeName = NodeName.Replace("–", "-");
-
-
-
-					//NodeName = NodeName.Replace("-", "_");
-					//NodeName = NodeName.Replace(",", "_");
-					//NodeName = NodeName.Replace("+", "_");
-					//NodeName = NodeName.Replace("&", "_");
-					//NodeName = NodeName.Replace("(", "_");
-					//NodeName = NodeName.Replace(")", "_");
-					//NodeName = NodeName.Replace(" ", "_");
-					/*
-					NodeName = NodeName.Replace("ä", "a");
-					NodeName = NodeName.Replace("é", "e");
-					NodeName = NodeName.Replace("á", "a");
-					NodeName = NodeName.Replace("ó", "o");
-					NodeName = NodeName.Replace("è", "e");
-					NodeName = NodeName.Replace("ü", "u");*/
+					cluster.SVGNodeName = NodeName;
 					AddNode(NodeName);
 					AddEdge(ParentNode, NodeName);
 				}
@@ -118,7 +99,8 @@ namespace UIControlLibrary
 			}
 			catch
 			{
-
+				int a = 0;
+				++a;
 			}
 		}
 
@@ -136,7 +118,8 @@ namespace UIControlLibrary
 			}
 			catch
 			{
-
+				int a = 0;
+				++a;
 			}
 		}
 
@@ -153,6 +136,140 @@ namespace UIControlLibrary
 
 			XDocument doc = XDocument.Parse(svg);
 			SVGFile = (XElement)doc.LastNode;
+			FormatSVG();
+		}
+
+		int SVGWidth = 0;
+		int SVGHeight = 0;
+		private void FormatSVG()
+		{
+			string strWidth = SVGFile.Attribute("width").Value;
+			strWidth = strWidth.Replace("px", "");
+			string strHeight = SVGFile.Attribute("height").Value;
+			strHeight = strHeight.Replace("px", "");
+			SVGWidth = int.Parse(strWidth);
+			SVGHeight = int.Parse(strHeight);
+			SVGFile.Add(new XAttribute("currentScale", 1));
+
+			XNamespace NS = SVGFile.GetDefaultNamespace();
+			XElement graph = SVGFile.Element(NS + "g");
+			foreach (XElement node in graph.Elements(NS + "g"))
+			{
+				if (node.Attribute("class").Value == "node")
+				{
+					string title = node.Element(NS + "title").Value;
+					if (title.StartsWith("L") && char.IsDigit(title[1]))
+					{
+						XElement ellipse = node.Element(NS + "ellipse");
+						int red = 0;
+						int green = 0;
+						int blue = 0;
+
+						if (char.IsDigit(title[2]))
+						{
+							if (!char.IsDigit(title[3]))
+							{
+								int digit = int.Parse(title[1].ToString());
+								if (digit >= 2)
+								{
+									blue = 100;
+								}
+
+								if (digit >= 4)
+								{
+									green = 100;
+								}
+
+								if (digit >= 6)
+								{
+									red = 100;
+									blue = 0;
+								}
+
+								if (digit >= 8)
+								{
+									red = 100;
+									blue = 0;
+									green = 0;
+								}
+								switch (digit)
+								{
+									case 1:
+										blue = 50 + 5 * int.Parse(title[2].ToString());
+										break;
+									case 2:
+										green = 0 + 5 * int.Parse(title[2].ToString());
+										break;
+									case 3:
+										green = 50 + 5 * int.Parse(title[2].ToString());
+										break;
+									case 4:
+										red = 0 + 5 * int.Parse(title[2].ToString());
+										blue = 100 - 5 * int.Parse(title[2].ToString());
+										break;
+									case 5:
+										red = 50 + 5 * int.Parse(title[2].ToString());
+										blue = 50 - 5 * int.Parse(title[2].ToString());
+										break;
+									case 6:
+										green = 100 - 5 * int.Parse(title[2].ToString());
+										break;
+									case 7:
+										green = 50 - 5 * int.Parse(title[2].ToString());
+										break;
+									case 8:
+										blue = 5 * int.Parse(title[2].ToString());
+										green = 5 * int.Parse(title[2].ToString());
+										break;
+									case 9:
+										blue = 50 + 5 * int.Parse(title[2].ToString());
+										green = 50 + 5 * int.Parse(title[2].ToString());
+										break;
+								}
+							}
+							else
+							{
+								blue = 100;
+								green = 100;
+								red = 100;
+							}
+						}
+						else
+						{
+							blue = 5 * int.Parse(title[1].ToString());
+						}
+
+						string style = string.Format("fill:rgb({0}%, {1}%, {2}%);stroke:black;", red, green, blue);
+						ellipse.Attribute("style").SetValue(style);
+					}
+				}
+			}
+			SVGFile.Save(SVGFilePath);
+		}
+		int ZoomFactor = 0;
+		private void buttonZoomIn_Click(object sender, EventArgs e)
+		{
+			if (ZoomFactor <= 0)
+			{
+				++ZoomFactor;
+
+				SVGFile.Attribute("currentScale").SetValue(Math.Pow(1.25, ZoomFactor));
+				SVGFile.Attribute("width").SetValue(((int)(SVGWidth * Math.Pow(1.25, ZoomFactor))) + "px");
+				SVGFile.Attribute("height").SetValue(((int)(SVGHeight * Math.Pow(1.25, ZoomFactor))) + "px");
+				SVGFile.Save(SVGFilePath);
+				webBrowser1.Refresh();
+			}
+		}
+
+		private void buttonZoomOut_Click(object sender, EventArgs e)
+		{
+			--ZoomFactor;
+
+			SVGFile.Attribute("currentScale").SetValue(Math.Pow(1.25, ZoomFactor));
+			SVGFile.Attribute("width").SetValue(((int)(SVGWidth * Math.Pow(1.25, ZoomFactor)))+ "px");
+			SVGFile.Attribute("height").SetValue(((int)(SVGHeight * Math.Pow(1.25, ZoomFactor))) + "px");
+			SVGFile.Save(SVGFilePath);
+			webBrowser1.Refresh();
 		}
 	}
 }

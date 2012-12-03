@@ -22,6 +22,13 @@ namespace HNClusterUI
 
 		public HNClusterUI()
 		{
+			uint x = 0;
+			List<string> str = new List<string>();
+			for (int i = 0; i < 55296; ++i)
+			{
+				str.Add(char.ConvertFromUtf32(i));
+			}
+
 			InitializeComponent();
 			graphUI = new GraphUI();
 			wikiCollection = new WikiCollection();
@@ -34,10 +41,10 @@ namespace HNClusterUI
 
 		public void ClusterWikipedia()
 		{
-			//wikiCollection.ParseXML(@"Wikipedia-ComputerScience.xml");
+			wikiCollection.ParseXML(@"Wikipedia-ComputerScience.xml");
 			wikiCollection.ParseXML(@"Wikipedia-Science.xml");
 			//wikiCollection.ParseXML(@"Wikipedia-Genetic-Engineering.xml");
-			//wikiCollection.ParseXML(@"Wikipedia-Algorithms-and-Data-Structures.xml");
+			wikiCollection.ParseXML(@"Wikipedia-Algorithms-and-Data-Structures.xml");
 			wikiCollection.ExtractTokens();
 			HAC = new HierarchicalCluster(wikiCollection);
 			HAC.initializeClusters();

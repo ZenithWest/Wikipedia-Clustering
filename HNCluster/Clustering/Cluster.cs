@@ -15,6 +15,7 @@ namespace Clustering
 		public List<WikiPage> pages = new List<WikiPage>();
 		//public HashSet<string> tokenKeys = new HashSet<string>();
 		public WikiPage page = null;
+		public string SVGNodeName = "";
 		//public Dictionary<string, float> tfIDF_Vec;
 
 		public static ILinkageCriteria criteria = new CompleteLinkageCriteria();
