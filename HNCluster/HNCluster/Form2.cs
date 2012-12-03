@@ -60,14 +60,14 @@ namespace HNCluster
 		public Form2()
 		{
 			InitializeComponent();
-
+			/*
 			string DotFilePath = String.Format(@"C:\Users\Zenith\AppData\Roaming\HNClusterUI\HNClusterUI\1.0.0.0\DOTFILE - Copy - Copy.dot");
 			//graph.ToDotFile(DotFilePath);
 
 			DOT dotfile2 = new DOT();
 			string DotFile1 = File.ReadAllText(DotFilePath);
 			string svg2 = dotfile2.ToSvg(DotFile1);
-			return;
+			return;*/
 
 
 			this.MouseWheel += new System.Windows.Forms.MouseEventHandler(Form2_MouseWheel);
