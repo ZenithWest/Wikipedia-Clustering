@@ -30,59 +30,108 @@
 		{
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-			this.treeCluster = new UIControlLibrary.TreeCluster();
+			this.tabControl1 = new System.Windows.Forms.TabControl();
+			this.tabPage1 = new System.Windows.Forms.TabPage();
+			this.tabPage2 = new System.Windows.Forms.TabPage();
 			this.pageDisplay1 = new UIControlLibrary.PageDisplay();
+			this.treeCluster = new UIControlLibrary.TreeCluster();
+			this.graphDisplay1 = new UIControlLibrary.GraphDisplay();
+			this.tabControl1.SuspendLayout();
+			this.tabPage1.SuspendLayout();
+			this.tabPage2.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// menuStrip1
 			// 
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(1293, 24);
+			this.menuStrip1.Size = new System.Drawing.Size(1384, 24);
 			this.menuStrip1.TabIndex = 2;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
 			// statusStrip1
 			// 
-			this.statusStrip1.Location = new System.Drawing.Point(0, 727);
+			this.statusStrip1.Location = new System.Drawing.Point(0, 790);
 			this.statusStrip1.Name = "statusStrip1";
-			this.statusStrip1.Size = new System.Drawing.Size(1293, 22);
+			this.statusStrip1.Size = new System.Drawing.Size(1384, 22);
 			this.statusStrip1.TabIndex = 3;
 			this.statusStrip1.Text = "statusStrip1";
 			// 
-			// treeCluster
+			// tabControl1
 			// 
-			this.treeCluster.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.treeCluster.Location = new System.Drawing.Point(748, 24);
-			this.treeCluster.Margin = new System.Windows.Forms.Padding(0);
-			this.treeCluster.Name = "treeCluster";
-			this.treeCluster.Size = new System.Drawing.Size(545, 704);
-			this.treeCluster.TabIndex = 1;
+			this.tabControl1.Controls.Add(this.tabPage1);
+			this.tabControl1.Controls.Add(this.tabPage2);
+			this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tabControl1.Location = new System.Drawing.Point(0, 24);
+			this.tabControl1.Name = "tabControl1";
+			this.tabControl1.SelectedIndex = 0;
+			this.tabControl1.Size = new System.Drawing.Size(1384, 766);
+			this.tabControl1.TabIndex = 4;
+			// 
+			// tabPage1
+			// 
+			this.tabPage1.Controls.Add(this.pageDisplay1);
+			this.tabPage1.Controls.Add(this.treeCluster);
+			this.tabPage1.Location = new System.Drawing.Point(4, 22);
+			this.tabPage1.Name = "tabPage1";
+			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPage1.Size = new System.Drawing.Size(1376, 740);
+			this.tabPage1.TabIndex = 0;
+			this.tabPage1.Text = "tabPage1";
+			this.tabPage1.UseVisualStyleBackColor = true;
+			// 
+			// tabPage2
+			// 
+			this.tabPage2.Controls.Add(this.graphDisplay1);
+			this.tabPage2.Location = new System.Drawing.Point(4, 22);
+			this.tabPage2.Name = "tabPage2";
+			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPage2.Size = new System.Drawing.Size(1376, 740);
+			this.tabPage2.TabIndex = 1;
+			this.tabPage2.Text = "tabPage2";
+			this.tabPage2.UseVisualStyleBackColor = true;
 			// 
 			// pageDisplay1
 			// 
-			this.pageDisplay1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.pageDisplay1.Location = new System.Drawing.Point(0, 24);
+			this.pageDisplay1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.pageDisplay1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.pageDisplay1.Location = new System.Drawing.Point(3, 3);
 			this.pageDisplay1.Margin = new System.Windows.Forms.Padding(0);
 			this.pageDisplay1.Name = "pageDisplay1";
-			this.pageDisplay1.Size = new System.Drawing.Size(748, 704);
+			this.pageDisplay1.Size = new System.Drawing.Size(1039, 734);
 			this.pageDisplay1.TabIndex = 0;
+			// 
+			// treeCluster
+			// 
+			this.treeCluster.Dock = System.Windows.Forms.DockStyle.Right;
+			this.treeCluster.Location = new System.Drawing.Point(1042, 3);
+			this.treeCluster.Margin = new System.Windows.Forms.Padding(0);
+			this.treeCluster.Name = "treeCluster";
+			this.treeCluster.Size = new System.Drawing.Size(331, 734);
+			this.treeCluster.TabIndex = 1;
+			// 
+			// graphDisplay1
+			// 
+			this.graphDisplay1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.graphDisplay1.Location = new System.Drawing.Point(3, 3);
+			this.graphDisplay1.Name = "graphDisplay1";
+			this.graphDisplay1.Size = new System.Drawing.Size(1370, 734);
+			this.graphDisplay1.TabIndex = 0;
 			// 
 			// HNClusterUI
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1293, 749);
+			this.ClientSize = new System.Drawing.Size(1384, 812);
+			this.Controls.Add(this.tabControl1);
 			this.Controls.Add(this.statusStrip1);
-			this.Controls.Add(this.treeCluster);
-			this.Controls.Add(this.pageDisplay1);
 			this.Controls.Add(this.menuStrip1);
 			this.MainMenuStrip = this.menuStrip1;
 			this.Name = "HNClusterUI";
 			this.Text = "Form1";
+			this.tabControl1.ResumeLayout(false);
+			this.tabPage1.ResumeLayout(false);
+			this.tabPage2.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -94,6 +143,10 @@
 		private UIControlLibrary.TreeCluster treeCluster;
 		private System.Windows.Forms.MenuStrip menuStrip1;
 		private System.Windows.Forms.StatusStrip statusStrip1;
+		private System.Windows.Forms.TabControl tabControl1;
+		private System.Windows.Forms.TabPage tabPage1;
+		private System.Windows.Forms.TabPage tabPage2;
+		private UIControlLibrary.GraphDisplay graphDisplay1;
 
 	}
 }

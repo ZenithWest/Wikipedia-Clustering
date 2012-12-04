@@ -20,16 +20,15 @@ namespace HNClusterUI
 		public event ClusteringWikipediaFinishedHandler ClusteringWikipediaFinished;
 		GraphUI graphUI = new GraphUI();
 
+		TabPage GraphTabPage;
+
 		public HNClusterUI()
 		{
-			uint x = 0;
-			List<string> str = new List<string>();
-			for (int i = 0; i < 55296; ++i)
-			{
-				str.Add(char.ConvertFromUtf32(i));
-			}
-
 			InitializeComponent();
+
+			GraphTabPage = tabControl1.TabPages[1];
+			tabControl1.TabPages.Remove(GraphTabPage);
+
 			graphUI = new GraphUI();
 			wikiCollection = new WikiCollection();
 			ClusteringWikipediaFinished += new ClusteringWikipediaFinishedHandler(OnClusteringWikipediaFinished);
@@ -42,9 +41,9 @@ namespace HNClusterUI
 		public void ClusterWikipedia()
 		{
 			wikiCollection.ParseXML(@"Wikipedia-ComputerScience.xml");
-			wikiCollection.ParseXML(@"Wikipedia-Science.xml");
+			//wikiCollection.ParseXML(@"Wikipedia-Science.xml");
 			//wikiCollection.ParseXML(@"Wikipedia-Genetic-Engineering.xml");
-			wikiCollection.ParseXML(@"Wikipedia-Algorithms-and-Data-Structures.xml");
+			//wikiCollection.ParseXML(@"Wikipedia-Algorithms-and-Data-Structures.xml");
 			wikiCollection.ExtractTokens();
 			HAC = new HierarchicalCluster(wikiCollection);
 			HAC.initializeClusters();
@@ -56,7 +55,9 @@ namespace HNClusterUI
 		{
 			graphUI.GenerateGraph(HAC);
 			treeCluster.LoadClusters(HAC);
-			graphUI.Show();
+			graphDisplay1.GenerateGraph(HAC);
+
+			tabControl1.TabPages.Add(GraphTabPage);
 		}
 
 		public void treeViewClusters_AfterSelect(object sender, TreeViewEventArgs e)
@@ -79,6 +80,7 @@ namespace HNClusterUI
 			if (listView.SelectedItems.Count > 0)
 			{
 				pageDisplay1.LoadPage(listView.SelectedItems[0].Text);
+				pageDisplay1.textBoxTitle.Text = listView.SelectedItems[0].Text;
 			}
 		}
 
