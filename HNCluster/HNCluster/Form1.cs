@@ -473,72 +473,31 @@ namespace HNCluster
 
 		public void AddClustersMethod(TreeNode node, XElement element, Cluster cluster)
 		{
-			if (cluster.page != null)
+			if (cluster.pages.Count != 0)
 			{
 				if (cluster.cluster1 != null || cluster.cluster2 != null)
 				{
-					TreeNode node3 = new TreeNode(cluster.page.title);
-					node.Nodes.Add(node3);
+					foreach (Wiki.WikiPage page in cluster.pages)
+					{
+						TreeNode node3 = new TreeNode(page.title);
+						node.Nodes.Add(node3);
 
-					XElement element3 = new XElement("Cluster");
-					element3.SetValue(cluster.page.title);
-					element.Add(element3);
+						XElement element3 = new XElement("Cluster");
+						element3.SetValue(page.title);
+						element.Add(element3);
+					}
 				}
 				else
 				{
-
-					/*
-					TreeNode parent = node.Parent;
-					bool test =false;
-					while (true)
+					foreach (Wiki.WikiPage page in cluster.pages)
 					{
-						if (parent != null && parent.Parent != null)
-						{
-							int blah = -1;
-							if (parent.Nodes[0].Text != "Cluster")
-							{
-								blah = 0;
-							}
-							else if (parent.Nodes.Count > 1 && parent.Nodes[1].Text != "Cluster")
-							{
-								blah = 1;
-							}
-							if (blah != -1)
-							{
-								foreach (TreeNode nd in parent.Nodes[1 - blah].Nodes)
-								{
-									parent.Nodes.Add(nd);
-								}
-								parent.Nodes.Remove(parent.Nodes[1 - blah]);
-								node = parent;
-								parent = node.Parent;
-								test = true;
-							}
-							else
-							{
-								break;
-							}
-						}
-						else
-						{
-							break;
-						}
-					}
-					if (test)
-					{
-						TreeNode node3 = new TreeNode(cluster.page.title);
-						node.Nodes.Add(node3);
-						node = node3;
-					}
-					else*/
-					{
-						node.Text = cluster.page.title;
-						element.SetValue(cluster.page.title);
+						node.Text = page.title;
+						element.SetValue(page.title);
 						element.Name = "Cluster";
+						node.NodeFont = new Font(FontFamily.GenericSansSerif, 8, FontStyle.Regular);
+						node.ForeColor = Color.White;
+						return;
 					}
-					node.NodeFont = new Font(FontFamily.GenericSansSerif, 8, FontStyle.Regular);
-					node.ForeColor = Color.White;
-					return;
 				}
 			}
 			if (cluster.cluster1 != null)

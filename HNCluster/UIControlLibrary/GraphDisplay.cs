@@ -54,7 +54,7 @@ namespace UIControlLibrary
 		{
 			if (cluster != null)
 			{
-				if (cluster.page == null)
+				if (cluster.pages.Count == 0)
 				{
 					int num = 0;
 					int count = 0;
@@ -82,10 +82,13 @@ namespace UIControlLibrary
 				}
 				else
 				{
-					string NodeName = cluster.page.title + " ";
-					cluster.SVGNodeName = NodeName;
-					AddNode(NodeName);
-					AddEdge(ParentNode, NodeName);
+					foreach (Wiki.WikiPage page in cluster.pages)
+					{
+						string NodeName = page.title + " ";
+						cluster.SVGNodeName = NodeName;
+						AddNode(NodeName);
+						AddEdge(ParentNode, NodeName);
+					}
 				}
 			}
 		}

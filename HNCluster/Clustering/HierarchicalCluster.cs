@@ -192,10 +192,23 @@ namespace Clustering
 
 				});
 
-				Cluster newCluster = new Cluster(c1, c2);
-				clusters.Remove(c1);
-				clusters.Remove(c2);
-				clusters.Add(newCluster);
+				if (c2.leaf && c2.pages.Count == 1)
+				{
+					c1.AddPage(c2.pages[0]);
+					clusters.Remove(c2);
+				}
+				else if (c1.leaf && c1.pages.Count == 1)
+				{
+					c2.AddPage(c1.pages[0]);
+					clusters.Remove(c1);
+				}
+				else
+				{
+					Cluster newCluster = new Cluster(c1, c2);
+					clusters.Remove(c1);
+					clusters.Remove(c2);
+					clusters.Add(newCluster);
+				}
 			}
 
 			globalTime = DateTime.Now.Ticks - globalTime;

@@ -31,6 +31,7 @@ namespace UIControlLibrary
 			foreach (Cluster cluster in HAC.clusters)
 			{
 				TreeNode node = new TreeNode("Cluster");
+				node.ForeColor = Color.Lime;
 				AddClustersMethod(node, OutputClusters, cluster);
 				treeViewClusters.Nodes.Add(node);
 			}
@@ -38,31 +39,23 @@ namespace UIControlLibrary
 
 		public void AddClustersMethod(TreeNode node, XElement element, Cluster cluster)
 		{
-			if (cluster.page != null)
+			foreach (Wiki.WikiPage page in cluster.pages)
 			{
-				if (cluster.cluster1 != null || cluster.cluster2 != null)
-				{
-					TreeNode node3 = new TreeNode(cluster.page.title);
-					node.Nodes.Add(node3);
+				TreeNode node3 = new TreeNode(page.title);
+				node3.NodeFont = new Font(FontFamily.GenericSansSerif, 8, FontStyle.Regular);
+				node3.ForeColor = Color.White;
+				node.Nodes.Add(node3);
 
-					XElement element3 = new XElement("Cluster");
-					element3.SetValue(cluster.page.title);
-					element.Add(element3);
-				}
-				else
-				{
-					node.Text = cluster.page.title;
-					element.SetValue(cluster.page.title);
-					element.Name = "Cluster";
-					node.NodeFont = new Font(FontFamily.GenericSansSerif, 8, FontStyle.Regular);
-					node.ForeColor = Color.White;
-					return;
-				}
+				XElement element3 = new XElement("Cluster");
+				element3.SetValue(page.title);
+				element.Add(element3);
 			}
+
 			if (cluster.cluster1 != null)
 			{
 
 				TreeNode node1 = new TreeNode("Cluster");
+				node1.ForeColor = Color.Lime;
 				node.Nodes.Add(node1);
 
 				XElement element1 = new XElement("Cluster");
@@ -70,9 +63,11 @@ namespace UIControlLibrary
 
 				AddClustersMethod(node1, element1, cluster.cluster1);
 			}
+
 			if (cluster.cluster2 != null)
 			{
 				TreeNode node2 = new TreeNode("Cluster");
+				node2.ForeColor = Color.Lime;
 				node.Nodes.Add(node2);
 
 				XElement element2 = new XElement("Cluster");
@@ -80,8 +75,7 @@ namespace UIControlLibrary
 
 				AddClustersMethod(node2, element2, cluster.cluster2);
 			}
-			//node.NodeFont = new Font(FontFamily.GenericSansSerif, 10, FontStyle.Bold | FontStyle.Underline);
-			node.ForeColor = Color.Lime;
+			 
 		}
 
 		public void AddPagesFromCluster(TreeNode node)

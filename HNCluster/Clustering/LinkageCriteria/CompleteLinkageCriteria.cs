@@ -13,9 +13,9 @@ namespace Clustering
 		public float GetDistance(Cluster c1, Cluster c2)
 		{
 			float maximum = WikiPage.metric.MinValue();
-			foreach (WikiPage page1 in c1.pages)
+			foreach (WikiPage page1 in c1.AllPagesInCluster)
 			{
-				foreach (WikiPage page2 in c2.pages)
+				foreach (WikiPage page2 in c2.AllPagesInCluster)
 				{
 					float distance = page1.GetDistance(page2);
 					if (!WikiPage.metric.Compare(distance, maximum))
@@ -29,9 +29,9 @@ namespace Clustering
 		public float GetDistance(Cluster c1, Cluster c2, float[,] DistanceMatrix)
 		{
 			float maximum = WikiPage.metric.MinValue();
-			foreach (WikiPage page1 in c1.pages)
+			foreach (WikiPage page1 in c1.AllPagesInCluster)
 			{
-				foreach (WikiPage page2 in c2.pages)
+				foreach (WikiPage page2 in c2.AllPagesInCluster)
 				{
 					float distance = DistanceMatrix[page1.id, page2.id];
 					if (WikiPage.metric.Compare(maximum, distance))
