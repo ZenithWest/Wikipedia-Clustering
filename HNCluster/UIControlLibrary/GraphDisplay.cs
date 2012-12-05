@@ -43,6 +43,7 @@ namespace UIControlLibrary
 			if (HAC.clusters.Count > 0)
 			{
 				AddNode("Main_Cluster");
+				HAC.clusters[0].SVGNodeName = "Main_Cluster";
 				GenerateGraph(HAC.clusters[0], "Main_Cluster", 0, "0");
 				GenerateSVG();
 				webBrowser1.Url = url;
@@ -54,43 +55,68 @@ namespace UIControlLibrary
 		{
 			if (cluster != null)
 			{
-				if (cluster.pages.Count == 0)
+				string NodeName1 = "";
+				string NodeName2 = "";
+
+				foreach (Wiki.WikiPage page in cluster.pages)
 				{
-					int num = 0;
-					int count = 0;
-					string str = "";
-					for (int i = 0; i < LR.Length; i++)
-					{
-						num += int.Parse(LR[i].ToString()) * (int)Math.Pow(2.0, count++);
-						if (count >= 6)
-						{
-							count = 0;
-								str += char.ConvertFromUtf32(num + 'À');
-							num = 0;
-						}
-					}
-					if (count < 6)
-					{
-							str += char.ConvertFromUtf32(num + 'À');
-					}
-					string NodeName = String.Format("L{0}_{1}", depth, str);
-					cluster.SVGNodeName = NodeName;
+					string NodeName = page.title + " ";
 					AddNode(NodeName);
 					AddEdge(ParentNode, NodeName);
-					GenerateGraph(cluster.cluster1, NodeName, depth + 1, LR + "0");
-					GenerateGraph(cluster.cluster2, NodeName, depth + 1, LR + "1");
 				}
-				else
+
+				if (cluster.cluster1 != null)
 				{
-					foreach (Wiki.WikiPage page in cluster.pages)
-					{
-						string NodeName = page.title + " ";
-						cluster.SVGNodeName = NodeName;
-						AddNode(NodeName);
-						AddEdge(ParentNode, NodeName);
-					}
+					NodeName1 = GenerateNodeName(cluster.cluster1, depth + 1, LR + "0");
+					cluster.cluster1.SVGNodeName = NodeName1;
+					AddNode(NodeName1);
+					AddEdge(ParentNode, NodeName1);
+					GenerateGraph(cluster.cluster1, NodeName1, depth + 1, LR + "0");
+				}
+
+				if (cluster.cluster2 != null)
+				{
+					NodeName2 = GenerateNodeName(cluster.cluster2, depth + 1, LR + "1");
+					cluster.cluster2.SVGNodeName = NodeName2;
+					AddNode(NodeName2);
+					AddEdge(ParentNode, NodeName2);
+					GenerateGraph(cluster.cluster2, NodeName2, depth + 1, LR + "1");
+				}
+				/*
+				if (cluster.cluster1 != null)
+				{
+					GenerateGraph(cluster.cluster1, NodeName1, depth + 1, LR + "0");
+				}
+
+				if (cluster.cluster2 != null)
+				{
+					GenerateGraph(cluster.cluster2, NodeName2, depth + 1, LR + "1");
+				}*/
+
+				
+			}
+		}
+
+		string GenerateNodeName(Cluster cluster, int depth, string LR)
+		{
+			int num = 0;
+			int count = 0;
+			string str = "";
+			for (int i = 0; i < LR.Length; i++)
+			{
+				num += int.Parse(LR[i].ToString()) * (int)Math.Pow(2.0, count++);
+				if (count >= 6)
+				{
+					count = 0;
+					str += char.ConvertFromUtf32(num + 'À');
+					num = 0;
 				}
 			}
+			if (count < 6)
+			{
+				str += char.ConvertFromUtf32(num + 'À');
+			}
+			return String.Format("L{0}_{1}", depth, str);
 		}
 
 		private void AddNode(string name)
@@ -140,6 +166,14 @@ namespace UIControlLibrary
 			XDocument doc = XDocument.Parse(svg);
 			SVGFile = (XElement)doc.LastNode;
 			FormatSVG();
+
+			ZoomFactor = -2;
+
+			SVGFile.Attribute("currentScale").SetValue(Math.Pow(1.25, ZoomFactor));
+			SVGFile.Attribute("width").SetValue(((int)(SVGWidth * Math.Pow(1.25, ZoomFactor))) + "px");
+			SVGFile.Attribute("height").SetValue(((int)(SVGHeight * Math.Pow(1.25, ZoomFactor))) + "px");
+			SVGFile.Save(SVGFilePath);
+			webBrowser1.Refresh();
 		}
 
 		int SVGWidth = 0;

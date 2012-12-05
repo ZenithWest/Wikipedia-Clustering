@@ -48,16 +48,15 @@ namespace HNClusterUI
 			HAC = new HierarchicalCluster(wikiCollection);
 			HAC.initializeClusters();
 			HAC.Cluster();
+			graphDisplay1.GenerateGraph(HAC);
 			this.Invoke(ClusteringWikipediaFinished);
 		}
 
 		public void OnClusteringWikipediaFinished()
 		{
-			graphUI.GenerateGraph(HAC);
-			treeCluster.LoadClusters(HAC);
-			graphDisplay1.GenerateGraph(HAC);
-
 			tabControl1.TabPages.Add(GraphTabPage);
+			tabControl1.SelectedIndex = 1;
+			treeCluster.LoadClusters(HAC);
 		}
 
 		public void treeViewClusters_AfterSelect(object sender, TreeViewEventArgs e)
