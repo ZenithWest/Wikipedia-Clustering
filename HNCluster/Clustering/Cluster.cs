@@ -12,9 +12,10 @@ namespace Clustering
 	{
 		public Cluster cluster1 = null;
 		public Cluster cluster2 = null;
-		public List<WikiPage> pages = new List<WikiPage>();
+		public List<WikiPage> AllPagesInCluster = new List<WikiPage>();
 		//public HashSet<string> tokenKeys = new HashSet<string>();
-		public WikiPage page = null;
+		public List<WikiPage> pages = new List<WikiPage>();
+		public bool leaf = false;
 		public string SVGNodeName = "";
 		//public Dictionary<string, float> tfIDF_Vec;
 
@@ -30,8 +31,9 @@ namespace Clustering
 
 		public Cluster(WikiPage pg)
 		{
-			page = pg;
 			pages.Add(pg);
+			AllPagesInCluster.Add(pg);
+			leaf = true;
 			/*
 			tfIDF_Vec = new Dictionary<string, float>();
 			foreach(string tokenkey in page.tf_IDF_Vec.Keys) {
@@ -44,8 +46,8 @@ namespace Clustering
 			cluster1 = c1;
 			cluster2 = c2;
 
-			pages.AddRange(c1.pages);
-			pages.AddRange(c2.pages);
+			AllPagesInCluster.AddRange(c1.AllPagesInCluster);
+			AllPagesInCluster.AddRange(c2.AllPagesInCluster);
 
 			//tokenKeys.UnionWith(c1.tokenKeys);
 			//tokenKeys.UnionWith(c2.tokenKeys);
@@ -56,13 +58,23 @@ namespace Clustering
 			cluster1 = c1;
 			cluster2 = c2;
 
-			pages.AddRange(c1.pages);
-			pages.AddRange(c2.pages);
+			AllPagesInCluster.AddRange(c1.AllPagesInCluster);
+			AllPagesInCluster.AddRange(c2.AllPagesInCluster);
 
 
 
 			//tokenKeys.UnionWith(c1.tokenKeys);
 			//tokenKeys.UnionWith(c2.tokenKeys);
+		}
+		public void AddPage(WikiPage page)
+		{
+			pages.Add(page);
+			AllPagesInCluster.Add(page);
+		}
+		public void AddPages(List<WikiPage> pgs)
+		{
+			pages.AddRange(pgs);
+			AllPagesInCluster.AddRange(pgs);
 		}
 
 		public float GetDistance(Cluster cluster)

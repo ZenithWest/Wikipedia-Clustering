@@ -13,15 +13,15 @@ namespace Clustering
 		public float GetDistance(Cluster c1, Cluster c2)
 		{
 			float mean = 0;
-			foreach (WikiPage page1 in c1.pages)
+			foreach (WikiPage page1 in c1.AllPagesInCluster)
 			{
-				foreach (WikiPage page2 in c2.pages)
+				foreach (WikiPage page2 in c2.AllPagesInCluster)
 				{
 					mean += page1.GetDistance(page2);
 				}
 			}
 
-			mean /= c1.pages.Count * c2.pages.Count;
+			mean /= c1.AllPagesInCluster.Count * c2.AllPagesInCluster.Count;
 
 			return mean;
 		}
@@ -29,15 +29,15 @@ namespace Clustering
 		public float GetDistance(Cluster c1, Cluster c2, float[,] DistanceMatrix)
 		{
 			float mean = 0;
-			foreach (WikiPage page1 in c1.pages)
+			foreach (WikiPage page1 in c1.AllPagesInCluster)
 			{
-				foreach (WikiPage page2 in c2.pages)
+				foreach (WikiPage page2 in c2.AllPagesInCluster)
 				{
 					mean += DistanceMatrix[page1.id, page2.id];
 				}
 			}
 
-			mean /= c1.pages.Count * c2.pages.Count;
+			mean /= c1.AllPagesInCluster.Count * c2.AllPagesInCluster.Count;
 
 			return mean;
 		}

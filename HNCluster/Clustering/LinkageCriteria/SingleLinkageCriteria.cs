@@ -16,9 +16,9 @@ namespace Clustering
 			//return GetDistanceParallel(c1, c2);
 
 			float minimum = WikiPage.metric.MaxValue();
-			foreach (WikiPage page1 in c1.pages)
+			foreach (WikiPage page1 in c1.AllPagesInCluster)
 			{
-				foreach (WikiPage page2 in c2.pages)
+				foreach (WikiPage page2 in c2.AllPagesInCluster)
 				{
 					float distance = page1.GetDistance(page2);
 					if (WikiPage.metric.Compare(distance, minimum))
@@ -36,9 +36,9 @@ namespace Clustering
 			//return GetDistanceParallel(c1, c2);
 
 			float minimum = WikiPage.metric.MaxValue();
-			foreach (WikiPage page1 in c1.pages)
+			foreach (WikiPage page1 in c1.AllPagesInCluster)
 			{
-				foreach (WikiPage page2 in c2.pages)
+				foreach (WikiPage page2 in c2.AllPagesInCluster)
 				{
 					float distance = DistanceMatrix[page1.id, page2.id];
 					if (WikiPage.metric.Compare(distance, minimum))
@@ -54,15 +54,15 @@ namespace Clustering
 		{
 			float GlobalMinimum = WikiPage.metric.MaxValue();
 			Mutex GlobalMutex = new Mutex();
-			Parallel.For(0, c1.pages.Count, i =>
+			Parallel.For(0, c1.AllPagesInCluster.Count, i =>
 			{
 				Thread.CurrentThread.Priority = ThreadPriority.Lowest;
 				Mutex LocalMutex = new Mutex();
 				float LocalMinimum = WikiPage.metric.MaxValue();
-				Parallel.For(0, c2.pages.Count, n =>
+				Parallel.For(0, c2.AllPagesInCluster.Count, n =>
 				{
 					Thread.CurrentThread.Priority = ThreadPriority.Lowest;
-					float distance = c1.pages[i].GetDistance(c2.pages[n]);
+					float distance = c1.AllPagesInCluster[i].GetDistance(c2.AllPagesInCluster[n]);
 					if (WikiPage.metric.Compare(distance, LocalMinimum))
 					{
 						LocalMutex.WaitOne();
