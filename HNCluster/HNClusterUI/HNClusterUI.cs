@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Wiki;
 using Clustering;
+using Recommender;
 
 namespace HNClusterUI
 {
@@ -19,6 +20,7 @@ namespace HNClusterUI
 		public delegate void ClusteringWikipediaFinishedHandler();
 		public event ClusteringWikipediaFinishedHandler ClusteringWikipediaFinished;
 		GraphUI graphUI = new GraphUI();
+        RecommenderUI recommenderUI = new RecommenderUI();
 
 		TabPage GraphTabPage;
 
@@ -41,7 +43,7 @@ namespace HNClusterUI
 		public void ClusterWikipedia()
 		{
 			wikiCollection.ParseXML(@"Wikipedia-ComputerScience.xml");
-			wikiCollection.ParseXML(@"Wikipedia-Science.xml");
+			//wikiCollection.ParseXML(@"Wikipedia-Science.xml");
 			//wikiCollection.ParseXML(@"Wikipedia-Genetic-Engineering.xml");
 			//wikiCollection.ParseXML(@"Wikipedia-Algorithms-and-Data-Structures.xml");
 			wikiCollection.ExtractTokens();
