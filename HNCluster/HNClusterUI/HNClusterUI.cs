@@ -41,7 +41,7 @@ namespace HNClusterUI
 		public void ClusterWikipedia()
 		{
 			wikiCollection.ParseXML(@"Wikipedia-ComputerScience.xml");
-			//wikiCollection.ParseXML(@"Wikipedia-Science.xml");
+			wikiCollection.ParseXML(@"Wikipedia-Science.xml");
 			//wikiCollection.ParseXML(@"Wikipedia-Genetic-Engineering.xml");
 			//wikiCollection.ParseXML(@"Wikipedia-Algorithms-and-Data-Structures.xml");
 			wikiCollection.ExtractTokens();
