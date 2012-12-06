@@ -66,6 +66,16 @@
       <DependentUpon>RecommenderUI.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UIControlLibrary\UIControlLibrary.csproj">
+      <Project>{f2fa7c28-c966-4379-8e3f-8185af8b3ba6}</Project>
+      <Name>UIControlLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wiki\Wiki.csproj">
+      <Project>{d845d3f1-e5b9-41aa-9d82-8c22453a3d48}</Project>
+      <Name>Wiki</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
