@@ -19,12 +19,29 @@ namespace Recommender
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            // TODO: Add code here to authenticate user credentials
+
+            if (txtboxUsername.Text == "" && txtboxPassword.Text == "")
+            {
+                MessageBox.Show("Please enter your username.\nPlease enter your password.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            else if (txtboxUsername.Text == "")
+            {
+                MessageBox.Show("Please enter your username.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            else if (txtboxPassword.Text == "")
+            {
+                MessageBox.Show("Please enter your password.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
 
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-
+            
         }
     }
 }
