@@ -80,6 +80,7 @@
             this.txtboxUsername.Name = "txtboxUsername";
             this.txtboxUsername.Size = new System.Drawing.Size(169, 20);
             this.txtboxUsername.TabIndex = 4;
+            this.txtboxUsername.Enter += new System.EventHandler(this.txtboxUsername_Enter);
             // 
             // txtboxPassword
             // 
@@ -88,6 +89,7 @@
             this.txtboxPassword.PasswordChar = '*';
             this.txtboxPassword.Size = new System.Drawing.Size(169, 20);
             this.txtboxPassword.TabIndex = 5;
+            this.txtboxPassword.Enter += new System.EventHandler(this.txtboxPassword_Enter);
             // 
             // UserLoginForm
             // 
@@ -102,6 +104,7 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnLogin);
             this.Name = "UserLoginForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Login";
             this.ResumeLayout(false);
             this.PerformLayout();
