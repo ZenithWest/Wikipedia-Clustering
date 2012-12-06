@@ -16,6 +16,8 @@ namespace Recommender
         public UserLoginForm()
         {
             InitializeComponent();
+            txtboxUsername.Text = "brice";
+            txtboxPassword.Text = "a";
         }
 
 
@@ -76,7 +78,7 @@ namespace Recommender
 
             else
             {
-
+                this.Close();
             }
         }
 

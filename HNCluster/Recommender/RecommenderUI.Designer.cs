@@ -33,12 +33,13 @@
             //
             // recPageDisplay
             //
+            this.recPageDisplay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.recPageDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.recPageDisplay.Location = new System.Drawing.Point(0, 0);
-            this.recPageDisplay.Name = "graphDisplay1";
-            this.recPageDisplay.Size = new System.Drawing.Size(1174, 771);
-            this.recPageDisplay.TabIndex = 0;
-
+            this.recPageDisplay.Location = new System.Drawing.Point(3, 3);
+            this.recPageDisplay.Margin = new System.Windows.Forms.Padding(0);
+            this.recPageDisplay.Name = "recPageDisplay";
+            this.recPageDisplay.Size = new System.Drawing.Size(899, 644);
+            this.recPageDisplay.TabIndex = 2;
             // 
             // RecommenderUI
             // 
