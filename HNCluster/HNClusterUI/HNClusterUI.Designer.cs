@@ -32,9 +32,9 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageDisplay = new System.Windows.Forms.TabPage();
-            this.tabPageGraph = new System.Windows.Forms.TabPage();
             this.pageDisplay1 = new UIControlLibrary.PageDisplay();
             this.treeCluster = new UIControlLibrary.TreeCluster();
+            this.tabPageGraph = new System.Windows.Forms.TabPage();
             this.graphDisplay1 = new UIControlLibrary.GraphDisplay();
             this.tabPageRecommender = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
@@ -70,6 +70,7 @@
             this.tabControl1.Size = new System.Drawing.Size(1244, 676);
             this.tabControl1.TabIndex = 4;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            this.tabControl1.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl1_Selecting);
             // 
             // tabPageDisplay
             // 
@@ -82,17 +83,6 @@
             this.tabPageDisplay.TabIndex = 0;
             this.tabPageDisplay.Text = "Display";
             this.tabPageDisplay.UseVisualStyleBackColor = true;
-            // 
-            // tabPageGraph
-            // 
-            this.tabPageGraph.Controls.Add(this.graphDisplay1);
-            this.tabPageGraph.Location = new System.Drawing.Point(4, 22);
-            this.tabPageGraph.Name = "tabPageGraph";
-            this.tabPageGraph.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageGraph.Size = new System.Drawing.Size(1236, 650);
-            this.tabPageGraph.TabIndex = 1;
-            this.tabPageGraph.Text = "Graph";
-            this.tabPageGraph.UseVisualStyleBackColor = true;
             // 
             // pageDisplay1
             // 
@@ -112,6 +102,17 @@
             this.treeCluster.Name = "treeCluster";
             this.treeCluster.Size = new System.Drawing.Size(331, 644);
             this.treeCluster.TabIndex = 1;
+            // 
+            // tabPageGraph
+            // 
+            this.tabPageGraph.Controls.Add(this.graphDisplay1);
+            this.tabPageGraph.Location = new System.Drawing.Point(4, 22);
+            this.tabPageGraph.Name = "tabPageGraph";
+            this.tabPageGraph.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageGraph.Size = new System.Drawing.Size(1236, 650);
+            this.tabPageGraph.TabIndex = 1;
+            this.tabPageGraph.Text = "Graph";
+            this.tabPageGraph.UseVisualStyleBackColor = true;
             // 
             // graphDisplay1
             // 

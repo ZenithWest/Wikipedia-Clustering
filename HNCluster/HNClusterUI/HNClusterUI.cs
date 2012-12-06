@@ -34,6 +34,8 @@ namespace HNClusterUI
             RecommenderTabPage = tabControl1.TabPages[2];
 
 			//tabControl1.TabPages.Remove(GraphTabPage);
+            tabControl1.TabPages[1].Enabled = false;            // Just disable the tab until content is ready instead of removing it
+            tabControl1.TabPages[2].Enabled = false;
 
 
 			graphUI = new GraphUI();
@@ -62,6 +64,8 @@ namespace HNClusterUI
 		public void OnClusteringWikipediaFinished()
 		{
 			//tabControl1.TabPages.Add(GraphTabPage);
+            tabControl1.TabPages[1].Enabled = true;         // Enable the graph tab page once content is finished loading
+            tabControl1.TabPages[2].Enabled = true;
 			tabControl1.SelectedIndex = 1;
 			treeCluster.LoadClusters(HAC);
 		}
@@ -96,6 +100,21 @@ namespace HNClusterUI
             {
                 UserLoginForm userLogin = new UserLoginForm();
                 userLogin.ShowDialog();
+            }
+        }
+
+        // Method is called when user selects a new tab page, but before the page is loaded and displayed to the user
+        private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+            // If user selects the graph tab then we need to make sure content has been loaded before allowing user to select Graph tab
+            if (e.TabPage == tabControl1.TabPages[1] && tabControl1.TabPages[1].Enabled == false)
+            {
+                e.Cancel = true;
+            }
+
+            if (e.TabPage == tabControl1.TabPages[2] && tabControl1.TabPages[2].Enabled == false)
+            {
+                e.Cancel = true;
             }
         }
 
