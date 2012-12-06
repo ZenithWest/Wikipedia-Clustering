@@ -23,13 +23,18 @@ namespace HNClusterUI
         RecommenderUI recommenderUI = new RecommenderUI();
 
 		TabPage GraphTabPage;
+        TabPage RecommenderTabPage;
+
 
 		public HNClusterUI()
 		{
 			InitializeComponent();
 
 			GraphTabPage = tabControl1.TabPages[1];
-			tabControl1.TabPages.Remove(GraphTabPage);
+            RecommenderTabPage = tabControl1.TabPages[2];
+
+			//tabControl1.TabPages.Remove(GraphTabPage);
+
 
 			graphUI = new GraphUI();
 			wikiCollection = new WikiCollection();
@@ -42,10 +47,10 @@ namespace HNClusterUI
 
 		public void ClusterWikipedia()
 		{
-			wikiCollection.ParseXML(@"Wikipedia-ComputerScience.xml");
+			//wikiCollection.ParseXML(@"Wikipedia-ComputerScience.xml");
 			//wikiCollection.ParseXML(@"Wikipedia-Science.xml");
 			//wikiCollection.ParseXML(@"Wikipedia-Genetic-Engineering.xml");
-			//wikiCollection.ParseXML(@"Wikipedia-Algorithms-and-Data-Structures.xml");
+			wikiCollection.ParseXML(@"Wikipedia-Algorithms-and-Data-Structures.xml");       // Use this data file for testing since it is the smallest
 			wikiCollection.ExtractTokens();
 			HAC = new HierarchicalCluster(wikiCollection);
 			HAC.initializeClusters();
@@ -56,7 +61,7 @@ namespace HNClusterUI
 
 		public void OnClusteringWikipediaFinished()
 		{
-			tabControl1.TabPages.Add(GraphTabPage);
+			//tabControl1.TabPages.Add(GraphTabPage);
 			tabControl1.SelectedIndex = 1;
 			treeCluster.LoadClusters(HAC);
 		}
@@ -84,6 +89,15 @@ namespace HNClusterUI
 				pageDisplay1.textBoxTitle.Text = listView.SelectedItems[0].Text;
 			}
 		}
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedTab == tabPageRecommender)
+            {
+                UserLoginForm userLogin = new UserLoginForm();
+                userLogin.ShowDialog();
+            }
+        }
 
 		
 

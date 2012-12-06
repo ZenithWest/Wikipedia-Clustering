@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Recommender
 {
-    public partial class Login : Form
+    public partial class UserLoginForm : Form
     {
-        public Login()
+        public UserLoginForm()
         {
             InitializeComponent();
         }
