@@ -27,6 +27,19 @@ namespace UIControlLibrary
             this.txtBoxUsername.Text = username;
         }
 
+        public void updateLikedPages(List<string> pageList)
+        {
+            listBoxLikedPages.Items.Clear();
+
+            for (int i = 0; i < pageList.Count; i++)
+            {
+                listBoxLikedPages.Items.Add(pageList[i]);
+            }
+
+            //listBoxLikedPages.Items.Add(listView.SelectedItems[0].Text);
+
+        }
+
 
     }
 }

@@ -21,6 +21,7 @@ namespace HNClusterUI
 		public event ClusteringWikipediaFinishedHandler ClusteringWikipediaFinished;
 		GraphUI graphUI = new GraphUI();
         RecommenderUI recommenderUI = new RecommenderUI();
+        RecommenderFeature recommenderFeature = new RecommenderFeature();
 
 		TabPage GraphTabPage;
         TabPage RecommenderTabPage;
@@ -40,6 +41,7 @@ namespace HNClusterUI
 
 			graphUI = new GraphUI();
 			wikiCollection = new WikiCollection();
+            recommenderFeature = new RecommenderFeature();
 			ClusteringWikipediaFinished += new ClusteringWikipediaFinishedHandler(OnClusteringWikipediaFinished);
 			treeCluster.treeViewClusters.AfterSelect += treeViewClusters_AfterSelect;
 			treeCluster.listViewClusters.ItemActivate += listViewClusters_ItemActivate;
@@ -94,7 +96,8 @@ namespace HNClusterUI
 
                 if (recommenderDisplay.userLoggedOn == true)
                 {
-                    recommenderDisplay.listBoxLikedPages.Items.Add(listView.SelectedItems[0].Text);
+                    recommenderFeature.userViewedPage(listView.SelectedItems[0].Text);
+                    recommenderDisplay.updateLikedPages(recommenderFeature.userData.likedPages);
                 }
 			}
 		}
@@ -107,6 +110,7 @@ namespace HNClusterUI
                 userLogin.ShowDialog();
                 
                 // If user authentication is successful, then propogate the authentication to the recommender
+                recommenderFeature.userAuthenticated(userLogin.username);
                 recommenderDisplay.userLoggedIn(userLogin.username);
             }
         }
