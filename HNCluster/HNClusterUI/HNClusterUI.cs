@@ -52,7 +52,8 @@ namespace HNClusterUI
 			//wikiCollection.ParseXML(@"Wikipedia-ComputerScience.xml");
 			//wikiCollection.ParseXML(@"Wikipedia-Science.xml");
 			//wikiCollection.ParseXML(@"Wikipedia-Genetic-Engineering.xml");
-			wikiCollection.ParseXML(@"Wikipedia-Algorithms-and-Data-Structures.xml");       // Use this data file for testing since it is the smallest
+			//wikiCollection.ParseXML(@"Wikipedia-Algorithms-and-Data-Structures.xml");
+            wikiCollection.ParseXML(@"WikiTestData.xml");           // Use this data file for testing since it is extremely small
 			wikiCollection.ExtractTokens();
 			HAC = new HierarchicalCluster(wikiCollection);
 			HAC.initializeClusters();
@@ -78,7 +79,6 @@ namespace HNClusterUI
 				ListView listView = treeCluster.listViewClusters;
 				listView.Items.Clear();
 				treeCluster.AddPagesFromCluster(e.Node);
-
 			}
 
 		}
@@ -91,17 +91,18 @@ namespace HNClusterUI
 			{
 				pageDisplay1.LoadPage(listView.SelectedItems[0].Text);
 				pageDisplay1.textBoxTitle.Text = listView.SelectedItems[0].Text;
-
-                //recommenderUI.DisplayPage(listView.SelectedItems[0].Text, listView.SelectedItems[0].Text);
 			}
 		}
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (tabControl1.SelectedTab == tabPageRecommender)
+            if (tabControl1.SelectedTab == tabPageRecommender && recommenderDisplay.userLoggedOn == false)
             {
                 UserLoginForm userLogin = new UserLoginForm();
                 userLogin.ShowDialog();
+                
+                // If user authentication is successful, then propogate the authentication to the recommender
+                recommenderDisplay.userLoggedIn(userLogin.username);
             }
         }
 

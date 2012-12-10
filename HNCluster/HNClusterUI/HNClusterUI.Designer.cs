@@ -37,6 +37,7 @@
             this.tabPageGraph = new System.Windows.Forms.TabPage();
             this.graphDisplay1 = new UIControlLibrary.GraphDisplay();
             this.tabPageRecommender = new System.Windows.Forms.TabPage();
+            this.recommenderDisplay = new UIControlLibrary.RecommenderDisplay();
             this.tabControl1.SuspendLayout();
             this.tabPageDisplay.SuspendLayout();
             this.tabPageGraph.SuspendLayout();
@@ -121,9 +122,18 @@
             this.graphDisplay1.Name = "graphDisplay1";
             this.graphDisplay1.Size = new System.Drawing.Size(1230, 644);
             this.graphDisplay1.TabIndex = 0;
+            //
+            // recommenderDisplay
+            //
+            this.recommenderDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.recommenderDisplay.Location = new System.Drawing.Point(3, 3);
+            this.recommenderDisplay.Name = "recommenderDisplay";
+            this.recommenderDisplay.Size = new System.Drawing.Size(1230, 644);
+            this.recommenderDisplay.TabIndex = 0;
             // 
             // tabPageRecommender
-            // 
+            //
+            this.tabPageRecommender.Controls.Add(this.recommenderDisplay);
             this.tabPageRecommender.Location = new System.Drawing.Point(4, 22);
             this.tabPageRecommender.Name = "tabPageRecommender";
             this.tabPageRecommender.Size = new System.Drawing.Size(1236, 650);
@@ -161,7 +171,7 @@
 		private System.Windows.Forms.TabPage tabPageGraph;
 		private UIControlLibrary.GraphDisplay graphDisplay1;
         private System.Windows.Forms.TabPage tabPageRecommender;
-
+        private UIControlLibrary.RecommenderDisplay recommenderDisplay;
 	}
 }
 

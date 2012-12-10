@@ -12,15 +12,11 @@ namespace Recommender
 {
     public partial class RecommenderUI : Form
     {
+
         public RecommenderUI()
         {
             InitializeComponent();
         }
 
-        public void DisplayPage(string pageText, string pageTitle)
-        {
-            recPageDisplay.LoadPage(pageText);
-            recPageDisplay.textBoxTitle.Text = pageTitle;
-        }
     }
 }

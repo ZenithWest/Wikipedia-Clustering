@@ -13,11 +13,16 @@ namespace Recommender
 {
     public partial class UserLoginForm : Form
     {
+        public bool userIsAuthenticated;
+        public string username;
+
         public UserLoginForm()
         {
             InitializeComponent();
             txtboxUsername.Text = "brice";
             txtboxPassword.Text = "a";
+            userIsAuthenticated = false;
+            username = txtboxUsername.Text;
         }
 
 
@@ -50,7 +55,8 @@ namespace Recommender
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            // TODO: Add code here to authenticate user credentials
+
+            userIsAuthenticated = validateUserCredentials(txtboxUsername.Text, txtboxPassword.Text);;
 
             if (txtboxUsername.Text == "" && txtboxPassword.Text == "")
             {
@@ -71,9 +77,15 @@ namespace Recommender
                 MessageBox.Show("Please enter your password.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            else if (validateUserCredentials(txtboxUsername.Text, txtboxPassword.Text) == false)
+            else if (userIsAuthenticated == false)
             {
                 MessageBox.Show("Invalid username/password pair.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            else if (userIsAuthenticated == true)
+            {
+                username = txtboxUsername.Text;
+                this.Close();
             }
 
             else

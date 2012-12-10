@@ -28,18 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.recPageDisplay = new UIControlLibrary.PageDisplay();
+            
+            this.recommenderDisplay1 = new UIControlLibrary.RecommenderDisplay();
+			// 
+			// recommenderDisplay1
+			// 
+			this.recommenderDisplay1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.recommenderDisplay1.Location = new System.Drawing.Point(0, 0);
+			this.recommenderDisplay1.Name = "recommenderDisplay1";
+			this.recommenderDisplay1.Size = new System.Drawing.Size(1174, 771);
+			this.recommenderDisplay1.TabIndex = 0;
             this.SuspendLayout();
-            //
-            // recPageDisplay
-            //
-            this.recPageDisplay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.recPageDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.recPageDisplay.Location = new System.Drawing.Point(3, 3);
-            this.recPageDisplay.Margin = new System.Windows.Forms.Padding(0);
-            this.recPageDisplay.Name = "recPageDisplay";
-            this.recPageDisplay.Size = new System.Drawing.Size(899, 644);
-            this.recPageDisplay.TabIndex = 2;
             // 
             // RecommenderUI
             // 
@@ -47,14 +46,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1174, 771);
-            this.Controls.Add(this.recPageDisplay);
             this.Name = "RecommenderUI";
             this.Text = "RecommenderUI";
             this.ResumeLayout(false);
         }
 
-        #endregion
+		#endregion
 
-        private UIControlLibrary.PageDisplay recPageDisplay;
+		private UIControlLibrary.RecommenderDisplay recommenderDisplay1;
     }
 }
