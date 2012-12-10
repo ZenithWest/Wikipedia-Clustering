@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Wiki;
 
 namespace UIControlLibrary
 {
@@ -14,6 +15,7 @@ namespace UIControlLibrary
     {
 
         public bool userLoggedOn;
+
 
         public RecommenderDisplay()
         {
@@ -27,13 +29,13 @@ namespace UIControlLibrary
             this.txtBoxUsername.Text = username;
         }
 
-        public void updateLikedPages(List<string> pageList)
+        public void updateLikedPages(List<WikiPage> pageList)
         {
             listBoxLikedPages.Items.Clear();
 
             for (int i = 0; i < pageList.Count; i++)
             {
-                listBoxLikedPages.Items.Add(pageList[i]);
+                listBoxLikedPages.Items.Add(pageList[i].title);
             }
 
             //listBoxLikedPages.Items.Add(listView.SelectedItems[0].Text);

@@ -5,12 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using System.IO;
+using System.Runtime.Serialization;
+using System.Xml;
+using Wiki;
 
 namespace Recommender
 {
     public class RecommenderFeature
     {
         public UserData userData;
+
 
         public RecommenderFeature()
         {
@@ -30,26 +34,30 @@ namespace Recommender
             saveUserData();
         }
 
+        public void userViewedPage(WikiPage page)
+        {
+            userData.likedWikiPages.Add(page);
+            saveUserData();
+        }
+
         public void createNewFile(string username)
         {
 
             string curDirectory = System.IO.Directory.GetCurrentDirectory() + "\\";
-            XmlSerializer serializer = new XmlSerializer(typeof(UserData));
-            TextWriter tw = null;
+            var serializer = new DataContractSerializer(typeof(UserData));
+            //TextWriter tw = null;
             UserData dummyData = new UserData(username);
 
-            try
+            using (var sw = new StringWriter())
             {
-                tw = new StreamWriter(curDirectory + username + ".xml", true);
-                serializer.Serialize(tw, dummyData);
-            }
-            catch (Exception ex)
-            {
-                tw.Close();
-                throw ex;
+                using (var writer = new FileStream(curDirectory + username + ".xml", FileMode.CreateNew, FileAccess.Write))
+                {
+                    //writer. = Formatting.Indented;
+                    serializer.WriteObject(writer, dummyData);
+                    writer.Flush();
+                }
             }
 
-            tw.Close();
 
         }
 
@@ -57,21 +65,17 @@ namespace Recommender
         {
             string curDirectory = System.IO.Directory.GetCurrentDirectory() + "\\";
 
-            XmlSerializer serializer = new XmlSerializer(typeof(UserData));
-            TextWriter tw = null;
+            var serializer = new DataContractSerializer(typeof(UserData));
 
-            try
+            using (var sw = new StringWriter())
             {
-                tw = new StreamWriter(curDirectory + userData.userName + ".xml");
-                serializer.Serialize(tw, userData);
+                using (var writer = new FileStream(curDirectory + userData.userName + ".xml", FileMode.Open, FileAccess.Write))
+                {
+                    //writer.Formatting = Formatting.Indented;
+                    serializer.WriteObject(writer, userData);
+                    writer.Flush();
+                }
             }
-            catch (Exception ex)
-            {
-                tw.Close();
-                throw ex;
-            }
-
-            tw.Close();
 
         }
 
@@ -79,29 +83,20 @@ namespace Recommender
         {
 
             string curDirectory = System.IO.Directory.GetCurrentDirectory() + "\\";
+            var serializer = new DataContractSerializer(typeof(UserData));
             string curFile = curDirectory + username + ".xml";
 
             if (File.Exists(curFile))
             {
-                XmlSerializer serializer = new XmlSerializer(typeof(UserData));
-                TextReader tr = null;
-
-                UserData ud = new UserData();
-
-                try
+                using (var sr = new StringReader(curDirectory + username + ".xml"))
                 {
-                    tr = new StreamReader(curFile);
-                    ud = (UserData)serializer.Deserialize(tr);
+                    using (var reader = new FileStream(curFile, FileMode.Open, FileAccess.Read))
+                    {
+                        //reader.for = Formatting.Indented;
+                        userData = (UserData)serializer.ReadObject(reader);
+                        reader.Close();
+                    }
                 }
-                catch (Exception ex)
-                {
-                    tr.Close();
-                    throw ex;
-                }
-
-                tr.Close();
-
-                userData = ud;
             }
             else
             {

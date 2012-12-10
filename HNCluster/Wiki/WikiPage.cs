@@ -5,21 +5,29 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using DotNetWikiBot;
+using System.Runtime.Serialization;
 
 
 namespace Wiki
 {
-
+    [DataContract]
 	public class WikiPage
 	{
+        [DataMember]
 		public string title = "";
+        [DataMember]
 		public int ns = 0;
+        [DataMember]
 		public long id = 0;
 		//public long revid = 0;
 		//public long parentid = 0;
+        [DataMember]
 		public DateTime timestamp;
+        [DataMember]
 		public string text;
+        [DataMember]
 		public string model;
+        [DataMember]
 		public string format;
 
 		//public static IDistanceMetric metric = new CosineSimilarity();
@@ -28,9 +36,16 @@ namespace Wiki
 		//public static IDistanceMetric metric = new EuclideanDistance();
 
 
-
+        [DataMember]
 		public TF_IDF_Vector tf_IDF_Vec;
+        [DataMember]
 		public Page page;
+
+        public WikiPage()
+        {
+            tf_IDF_Vec = null;
+            page = null;
+        }
 
 		public WikiPage(Page pg)
 		{

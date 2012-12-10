@@ -97,8 +97,10 @@ namespace HNClusterUI
 
                 if (recommenderDisplay.userLoggedOn == true)
                 {
-                    recommenderFeature.userViewedPage(listView.SelectedItems[0].Text);
-                    recommenderDisplay.updateLikedPages(recommenderFeature.userData.likedPages);
+                    //recommenderFeature.userViewedPage(listView.SelectedItems[0].Text);
+                    WikiPage wikiPage = HAC.wikiCollection.wikiPages.Find(WikiPage => WikiPage.title == listView.SelectedItems[0].Text);
+                    recommenderFeature.userViewedPage(wikiPage);
+                    recommenderDisplay.updateLikedPages(recommenderFeature.userData.likedWikiPages);
                 }
 			}
 		}
@@ -113,7 +115,7 @@ namespace HNClusterUI
                 // If user authentication is successful, then propogate the authentication to the recommender
                 recommenderFeature.userAuthenticated(userLogin.username);
                 recommenderDisplay.userLoggedIn(userLogin.username);
-                recommenderDisplay.updateLikedPages(recommenderFeature.userData.likedPages);
+                recommenderDisplay.updateLikedPages(recommenderFeature.userData.likedWikiPages);
 
             }
         }
