@@ -113,6 +113,8 @@ namespace HNClusterUI
                 // If user authentication is successful, then propogate the authentication to the recommender
                 recommenderFeature.userAuthenticated(userLogin.username);
                 recommenderDisplay.userLoggedIn(userLogin.username);
+                recommenderDisplay.updateLikedPages(recommenderFeature.userData.likedPages);
+
             }
         }
 
