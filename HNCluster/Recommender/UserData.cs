@@ -16,5 +16,11 @@ namespace Recommender
             userName = "";
             likedPages = new List<string>();
         }
+
+        public UserData(string name)
+        {
+            userName = name;
+            likedPages = new List<string>();
+        }
     }
 }

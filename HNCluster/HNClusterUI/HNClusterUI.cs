@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 using Wiki;
 using Clustering;
 using Recommender;
@@ -129,8 +130,6 @@ namespace HNClusterUI
                 e.Cancel = true;
             }
         }
-
-		
 
 	}
 }
