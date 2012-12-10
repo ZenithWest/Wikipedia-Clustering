@@ -1,17 +1,18 @@
 How to commit/push/merge
 
+
 [If you have made changes]
-1ST: Commit and push local changes (Remote box blank or Colby-Branch)
+1ST: Commit and push local changes (Remote: YOURNAME-Branch)
 
 
 [Retrieve data from master branch]
-2nd: FETCH (no settings need changing)
-3rd: Merge (From remote/origin/master)
-4th: Push local changes (Remote box blank or Colby-Branch)
+2nd: FETCH (just click ok, no settings need changing)
+3rd: Merge (From:   Branch: remotes/origin/master)
+4th: Push local changes (Remote: YOURNAME-Branch)
 
 
 [If you wish to add your changes to master branch for everyone else]
-5th: Push local changes to master (change Box to master)
+5th: Push local changes to master (Remote: master)
 
 
 
