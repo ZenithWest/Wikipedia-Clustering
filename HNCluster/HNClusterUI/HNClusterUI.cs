@@ -91,6 +91,11 @@ namespace HNClusterUI
 			{
 				pageDisplay1.LoadPage(listView.SelectedItems[0].Text);
 				pageDisplay1.textBoxTitle.Text = listView.SelectedItems[0].Text;
+
+                if (recommenderDisplay.userLoggedOn == true)
+                {
+                    recommenderDisplay.listBoxLikedPages.Items.Add(listView.SelectedItems[0].Text);
+                }
 			}
 		}
 

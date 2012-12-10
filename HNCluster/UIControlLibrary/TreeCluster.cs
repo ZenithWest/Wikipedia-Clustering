@@ -91,6 +91,16 @@ namespace UIControlLibrary
 
 		}
 
+        private void btnLike_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDislike_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
 	}
 }

@@ -41,6 +41,7 @@
             this.tabControl1.SuspendLayout();
             this.tabPageDisplay.SuspendLayout();
             this.tabPageGraph.SuspendLayout();
+            this.tabPageRecommender.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -122,17 +123,9 @@
             this.graphDisplay1.Name = "graphDisplay1";
             this.graphDisplay1.Size = new System.Drawing.Size(1230, 644);
             this.graphDisplay1.TabIndex = 0;
-            //
-            // recommenderDisplay
-            //
-            this.recommenderDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.recommenderDisplay.Location = new System.Drawing.Point(3, 3);
-            this.recommenderDisplay.Name = "recommenderDisplay";
-            this.recommenderDisplay.Size = new System.Drawing.Size(1230, 644);
-            this.recommenderDisplay.TabIndex = 0;
             // 
             // tabPageRecommender
-            //
+            // 
             this.tabPageRecommender.Controls.Add(this.recommenderDisplay);
             this.tabPageRecommender.Location = new System.Drawing.Point(4, 22);
             this.tabPageRecommender.Name = "tabPageRecommender";
@@ -140,6 +133,14 @@
             this.tabPageRecommender.TabIndex = 2;
             this.tabPageRecommender.Text = "Recommender";
             this.tabPageRecommender.UseVisualStyleBackColor = true;
+            // 
+            // recommenderDisplay
+            // 
+            this.recommenderDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.recommenderDisplay.Location = new System.Drawing.Point(0, 0);
+            this.recommenderDisplay.Name = "recommenderDisplay";
+            this.recommenderDisplay.Size = new System.Drawing.Size(1236, 650);
+            this.recommenderDisplay.TabIndex = 0;
             // 
             // HNClusterUI
             // 
@@ -155,6 +156,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPageDisplay.ResumeLayout(false);
             this.tabPageGraph.ResumeLayout(false);
+            this.tabPageRecommender.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
