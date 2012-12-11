@@ -105,6 +105,12 @@ namespace Clustering
 		public long Iterations = 0;
 		public float TotalClusteringTime = 0;
 
+		public HierarchicalCluster()
+		{
+			wikiCollection = new WikiCollection();
+			clusters = new List<Cluster>();
+		}
+
 		public HierarchicalCluster(WikiCollection wikis)
 		{
 			wikiCollection = wikis;

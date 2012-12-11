@@ -55,15 +55,48 @@ namespace HNClusterUI
 
 		public void ClusterWikipedia()
 		{
+			WikiCollection WikiComputerScience = new WikiCollection();
+			WikiComputerScience.ParseXML(@"Wikipedia-ComputerScience.xml");
+			//WikiComputerScience.ParseXML(@"WikiTestData.xml");
+			WikiComputerScience.ExtractTokens();
+			HierarchicalCluster HACComputerScience = new HierarchicalCluster(WikiComputerScience);
+			HACComputerScience.initializeClusters();
+			HACComputerScience.Cluster();
+
+			WikiCollection WikiScience = new WikiCollection();
+			WikiScience.ParseXML(@"Wikipedia-Science.xml");
+			//WikiScience.ParseXML(@"WikiTestData.xml");
+			WikiScience.ExtractTokens();
+			HierarchicalCluster HACScience = new HierarchicalCluster(WikiScience);
+			HACScience.initializeClusters();
+			HACScience.Cluster();
+
+			WikiCollection WikiGeneticEngineering = new WikiCollection();
+			WikiGeneticEngineering.ParseXML(@"Wikipedia-Genetic-Engineering.xml");
+			//WikiGeneticEngineering.ParseXML(@"WikiTestData.xml");
+			WikiGeneticEngineering.ExtractTokens();
+			HierarchicalCluster HACGeneticEngineering = new HierarchicalCluster(WikiGeneticEngineering);
+			HACGeneticEngineering.initializeClusters();
+			HACGeneticEngineering.Cluster();
+
+			HAC = new HierarchicalCluster();
+			
+			HAC.clusters.AddRange(HACComputerScience.clusters);
+			HAC.clusters.AddRange(HACScience.clusters);
+			HAC.clusters.AddRange(HACGeneticEngineering.clusters);
+
+
 			//wikiCollection.ParseXML(@"Wikipedia-ComputerScience.xml");
 			//wikiCollection.ParseXML(@"Wikipedia-Science.xml");
 			//wikiCollection.ParseXML(@"Wikipedia-Genetic-Engineering.xml");
-			wikiCollection.ParseXML(@"Wikipedia-Algorithms-and-Data-Structures.xml");
+			//wikiCollection.ParseXML(@"Wikipedia-Algorithms-and-Data-Structures.xml");
          //wikiCollection.ParseXML(@"WikiTestData.xml");           // Use this data file for testing since it is extremely small
+
+			/*
 			wikiCollection.ExtractTokens();
 			HAC = new HierarchicalCluster(wikiCollection);
 			HAC.initializeClusters();
-			HAC.Cluster();
+			HAC.Cluster();*/
 			graphDisplay1.GenerateGraph(HAC);
 			this.Invoke(ClusteringWikipediaFinished);
 		}
