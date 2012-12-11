@@ -27,6 +27,7 @@ namespace UIControlLibrary
         {
             userLoggedOn = true;
             this.txtBoxUsername.Text = username;
+            this.groupBox1.Enabled = true;
         }
 
         public void updateLikedPages(List<WikiPage> pageList)
@@ -38,10 +39,7 @@ namespace UIControlLibrary
                 listBoxLikedPages.Items.Add(pageList[i].title);
             }
 
-            //listBoxLikedPages.Items.Add(listView.SelectedItems[0].Text);
-
         }
-
 
     }
 }

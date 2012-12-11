@@ -141,8 +141,8 @@ namespace HNClusterUI
                 userLogin.ShowDialog();
                 
                 // If user authentication is successful, then propogate the authentication to the recommender
-                recommenderFeature.userAuthenticated(userLogin.username);
-                recommenderDisplay.userLoggedIn(userLogin.username);
+                recommenderFeature.userAuthenticated(userLogin.userName);
+                recommenderDisplay.userLoggedIn(userLogin.userName);
                 recommenderDisplay.updateLikedPages(recommenderFeature.userData.likedWikiPages);
 
             }

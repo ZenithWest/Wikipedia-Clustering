@@ -14,7 +14,7 @@ namespace Recommender
     public partial class UserLoginForm : Form
     {
         public bool userIsAuthenticated;
-        public string username;
+        public string userName;
 
         public UserLoginForm()
         {
@@ -22,7 +22,29 @@ namespace Recommender
             txtboxUsername.Text = "brice";
             txtboxPassword.Text = "a";
             userIsAuthenticated = false;
-            username = txtboxUsername.Text;
+            userName = txtboxUsername.Text;
+        }
+
+        private bool createNewUserAndPassword(string username, string password)
+        {
+            Configuration roamingConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoaming);
+            ExeConfigurationFileMap configFileMap = new ExeConfigurationFileMap();
+            configFileMap.ExeConfigFilename = roamingConfig.FilePath;
+            Configuration configManager = ConfigurationManager.OpenMappedExeConfiguration(configFileMap, ConfigurationUserLevel.None);
+
+
+            if (configManager.AppSettings.Settings.AllKeys.Contains(username))
+            {
+                DialogResult res = MessageBox.Show("Our records show that username has already been created.\n\nWould you like to overwrite the current profile and create a new one with the username and password specified above?", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+                if (res == DialogResult.Cancel) return false;
+            }
+
+            configManager.AppSettings.Settings.Add(new KeyValueConfigurationElement(username, password));
+            configManager.Save(ConfigurationSaveMode.Modified);
+
+            userIsAuthenticated = true;
+            userName = username;
+            return true;
         }
 
 
@@ -33,30 +55,12 @@ namespace Recommender
             configFileMap.ExeConfigFilename = roamingConfig.FilePath;
             Configuration configManager = ConfigurationManager.OpenMappedExeConfiguration(configFileMap, ConfigurationUserLevel.None);
 
-            bool returnVal = false;
-
- 
-            if (configManager.AppSettings.Settings.AllKeys.Contains(username) == true && configManager.AppSettings.Settings[username].Value == password)
-            {
-                returnVal = true;
-            }
-            else
-            {
-                configManager.AppSettings.Settings.Add(username, password);
-                configManager.Save(ConfigurationSaveMode.Modified);
-
-                returnVal = false;
-            }
-
-
-            return returnVal;
+            return (configManager.AppSettings.Settings.AllKeys.Contains(username) == true && configManager.AppSettings.Settings[username].Value == password);
         }
 
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-
-            userIsAuthenticated = validateUserCredentials(txtboxUsername.Text, txtboxPassword.Text);;
 
             if (txtboxUsername.Text == "" && txtboxPassword.Text == "")
             {
@@ -77,26 +81,26 @@ namespace Recommender
                 MessageBox.Show("Please enter your password.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            else if (userIsAuthenticated == false)
-            {
-                MessageBox.Show("Invalid username/password pair.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            else if (userIsAuthenticated == true)
-            {
-                username = txtboxUsername.Text;
-                this.Close();
-            }
-
             else
             {
-                this.Close();
+                userIsAuthenticated = validateUserCredentials(txtboxUsername.Text, txtboxPassword.Text); ;
+
+                if (userIsAuthenticated == true)
+                {
+                    userName = txtboxUsername.Text;
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid username/password pair.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void btnCreateNew_Click(object sender, EventArgs e)
         {
-            this.Close();
+            bool res = createNewUserAndPassword(txtboxUsername.Text, txtboxPassword.Text);
+            if (res == true) this.Close();
         }
 
         private void txtboxUsername_Enter(object sender, EventArgs e)

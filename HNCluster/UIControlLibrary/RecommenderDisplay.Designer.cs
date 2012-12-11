@@ -34,6 +34,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.listBoxRecommendedPages = new System.Windows.Forms.ListBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -56,7 +58,7 @@
             // listBoxLikedPages
             // 
             this.listBoxLikedPages.FormattingEnabled = true;
-            this.listBoxLikedPages.Location = new System.Drawing.Point(44, 83);
+            this.listBoxLikedPages.Location = new System.Drawing.Point(27, 40);
             this.listBoxLikedPages.Name = "listBoxLikedPages";
             this.listBoxLikedPages.Size = new System.Drawing.Size(296, 238);
             this.listBoxLikedPages.TabIndex = 2;
@@ -64,7 +66,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(112, 67);
+            this.label2.Location = new System.Drawing.Point(95, 24);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(161, 13);
             this.label2.TabIndex = 3;
@@ -73,7 +75,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(140, 347);
+            this.label3.Location = new System.Drawing.Point(123, 311);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(104, 13);
             this.label3.TabIndex = 4;
@@ -82,23 +84,35 @@
             // listBoxRecommendedPages
             // 
             this.listBoxRecommendedPages.FormattingEnabled = true;
-            this.listBoxRecommendedPages.Location = new System.Drawing.Point(44, 363);
+            this.listBoxRecommendedPages.Location = new System.Drawing.Point(27, 327);
             this.listBoxRecommendedPages.Name = "listBoxRecommendedPages";
             this.listBoxRecommendedPages.Size = new System.Drawing.Size(296, 238);
             this.listBoxRecommendedPages.TabIndex = 5;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.listBoxRecommendedPages);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.listBoxLikedPages);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Enabled = false;
+            this.groupBox1.Location = new System.Drawing.Point(21, 44);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(353, 589);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
             // 
             // RecommenderDisplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.listBoxRecommendedPages);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.listBoxLikedPages);
             this.Controls.Add(this.txtBoxUsername);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.groupBox1);
             this.Name = "RecommenderDisplay";
             this.Size = new System.Drawing.Size(400, 771);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -110,6 +124,7 @@
         private System.Windows.Forms.TextBox txtBoxUsername;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.GroupBox groupBox1;
 
         public System.Windows.Forms.ListBox listBoxLikedPages;
         public System.Windows.Forms.ListBox listBoxRecommendedPages;
