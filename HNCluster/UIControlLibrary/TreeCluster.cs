@@ -30,11 +30,11 @@ namespace UIControlLibrary
 			OutputClusters = new XElement("Cluster");
 			foreach (Cluster cluster in HAC.clusters)
 			{
-				/*List<string> stopwords = cluster.TopTokens(50, true, false);
+				List<string> stopwords = cluster.TopTokens(50, true, false);
 				foreach (string stopword in stopwords)
 				{
 					Cluster.stopwords.Add(stopword);
-				}*/
+				}
 				TreeNode node = new TreeNode("Cluster");
 				node.ForeColor = Color.Lime;
 				AddClustersMethod(node, OutputClusters, cluster);

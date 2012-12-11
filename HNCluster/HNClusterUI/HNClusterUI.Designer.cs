@@ -32,14 +32,14 @@
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabPageDisplay = new System.Windows.Forms.TabPage();
-			this.tabPageGraph = new System.Windows.Forms.TabPage();
-			this.tabPageRecommender = new System.Windows.Forms.TabPage();
+			this.splitter1 = new System.Windows.Forms.Splitter();
 			this.pageDisplay1 = new UIControlLibrary.PageDisplay();
 			this.treeCluster = new UIControlLibrary.TreeCluster();
+			this.tabPageGraph = new System.Windows.Forms.TabPage();
 			this.graphDisplay1 = new UIControlLibrary.GraphDisplay();
+			this.tabPageRecommender = new System.Windows.Forms.TabPage();
 			this.recPageDisplay = new UIControlLibrary.PageDisplay();
 			this.recommenderDisplay = new UIControlLibrary.RecommenderDisplay();
-			this.splitter1 = new System.Windows.Forms.Splitter();
 			this.tabControl1.SuspendLayout();
 			this.tabPageDisplay.SuspendLayout();
 			this.tabPageGraph.SuspendLayout();
@@ -89,6 +89,35 @@
 			this.tabPageDisplay.Text = "Display";
 			this.tabPageDisplay.UseVisualStyleBackColor = true;
 			// 
+			// splitter1
+			// 
+			this.splitter1.Dock = System.Windows.Forms.DockStyle.Right;
+			this.splitter1.Location = new System.Drawing.Point(661, 3);
+			this.splitter1.Name = "splitter1";
+			this.splitter1.Size = new System.Drawing.Size(5, 644);
+			this.splitter1.TabIndex = 2;
+			this.splitter1.TabStop = false;
+			// 
+			// pageDisplay1
+			// 
+			this.pageDisplay1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.pageDisplay1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.pageDisplay1.Location = new System.Drawing.Point(3, 3);
+			this.pageDisplay1.Margin = new System.Windows.Forms.Padding(0);
+			this.pageDisplay1.Name = "pageDisplay1";
+			this.pageDisplay1.Size = new System.Drawing.Size(663, 644);
+			this.pageDisplay1.TabIndex = 0;
+			// 
+			// treeCluster
+			// 
+			this.treeCluster.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.treeCluster.Dock = System.Windows.Forms.DockStyle.Right;
+			this.treeCluster.Location = new System.Drawing.Point(666, 3);
+			this.treeCluster.Margin = new System.Windows.Forms.Padding(0);
+			this.treeCluster.Name = "treeCluster";
+			this.treeCluster.Size = new System.Drawing.Size(567, 644);
+			this.treeCluster.TabIndex = 1;
+			// 
 			// tabPageGraph
 			// 
 			this.tabPageGraph.Controls.Add(this.graphDisplay1);
@@ -100,6 +129,14 @@
 			this.tabPageGraph.Text = "Graph";
 			this.tabPageGraph.UseVisualStyleBackColor = true;
 			// 
+			// graphDisplay1
+			// 
+			this.graphDisplay1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.graphDisplay1.Location = new System.Drawing.Point(3, 3);
+			this.graphDisplay1.Name = "graphDisplay1";
+			this.graphDisplay1.Size = new System.Drawing.Size(1230, 644);
+			this.graphDisplay1.TabIndex = 0;
+			// 
 			// tabPageRecommender
 			// 
 			this.tabPageRecommender.Controls.Add(this.recPageDisplay);
@@ -110,34 +147,6 @@
 			this.tabPageRecommender.TabIndex = 2;
 			this.tabPageRecommender.Text = "Recommender";
 			this.tabPageRecommender.UseVisualStyleBackColor = true;
-			// 
-			// pageDisplay1
-			// 
-			this.pageDisplay1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.pageDisplay1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.pageDisplay1.Location = new System.Drawing.Point(3, 3);
-			this.pageDisplay1.Margin = new System.Windows.Forms.Padding(0);
-			this.pageDisplay1.Name = "pageDisplay1";
-			this.pageDisplay1.Size = new System.Drawing.Size(850, 644);
-			this.pageDisplay1.TabIndex = 0;
-			// 
-			// treeCluster
-			// 
-			this.treeCluster.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.treeCluster.Dock = System.Windows.Forms.DockStyle.Right;
-			this.treeCluster.Location = new System.Drawing.Point(853, 3);
-			this.treeCluster.Margin = new System.Windows.Forms.Padding(0);
-			this.treeCluster.Name = "treeCluster";
-			this.treeCluster.Size = new System.Drawing.Size(380, 644);
-			this.treeCluster.TabIndex = 1;
-			// 
-			// graphDisplay1
-			// 
-			this.graphDisplay1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.graphDisplay1.Location = new System.Drawing.Point(3, 3);
-			this.graphDisplay1.Name = "graphDisplay1";
-			this.graphDisplay1.Size = new System.Drawing.Size(1230, 644);
-			this.graphDisplay1.TabIndex = 0;
 			// 
 			// recPageDisplay
 			// 
@@ -156,15 +165,6 @@
 			this.recommenderDisplay.Name = "recommenderDisplay";
 			this.recommenderDisplay.Size = new System.Drawing.Size(400, 650);
 			this.recommenderDisplay.TabIndex = 0;
-			// 
-			// splitter1
-			// 
-			this.splitter1.Dock = System.Windows.Forms.DockStyle.Right;
-			this.splitter1.Location = new System.Drawing.Point(848, 3);
-			this.splitter1.Name = "splitter1";
-			this.splitter1.Size = new System.Drawing.Size(5, 644);
-			this.splitter1.TabIndex = 2;
-			this.splitter1.TabStop = false;
 			// 
 			// HNClusterUI
 			// 
