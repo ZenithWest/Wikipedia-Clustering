@@ -106,9 +106,13 @@ namespace Wiki
 					}
 				}*/
 				temp = Regex.Replace(temp, @"[^\u0000-\u007F]", " ");
-				//temp = Regex.Replace(temp, @"<math>.*</math>", " ");
+				temp = Regex.Replace(temp, @"<span.*>&nbsp;", " ");
+				temp = Regex.Replace(temp, @"<math>.*</math>", " ");
 				//temp = Regex.Replace(temp, @"<ref>.*</ref>", " ");
 				//temp = Regex.Replace(temp, @"<source.*</source>", " ");
+				temp = temp.Replace("</span>", " ");
+				temp = temp.Replace("<math", " ");
+				temp = temp.Replace("</math>", " ");
 				temp = temp.Replace("\'\'", " ");
 				temp = temp.Replace(" \'", " ");
 				temp = temp.Replace("\' ", " ");
@@ -117,6 +121,15 @@ namespace Wiki
 				foreach (string tokenString in tokenStrings)
 				{
 					string stem = stemmer.stemTerm(tokenString).ToLower();
+					if (stem.Length <= 2) continue;
+					if (stem == "ref") continue;
+					if (stem == "sub") continue;
+					//if (stem == "math") continue;
+					if (stem.StartsWith("disambig")) continue;
+					if (stem == "sup") continue;
+					if (stem == "stub") continue;
+					if (stem == "frac") continue;
+					if (stem == "nbsp") continue;
 					if (page.tf_IDF_Vec.ContainsKey(stem))
 					{
 						++page.tf_IDF_Vec[stem].TF;
