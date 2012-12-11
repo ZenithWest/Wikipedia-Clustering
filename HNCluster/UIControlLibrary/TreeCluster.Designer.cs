@@ -39,7 +39,7 @@
 			// 
 			this.treeViewClusters.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
 			this.treeViewClusters.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.treeViewClusters.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.treeViewClusters.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.treeViewClusters.ItemHeight = 22;
 			this.treeViewClusters.Location = new System.Drawing.Point(0, 0);
 			this.treeViewClusters.Margin = new System.Windows.Forms.Padding(0);
@@ -53,7 +53,7 @@
 			this.listViewClusters.Alignment = System.Windows.Forms.ListViewAlignment.Left;
 			this.listViewClusters.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
 			this.listViewClusters.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.listViewClusters.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.listViewClusters.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.listViewClusters.ForeColor = System.Drawing.SystemColors.MenuHighlight;
 			this.listViewClusters.Location = new System.Drawing.Point(0, 277);
 			this.listViewClusters.Margin = new System.Windows.Forms.Padding(0);
