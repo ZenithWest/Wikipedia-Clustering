@@ -17,7 +17,7 @@ namespace Clustering
 		public List<WikiPage> pages = new List<WikiPage>();
 		public bool leaf = false;
 		public string SVGNodeName = "";
-		//public Dictionary<string, float> tfIDF_Vec;
+		public TF_IDF_Vector tf_IDF_Vec = new TF_IDF_Vector();
 
 		public static ILinkageCriteria criteria = new CompleteLinkageCriteria();
 		//public static ILinkageCriteria criteria = new AverageLinkageCriteria();
@@ -26,19 +26,16 @@ namespace Clustering
 
 		public Cluster()
 		{
-			//tfIDF_Vec = new Dictionary<string, float>();
+
 		}
 
-		public Cluster(WikiPage pg)
+		public Cluster(WikiPage page)
 		{
-			pages.Add(pg);
-			AllPagesInCluster.Add(pg);
+			pages.Add(page);
+			AllPagesInCluster.Add(page);
 			leaf = true;
-			/*
-			tfIDF_Vec = new Dictionary<string, float>();
-			foreach(string tokenkey in page.tf_IDF_Vec.Keys) {
-				tfIDF_Vec[tokenkey] = page.tf_IDF_Vec[tokenkey];
-			}*/
+
+			AddTokensFrom(page);
 		}
 
 		public Cluster(Cluster c1, Cluster c2)
@@ -48,6 +45,9 @@ namespace Clustering
 
 			AllPagesInCluster.AddRange(c1.AllPagesInCluster);
 			AllPagesInCluster.AddRange(c2.AllPagesInCluster);
+
+			AddTokensFrom(c1);
+			AddTokensFrom(c2);
 
 			//tokenKeys.UnionWith(c1.tokenKeys);
 			//tokenKeys.UnionWith(c2.tokenKeys);
@@ -61,20 +61,116 @@ namespace Clustering
 			AllPagesInCluster.AddRange(c1.AllPagesInCluster);
 			AllPagesInCluster.AddRange(c2.AllPagesInCluster);
 
+			AddTokensFrom(c1);
+			AddTokensFrom(c2);
+
 
 
 			//tokenKeys.UnionWith(c1.tokenKeys);
 			//tokenKeys.UnionWith(c2.tokenKeys);
 		}
+
 		public void AddPage(WikiPage page)
 		{
 			pages.Add(page);
 			AllPagesInCluster.Add(page);
 		}
+
 		public void AddPages(List<WikiPage> pgs)
 		{
 			pages.AddRange(pgs);
 			AllPagesInCluster.AddRange(pgs);
+		}
+
+		private void AddTokensFrom(WikiPage page)
+		{
+			if (tf_IDF_Vec.Count != 0)
+			{
+				foreach (string tokenkey in page.tf_IDF_Vec.Keys)
+				{
+					if (tf_IDF_Vec.ContainsKey(tokenkey))
+					{
+						tf_IDF_Vec[tokenkey].TF_IDF += page.tf_IDF_Vec[tokenkey].TF_IDF;
+					}
+					else
+					{
+						tf_IDF_Vec[tokenkey] = page.tf_IDF_Vec[tokenkey];
+					}
+				}
+			}
+			else
+			{
+				foreach (string tokenkey in page.tf_IDF_Vec.Keys)
+				{
+					tf_IDF_Vec[tokenkey] = page.tf_IDF_Vec[tokenkey];
+				}
+			}
+		}
+
+		private void AddTokensFrom(Cluster cluster)
+		{
+			if (tf_IDF_Vec.Count != 0)
+			{
+				foreach (string tokenkey in cluster.tf_IDF_Vec.Keys)
+				{
+					if (tf_IDF_Vec.ContainsKey(tokenkey))
+					{
+						tf_IDF_Vec[tokenkey].TF_IDF += cluster.tf_IDF_Vec[tokenkey].TF_IDF;
+					}
+					else
+					{
+						tf_IDF_Vec[tokenkey] = cluster.tf_IDF_Vec[tokenkey];
+					}
+				}
+			}
+			else
+			{
+				foreach (string tokenkey in cluster.tf_IDF_Vec.Keys)
+				{
+					tf_IDF_Vec[tokenkey] = cluster.tf_IDF_Vec[tokenkey];
+				}
+			}
+		}
+
+		public List<string> TopTokens(int N = 3)
+		{
+			List<float> tokenMax = new List<float>();
+			List<string> tokens = new List<string>();
+
+			for (int i = 0; i < N; ++i)
+			{
+				tokenMax.Add(float.MinValue);
+				tokens.Add("Cluster");
+			}
+
+			foreach (string tokenkey in tf_IDF_Vec.Keys)
+			{
+				for (int k = 0; k < N; ++k)
+				{
+					if (tokenMax[k] <= tf_IDF_Vec[tokenkey].TF_IDF)
+					{
+						for (int i = N-1; i > k; --i)
+						{
+							tokenMax[i] = tokenMax[i - 1];
+							tokens[i] = tokens[i - 1];
+						}
+						tokenMax[k] = tf_IDF_Vec[tokenkey].TF_IDF;
+						tokens[k] = tf_IDF_Vec[tokenkey].Token;
+						break;
+					}
+				}
+			}
+
+			for (int i = 0; i < N; ++i)
+			{
+				if (tokenMax[i] == float.MinValue)
+				{
+					tokens.RemoveRange(i, N - i);
+					break;
+				}
+			}
+
+			return tokens;
 		}
 
 		public float GetDistance(Cluster cluster)

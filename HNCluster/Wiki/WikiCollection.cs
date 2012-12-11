@@ -41,7 +41,7 @@ namespace Wiki
 				//if (title.StartsWith("File:")) continue;
 				XElement revision = page.Element(page.GetDefaultNamespace() + "revision");
 				string text = revision.Element(revision.GetDefaultNamespace() + "text").Value;
-				if (text.StartsWith("#REDIRECT")) continue;
+				if (text.StartsWith("#REDIRECT",true,null)) continue;
 
 				if (ns != "0") continue;
 				bool test = false;

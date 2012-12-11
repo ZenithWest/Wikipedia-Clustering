@@ -56,10 +56,10 @@ namespace HNClusterUI
 		public void ClusterWikipedia()
 		{
 			//wikiCollection.ParseXML(@"Wikipedia-ComputerScience.xml");
-			//wikiCollection.ParseXML(@"Wikipedia-Science.xml");
+			wikiCollection.ParseXML(@"Wikipedia-Science.xml");
 			//wikiCollection.ParseXML(@"Wikipedia-Genetic-Engineering.xml");
 			//wikiCollection.ParseXML(@"Wikipedia-Algorithms-and-Data-Structures.xml");
-            wikiCollection.ParseXML(@"WikiTestData.xml");           // Use this data file for testing since it is extremely small
+         //   wikiCollection.ParseXML(@"WikiTestData.xml");           // Use this data file for testing since it is extremely small
 			wikiCollection.ExtractTokens();
 			HAC = new HierarchicalCluster(wikiCollection);
 			HAC.initializeClusters();
@@ -80,7 +80,7 @@ namespace HNClusterUI
 		public void treeViewClusters_AfterSelect(object sender, TreeViewEventArgs e)
 		{
 			TreeView treeViewCluster = (TreeView)sender;
-			if (e.Node.Text == "Cluster")
+			//if (e.Node.ForeColor == Color.Lime)
 			{
 				ListView listView = treeCluster.listViewClusters;
 				listView.Items.Clear();
