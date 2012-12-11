@@ -38,6 +38,7 @@
             this.graphDisplay1 = new UIControlLibrary.GraphDisplay();
             this.tabPageRecommender = new System.Windows.Forms.TabPage();
             this.recommenderDisplay = new UIControlLibrary.RecommenderDisplay();
+            this.recPageDisplay = new UIControlLibrary.PageDisplay();
             this.tabControl1.SuspendLayout();
             this.tabPageDisplay.SuspendLayout();
             this.tabPageGraph.SuspendLayout();
@@ -125,7 +126,8 @@
             this.graphDisplay1.TabIndex = 0;
             // 
             // tabPageRecommender
-            // 
+            //
+            this.tabPageRecommender.Controls.Add(this.recPageDisplay);
             this.tabPageRecommender.Controls.Add(this.recommenderDisplay);
             this.tabPageRecommender.Location = new System.Drawing.Point(4, 22);
             this.tabPageRecommender.Name = "tabPageRecommender";
@@ -136,11 +138,21 @@
             // 
             // recommenderDisplay
             // 
-            this.recommenderDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.recommenderDisplay.Dock = System.Windows.Forms.DockStyle.Right;
             this.recommenderDisplay.Location = new System.Drawing.Point(0, 0);
             this.recommenderDisplay.Name = "recommenderDisplay";
-            this.recommenderDisplay.Size = new System.Drawing.Size(1236, 650);
+            this.recommenderDisplay.Size = new System.Drawing.Size(400, 771);
             this.recommenderDisplay.TabIndex = 0;
+            // 
+            // recPageDisplay
+            // 
+            this.recPageDisplay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.recPageDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.recPageDisplay.Location = new System.Drawing.Point(3, 3);
+            this.recPageDisplay.Margin = new System.Windows.Forms.Padding(0);
+            this.recPageDisplay.Name = "recPageDisplay";
+            this.recPageDisplay.Size = new System.Drawing.Size(899, 644);
+            this.recPageDisplay.TabIndex = 2;
             // 
             // HNClusterUI
             // 
@@ -174,6 +186,7 @@
 		private UIControlLibrary.GraphDisplay graphDisplay1;
         private System.Windows.Forms.TabPage tabPageRecommender;
         private UIControlLibrary.RecommenderDisplay recommenderDisplay;
+        private UIControlLibrary.PageDisplay recPageDisplay;
 	}
 }
 

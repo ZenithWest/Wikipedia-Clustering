@@ -45,14 +45,12 @@ namespace Recommender
 
             string curDirectory = System.IO.Directory.GetCurrentDirectory() + "\\";
             var serializer = new DataContractSerializer(typeof(UserData));
-            //TextWriter tw = null;
             UserData dummyData = new UserData(username);
 
             using (var sw = new StringWriter())
             {
                 using (var writer = new FileStream(curDirectory + username + ".xml", FileMode.CreateNew, FileAccess.Write))
                 {
-                    //writer. = Formatting.Indented;
                     serializer.WriteObject(writer, dummyData);
                     writer.Flush();
                 }
@@ -71,7 +69,6 @@ namespace Recommender
             {
                 using (var writer = new FileStream(curDirectory + userData.userName + ".xml", FileMode.Open, FileAccess.Write))
                 {
-                    //writer.Formatting = Formatting.Indented;
                     serializer.WriteObject(writer, userData);
                     writer.Flush();
                 }
@@ -92,7 +89,6 @@ namespace Recommender
                 {
                     using (var reader = new FileStream(curFile, FileMode.Open, FileAccess.Read))
                     {
-                        //reader.for = Formatting.Indented;
                         userData = (UserData)serializer.ReadObject(reader);
                         reader.Close();
                     }

@@ -47,6 +47,9 @@ namespace HNClusterUI
 			treeCluster.treeViewClusters.AfterSelect += treeViewClusters_AfterSelect;
 			treeCluster.listViewClusters.ItemActivate += listViewClusters_ItemActivate;
 
+            recommenderDisplay.listBoxLikedPages.SelectedIndexChanged += listBoxLikedPages_SelectedIndexChanged;
+            recommenderDisplay.listBoxRecommendedPages.SelectedIndexChanged += listBoxRecommendedPages_SelectedIndexChanged;
+
 			Task.Factory.StartNew(ClusterWikipedia);
 		}
 
@@ -104,6 +107,31 @@ namespace HNClusterUI
                 }
 			}
 		}
+
+        private void listBoxLikedPages_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ListBox listView = (ListBox)sender;
+
+            if (listView.SelectedItems.Count > 0)
+            {
+                recPageDisplay.LoadPage(listView.Items[listView.SelectedIndex].ToString());
+                recPageDisplay.textBoxTitle.Text = listView.Items[listView.SelectedIndex].ToString();
+
+                if (recommenderDisplay.userLoggedOn == true)
+                {
+                    //recommenderFeature.userViewedPage(listView.SelectedItems[0].Text);
+                    //WikiPage wikiPage = HAC.wikiCollection.wikiPages.Find(WikiPage => WikiPage.title == listView.SelectedItems[0].Text);
+                    //recommenderFeature.userViewedPage(wikiPage);
+                    //recommenderDisplay.updateLikedPages(recommenderFeature.userData.likedWikiPages);
+                }
+            }
+        }
+
+        private void listBoxRecommendedPages_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
