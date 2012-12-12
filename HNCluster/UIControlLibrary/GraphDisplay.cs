@@ -33,7 +33,7 @@ namespace UIControlLibrary
 		public GraphDisplay()
 		{
 			InitializeComponent();
-			graph = new RootGraph("Clusters", false, false);
+			graph = new RootGraph("Clusters", true, true);
 			url = new Uri(SVGFilePath); 
 		}
 

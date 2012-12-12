@@ -21,6 +21,15 @@ namespace Wiki
 			DF = 1;
 		}
 
+		public WikiToken(WikiToken prevToken)
+		{
+			Token = prevToken.Token;
+			Stemmed = prevToken.Stemmed;
+			TF_IDF = prevToken.TF_IDF;
+			TF = prevToken.TF; ;
+			DF = prevToken.DF; ;
+		}
+
 		public WikiToken(string token)
 		{
 			Token = token;

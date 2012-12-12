@@ -23,13 +23,18 @@ namespace UIControlLibrary
 		{
 			InitializeComponent();
 		}
-
+		
 		public void LoadClusters(HierarchicalCluster hac)
 		{
 			HAC = hac;
 			OutputClusters = new XElement("Cluster");
 			foreach (Cluster cluster in HAC.clusters)
 			{
+				List<string> stopwords = cluster.TopTokens(50, true, false);
+				foreach (string stopword in stopwords)
+				{
+					Cluster.stopwords.Add(stopword);
+				}
 				TreeNode node = new TreeNode("Cluster");
 				node.ForeColor = Color.Lime;
 				AddClustersMethod(node, OutputClusters, cluster);
@@ -50,11 +55,20 @@ namespace UIControlLibrary
 				element3.SetValue(page.title);
 				element.Add(element3);
 			}
-
+			
+			int N = 10;
 			if (cluster.cluster1 != null)
 			{
+				List<string> tokens = cluster.cluster1.TopTokens(N, false);
+				string name = "";
 
-				TreeNode node1 = new TreeNode("Cluster");
+				for (int i = 0; i < tokens.Count - 1; ++i)
+				{
+					name += tokens[i] + " | ";
+				}
+				name += tokens[tokens.Count - 1];
+
+				TreeNode node1 = new TreeNode(name);
 				node1.ForeColor = Color.Lime;
 				node.Nodes.Add(node1);
 
@@ -66,7 +80,17 @@ namespace UIControlLibrary
 
 			if (cluster.cluster2 != null)
 			{
-				TreeNode node2 = new TreeNode("Cluster");
+				List<string> tokens = cluster.cluster2.TopTokens(N, false);
+				string name = "";
+
+				for (int i = 0; i < tokens.Count - 1; ++i)
+				{
+					name += tokens[i] + " | ";
+				}
+				name += tokens[tokens.Count - 1];
+
+
+				TreeNode node2 = new TreeNode(name);
 				node2.ForeColor = Color.Lime;
 				node.Nodes.Add(node2);
 
@@ -80,7 +104,7 @@ namespace UIControlLibrary
 
 		public void AddPagesFromCluster(TreeNode node)
 		{
-			if (node.Text != "Cluster")
+			if (node.Nodes.Count == 0)
 			{
 				listViewClusters.Items.Add(node.Text);
 			}

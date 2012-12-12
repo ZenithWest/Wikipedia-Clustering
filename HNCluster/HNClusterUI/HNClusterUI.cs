@@ -59,8 +59,8 @@ namespace HNClusterUI
 			//wikiCollection.ParseXML(@"Wikipedia-ComputerScience.xml");
 			//wikiCollection.ParseXML(@"Wikipedia-Science.xml");
 			//wikiCollection.ParseXML(@"Wikipedia-Genetic-Engineering.xml");
-			//wikiCollection.ParseXML(@"Wikipedia-Algorithms-and-Data-Structures.xml");
-            wikiCollection.ParseXML(@"WikiTestData.xml");           // Use this data file for testing since it is extremely small
+			wikiCollection.ParseXML(@"Wikipedia-Algorithms-and-Data-Structures.xml");
+         //wikiCollection.ParseXML(@"WikiTestData.xml");           // Use this data file for testing since it is extremely small
 			wikiCollection.ExtractTokens();
 			HAC = new HierarchicalCluster(wikiCollection);
 			HAC.initializeClusters();
@@ -81,11 +81,12 @@ namespace HNClusterUI
 		public void treeViewClusters_AfterSelect(object sender, TreeViewEventArgs e)
 		{
 			TreeView treeViewCluster = (TreeView)sender;
-			if (e.Node.Text == "Cluster")
+			ListView listView = treeCluster.listViewClusters;
+			listView.Items.Clear();
+			treeCluster.AddPagesFromCluster(e.Node);
+			if (e.Node.Nodes.Count == 0)
 			{
-				ListView listView = treeCluster.listViewClusters;
-				listView.Items.Clear();
-				treeCluster.AddPagesFromCluster(e.Node);
+				LoadWikiWebPage(e.Node.Text);
 			}
 
 		}
@@ -96,16 +97,21 @@ namespace HNClusterUI
 
 			if (listView.SelectedItems.Count > 0)
 			{
-				pageDisplay1.LoadPage(listView.SelectedItems[0].Text);
-				pageDisplay1.textBoxTitle.Text = listView.SelectedItems[0].Text;
+				LoadWikiWebPage(listView.SelectedItems[0].Text);
+			}
+		}
 
-                if (recommenderDisplay.userLoggedOn == true)
-                {
-                    //recommenderFeature.userViewedPage(listView.SelectedItems[0].Text);
-                    WikiPage wikiPage = HAC.wikiCollection.wikiPages.Find(WikiPage => WikiPage.title == listView.SelectedItems[0].Text);
-                    recommenderFeature.userViewedPage(wikiPage);
-                    recommenderDisplay.updateLikedPages(recommenderFeature.userData.likedWikiPages);
-                }
+		void LoadWikiWebPage(string title)
+		{
+			pageDisplay1.LoadPage(title);
+			pageDisplay1.textBoxTitle.Text = title;
+
+			if (recommenderDisplay.userLoggedOn == true)
+			{
+				//recommenderFeature.userViewedPage(listView.SelectedItems[0].Text);
+				WikiPage wikiPage = HAC.wikiCollection.wikiPages.Find(WikiPage => WikiPage.title == title);
+				recommenderFeature.userViewedPage(wikiPage);
+				recommenderDisplay.updateLikedPages(recommenderFeature.userData.likedWikiPages);
 			}
 		}
 
