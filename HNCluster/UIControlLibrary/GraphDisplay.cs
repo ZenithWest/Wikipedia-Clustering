@@ -42,16 +42,19 @@ namespace UIControlLibrary
 			HAC = hac;
 			if (HAC.clusters.Count > 0)
 			{
-				AddNode("Main_Cluster");
-				HAC.clusters[0].SVGNodeName = "Main_Cluster";
-				GenerateGraph(HAC.clusters[0], "Main_Cluster", 0, "0");
+				int count = 0;
+				foreach (Cluster cluster in HAC.clusters)
+				{
+					AddNode(cluster.SVGNodeName);
+					GenerateGraph(cluster, cluster.SVGNodeName, 0, "0", count++);
+				}
 				GenerateSVG();
 				webBrowser1.Url = url;
 			}
 			
 		}
 
-		private void GenerateGraph(Cluster cluster, string ParentNode, int depth, string LR)
+		private void GenerateGraph(Cluster cluster, string ParentNode, int depth, string LR, int prefix)
 		{
 			if (cluster != null)
 			{
@@ -60,27 +63,27 @@ namespace UIControlLibrary
 
 				foreach (Wiki.WikiPage page in cluster.pages)
 				{
-					string NodeName = page.title + " ";
+					string NodeName = String.Format("{0}) {1}", prefix, page.title);
 					AddNode(NodeName);
 					AddEdge(ParentNode, NodeName);
 				}
 
 				if (cluster.cluster1 != null)
 				{
-					NodeName1 = GenerateNodeName(cluster.cluster1, depth + 1, LR + "0");
+					NodeName1 = GenerateNodeName(cluster.cluster1, depth + 1, LR + "0", prefix);
 					cluster.cluster1.SVGNodeName = NodeName1;
 					AddNode(NodeName1);
 					AddEdge(ParentNode, NodeName1);
-					GenerateGraph(cluster.cluster1, NodeName1, depth + 1, LR + "0");
+					GenerateGraph(cluster.cluster1, NodeName1, depth + 1, LR + "0", prefix);
 				}
 
 				if (cluster.cluster2 != null)
 				{
-					NodeName2 = GenerateNodeName(cluster.cluster2, depth + 1, LR + "1");
+					NodeName2 = GenerateNodeName(cluster.cluster2, depth + 1, LR + "1", prefix);
 					cluster.cluster2.SVGNodeName = NodeName2;
 					AddNode(NodeName2);
 					AddEdge(ParentNode, NodeName2);
-					GenerateGraph(cluster.cluster2, NodeName2, depth + 1, LR + "1");
+					GenerateGraph(cluster.cluster2, NodeName2, depth + 1, LR + "1", prefix);
 				}
 				/*
 				if (cluster.cluster1 != null)
@@ -97,7 +100,7 @@ namespace UIControlLibrary
 			}
 		}
 
-		string GenerateNodeName(Cluster cluster, int depth, string LR)
+		string GenerateNodeName(Cluster cluster, int depth, string LR, int prefix)
 		{
 			int num = 0;
 			int count = 0;
@@ -116,7 +119,7 @@ namespace UIControlLibrary
 			{
 				str += char.ConvertFromUtf32(num + 'À');
 			}
-			return String.Format("L{0}_{1}", depth, str);
+			return String.Format("{0}L{1}_{2}", prefix, depth, str);
 		}
 
 		private void AddNode(string name)
@@ -195,18 +198,19 @@ namespace UIControlLibrary
 				if (node.Attribute("class").Value == "node")
 				{
 					string title = node.Element(NS + "title").Value;
-					if (title.StartsWith("L") && char.IsDigit(title[1]))
+					
+					if (title.Length > 3 && title[1] == 'L' && char.IsDigit(title[2]))
 					{
 						XElement ellipse = node.Element(NS + "ellipse");
 						int red = 0;
 						int green = 0;
 						int blue = 0;
 
-						if (char.IsDigit(title[2]))
+						if (char.IsDigit(title[3]))
 						{
-							if (!char.IsDigit(title[3]))
+							if (!char.IsDigit(title[4]))
 							{
-								int digit = int.Parse(title[1].ToString());
+								int digit = int.Parse(title[2].ToString());
 								if (digit >= 2)
 								{
 									blue = 100;
@@ -232,35 +236,35 @@ namespace UIControlLibrary
 								switch (digit)
 								{
 									case 1:
-										blue = 50 + 5 * int.Parse(title[2].ToString());
+										blue = 50 + 5 * int.Parse(title[3].ToString());
 										break;
 									case 2:
-										green = 0 + 5 * int.Parse(title[2].ToString());
+										green = 0 + 5 * int.Parse(title[3].ToString());
 										break;
 									case 3:
-										green = 50 + 5 * int.Parse(title[2].ToString());
+										green = 50 + 5 * int.Parse(title[3].ToString());
 										break;
 									case 4:
-										red = 0 + 5 * int.Parse(title[2].ToString());
-										blue = 100 - 5 * int.Parse(title[2].ToString());
+										red = 0 + 5 * int.Parse(title[3].ToString());
+										blue = 100 - 5 * int.Parse(title[3].ToString());
 										break;
 									case 5:
-										red = 50 + 5 * int.Parse(title[2].ToString());
-										blue = 50 - 5 * int.Parse(title[2].ToString());
+										red = 50 + 5 * int.Parse(title[3].ToString());
+										blue = 50 - 5 * int.Parse(title[3].ToString());
 										break;
 									case 6:
-										green = 100 - 5 * int.Parse(title[2].ToString());
+										green = 100 - 5 * int.Parse(title[3].ToString());
 										break;
 									case 7:
-										green = 50 - 5 * int.Parse(title[2].ToString());
+										green = 50 - 5 * int.Parse(title[3].ToString());
 										break;
 									case 8:
-										blue = 5 * int.Parse(title[2].ToString());
-										green = 5 * int.Parse(title[2].ToString());
+										blue = 5 * int.Parse(title[3].ToString());
+										green = 5 * int.Parse(title[3].ToString());
 										break;
 									case 9:
-										blue = 50 + 5 * int.Parse(title[2].ToString());
-										green = 50 + 5 * int.Parse(title[2].ToString());
+										blue = 50 + 5 * int.Parse(title[3].ToString());
+										green = 50 + 5 * int.Parse(title[3].ToString());
 										break;
 								}
 							}
@@ -273,7 +277,7 @@ namespace UIControlLibrary
 						}
 						else
 						{
-							blue = 5 * int.Parse(title[1].ToString());
+							blue = 5 * int.Parse(title[2].ToString());
 						}
 
 						string style = string.Format("fill:rgb({0}%, {1}%, {2}%);stroke:black;", red, green, blue);

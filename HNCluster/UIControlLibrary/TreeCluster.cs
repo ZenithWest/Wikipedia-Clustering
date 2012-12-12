@@ -35,7 +35,7 @@ namespace UIControlLibrary
 				{
 					Cluster.stopwords.Add(stopword);
 				}
-				TreeNode node = new TreeNode("Cluster");
+				TreeNode node = new TreeNode(cluster.SVGNodeName);
 				node.ForeColor = Color.Lime;
 				AddClustersMethod(node, OutputClusters, cluster);
 				treeViewClusters.Nodes.Add(node);
@@ -47,7 +47,7 @@ namespace UIControlLibrary
 			foreach (Wiki.WikiPage page in cluster.pages)
 			{
 				TreeNode node3 = new TreeNode(page.title);
-				node3.NodeFont = new Font(FontFamily.GenericSansSerif, 8, FontStyle.Regular);
+				node3.NodeFont = new Font(FontFamily.GenericSansSerif, 9, FontStyle.Regular);
 				node3.ForeColor = Color.White;
 				node.Nodes.Add(node3);
 

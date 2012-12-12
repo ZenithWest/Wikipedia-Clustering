@@ -105,6 +105,12 @@ namespace Clustering
 		public long Iterations = 0;
 		public float TotalClusteringTime = 0;
 
+		public HierarchicalCluster()
+		{
+			wikiCollection = new WikiCollection();
+			clusters = new List<Cluster>();
+		}
+
 		public HierarchicalCluster(WikiCollection wikis)
 		{
 			wikiCollection = wikis;
@@ -214,6 +220,19 @@ namespace Clustering
 			globalTime = DateTime.Now.Ticks - globalTime;
 			TotalClusteringTime = (float)TimeSpan.FromTicks(globalTime).TotalMilliseconds;
 			AverageClusterIterationTime /= Iterations;
+		}
+
+		public WikiPage FindPage(string title)
+		{
+			foreach (Cluster cluster in clusters)
+			{
+				WikiPage page = cluster.AllPagesInCluster.Find(WikiPage => WikiPage.title == title);
+				if (page != null)
+				{
+					return page;
+				}
+			}
+			return null;
 		}
 
 		public void Cluster2()

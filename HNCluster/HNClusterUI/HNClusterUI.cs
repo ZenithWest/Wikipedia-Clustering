@@ -56,15 +56,52 @@ namespace HNClusterUI
 
 		public void ClusterWikipedia()
 		{
+			WikiCollection WikiComputerScience = new WikiCollection();
+			WikiComputerScience.ParseXML(@"Wikipedia-ComputerScience.xml");
+			//WikiComputerScience.ParseXML(@"WikiTestData.xml");
+			WikiComputerScience.ExtractTokens();
+			HierarchicalCluster HACComputerScience = new HierarchicalCluster(WikiComputerScience);
+			HACComputerScience.initializeClusters();
+			HACComputerScience.Cluster();
+			HACComputerScience.clusters[0].SVGNodeName = "HNCluster Computer Science";
+			
+			/*
+			WikiCollection WikiScience = new WikiCollection();
+			WikiScience.ParseXML(@"Wikipedia-Science.xml");
+			//WikiScience.ParseXML(@"WikiTestData.xml");
+			WikiScience.ExtractTokens();
+			HierarchicalCluster HACScience = new HierarchicalCluster(WikiScience);
+			HACScience.initializeClusters();
+			HACScience.Cluster();
+			HACScience.clusters[0].SVGNodeName = "HNCluster Science";*/
+
+			WikiCollection WikiGeneticEngineering = new WikiCollection();
+			WikiGeneticEngineering.ParseXML(@"Wikipedia-Genetic-Engineering.xml");
+			//WikiGeneticEngineering.ParseXML(@"WikiTestData.xml");
+			WikiGeneticEngineering.ExtractTokens();
+			HierarchicalCluster HACGeneticEngineering = new HierarchicalCluster(WikiGeneticEngineering);
+			HACGeneticEngineering.initializeClusters();
+			HACGeneticEngineering.Cluster();
+			HACGeneticEngineering.clusters[0].SVGNodeName = "HNCluster Genetic Engineering";
+
+			HAC = new HierarchicalCluster();
+			
+			HAC.clusters.AddRange(HACComputerScience.clusters);
+			//HAC.clusters.AddRange(HACScience.clusters);
+			HAC.clusters.AddRange(HACGeneticEngineering.clusters);
+
+
 			//wikiCollection.ParseXML(@"Wikipedia-ComputerScience.xml");
 			//wikiCollection.ParseXML(@"Wikipedia-Science.xml");
 			//wikiCollection.ParseXML(@"Wikipedia-Genetic-Engineering.xml");
-			wikiCollection.ParseXML(@"Wikipedia-Algorithms-and-Data-Structures.xml");
-            //wikiCollection.ParseXML(@"WikiTestData.xml");           // Use this data file for testing since it is extremely small
+			//wikiCollection.ParseXML(@"Wikipedia-Algorithms-and-Data-Structures.xml");
+         //wikiCollection.ParseXML(@"WikiTestData.xml");           // Use this data file for testing since it is extremely small
+
+			/*
 			wikiCollection.ExtractTokens();
 			HAC = new HierarchicalCluster(wikiCollection);
 			HAC.initializeClusters();
-			HAC.Cluster();
+			HAC.Cluster();*/
 			graphDisplay1.GenerateGraph(HAC);
 			this.Invoke(ClusteringWikipediaFinished);
 		}
@@ -108,7 +145,12 @@ namespace HNClusterUI
 
 			if (recommenderDisplay.userLoggedOn == true)
 			{
+<<<<<<< HEAD
                 WikiPage wikiPage = HAC.clusters[0].AllPagesInCluster.Find(WikiPage => WikiPage.title == title);
+=======
+				//recommenderFeature.userViewedPage(listView.SelectedItems[0].Text);
+				WikiPage wikiPage = HAC.FindPage(title);
+>>>>>>> remotes/origin/master
 				recommenderFeature.userViewedPage(wikiPage);
 				recommenderDisplay.updateLikedPages(recommenderFeature.userData.likedWikiPages);
 			}
@@ -154,8 +196,12 @@ namespace HNClusterUI
 
         private void btnGenerateRecs_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             List<WikiPage> recommendedPages = recommenderFeature.generateRecommendations(HAC.clusters[0].AllPagesInCluster);
             recommenderDisplay.updateUserRecommendations(recommendedPages);
+=======
+
+>>>>>>> remotes/origin/master
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
