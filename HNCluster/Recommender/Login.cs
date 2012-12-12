@@ -19,8 +19,8 @@ namespace Recommender
         public UserLoginForm()
         {
             InitializeComponent();
-            txtboxUsername.Text = "brice";
-            txtboxPassword.Text = "a";
+            //txtboxUsername.Text = "brice";
+            //txtboxPassword.Text = "a";
             userIsAuthenticated = false;
             userName = txtboxUsername.Text;
         }

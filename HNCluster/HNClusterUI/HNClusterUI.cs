@@ -145,7 +145,6 @@ namespace HNClusterUI
 
 			if (recommenderDisplay.userLoggedOn == true)
 			{
-				//recommenderFeature.userViewedPage(listView.SelectedItems[0].Text);
 				WikiPage wikiPage = HAC.FindPage(title);
 				recommenderFeature.userViewedPage(wikiPage);
 				recommenderDisplay.updateLikedPages(recommenderFeature.userData.likedWikiPages);
@@ -173,12 +172,27 @@ namespace HNClusterUI
 
         private void listBoxRecommendedPages_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ListBox listView = (ListBox)sender;
 
+            if (listView.SelectedItems.Count > 0)
+            {
+                recPageDisplay.LoadPage(listView.Items[listView.SelectedIndex].ToString());
+                recPageDisplay.textBoxTitle.Text = listView.Items[listView.SelectedIndex].ToString();
+
+                if (recommenderDisplay.userLoggedOn == true)
+                {
+                    //recommenderFeature.userViewedPage(listView.SelectedItems[0].Text);
+                    //WikiPage wikiPage = HAC.wikiCollection.wikiPages.Find(WikiPage => WikiPage.title == listView.SelectedItems[0].Text);
+                    //recommenderFeature.userViewedPage(wikiPage);
+                    //recommenderDisplay.updateLikedPages(recommenderFeature.userData.likedWikiPages);
+                }
+            }
         }
 
         private void btnGenerateRecs_Click(object sender, EventArgs e)
         {
-
+            List<WikiPage> recommendedPages = recommenderFeature.generateRecommendations(HAC.clusters[0].AllPagesInCluster);
+            recommenderDisplay.updateUserRecommendations(recommendedPages);
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)

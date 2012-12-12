@@ -41,20 +41,31 @@ namespace Recommender
             saveUserData();
         }
 
-        public void generateRecommendations()
+        public List<WikiPage> generateRecommendations(List<WikiPage> allWikiPages)
         {
             clusterUsersPages();
 
-            //foreach(
+            CosineSimilarity cSimilarity = new CosineSimilarity();
+            Dictionary<string, float> pageDistances = new Dictionary<string, float>(allWikiPages.Count);
+            List<WikiPage> recommendedPages = new List<WikiPage>();
 
-
-            int pageCount = userData.likedWikiPages.Count;
-            TF_IDF_Vector tempVec = new TF_IDF_Vector();
-
-            for (int i = 0; i < pageCount; i++)
+            foreach (WikiPage page in allWikiPages)
             {
-                //userData.likedWikiPages[i].tf_IDF_Vec
+                // If the WikiPage is one that the user like's, no need to calculate distance
+                if (userData.likedWikiPages.Find(WikiPage => WikiPage.title == page.title) == null)
+                {
+                    pageDistances.Add(page.title, cSimilarity.GetDistance(userData.likedPagesCluster.tf_IDF_Vec, page.tf_IDF_Vec));
+                }
             }
+
+            var sortedDict = pageDistances.OrderByDescending(x => x.Value).Take(20);
+
+            foreach(var item in sortedDict)
+            {
+                recommendedPages.Add(allWikiPages.Find(WikiPage => WikiPage.title == item.Key));
+            }
+
+            return recommendedPages;
         }
 
         private void clusterUsersPages()
