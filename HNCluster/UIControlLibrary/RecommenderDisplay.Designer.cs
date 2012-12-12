@@ -35,6 +35,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.listBoxRecommendedPages = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnGenerateRecs = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -102,10 +103,21 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
+            // btnGenerateRecs
+            // 
+            this.btnGenerateRecs.AutoSize = true;
+            this.btnGenerateRecs.Location = new System.Drawing.Point(119, 650);
+            this.btnGenerateRecs.Name = "btnGenerateRecs";
+            this.btnGenerateRecs.Size = new System.Drawing.Size(152, 23);
+            this.btnGenerateRecs.TabIndex = 2;
+            this.btnGenerateRecs.Text = "Generate Recommendations";
+            this.btnGenerateRecs.UseVisualStyleBackColor = true;
+            // 
             // RecommenderDisplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnGenerateRecs);
             this.Controls.Add(this.txtBoxUsername);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
@@ -128,5 +140,6 @@
 
         public System.Windows.Forms.ListBox listBoxLikedPages;
         public System.Windows.Forms.ListBox listBoxRecommendedPages;
+        public System.Windows.Forms.Button btnGenerateRecs;
     }
 }

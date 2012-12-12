@@ -49,6 +49,7 @@ namespace HNClusterUI
 
             recommenderDisplay.listBoxLikedPages.SelectedIndexChanged += listBoxLikedPages_SelectedIndexChanged;
             recommenderDisplay.listBoxRecommendedPages.SelectedIndexChanged += listBoxRecommendedPages_SelectedIndexChanged;
+            recommenderDisplay.btnGenerateRecs.Click += btnGenerateRecs_Click;
 
 			Task.Factory.StartNew(ClusterWikipedia);
 		}
@@ -132,6 +133,10 @@ namespace HNClusterUI
 
         }
 
+        private void btnGenerateRecs_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {

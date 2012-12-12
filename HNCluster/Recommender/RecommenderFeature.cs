@@ -32,12 +32,25 @@ namespace Recommender
         {
             userData.likedPages.Add(pagename);
             saveUserData();
+            updateUserCentroid();
         }
 
         public void userViewedPage(WikiPage page)
         {
             userData.likedWikiPages.Add(page);
             saveUserData();
+            updateUserCentroid();
+        }
+
+        private void updateUserCentroid()
+        {
+            int pageCount = userData.likedWikiPages.Count;
+            TF_IDF_Vector tempVec = new TF_IDF_Vector();
+
+            for (int i = 0; i < pageCount; i++)
+            {
+                userData.likedWikiPages[i].tf_IDF_Vec.
+            }
         }
 
         public void createNewFile(string username)
