@@ -39,7 +39,8 @@ namespace Recommender
                 if (res == DialogResult.Cancel) return false;
             }
 
-            configManager.AppSettings.Settings.Add(new KeyValueConfigurationElement(username, password));
+            configManager.AppSettings.Settings[username].Value = password;
+            //configManager.AppSettings.Settings.Add(new KeyValueConfigurationElement(username, password));
             configManager.Save(ConfigurationSaveMode.Modified);
 
             userIsAuthenticated = true;
