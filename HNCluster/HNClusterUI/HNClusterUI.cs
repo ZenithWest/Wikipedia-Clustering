@@ -63,7 +63,9 @@ namespace HNClusterUI
 			HierarchicalCluster HACComputerScience = new HierarchicalCluster(WikiComputerScience);
 			HACComputerScience.initializeClusters();
 			HACComputerScience.Cluster();
-
+			HACComputerScience.clusters[0].SVGNodeName = "HNCluster Computer Science";
+			
+			/*
 			WikiCollection WikiScience = new WikiCollection();
 			WikiScience.ParseXML(@"Wikipedia-Science.xml");
 			//WikiScience.ParseXML(@"WikiTestData.xml");
@@ -71,6 +73,7 @@ namespace HNClusterUI
 			HierarchicalCluster HACScience = new HierarchicalCluster(WikiScience);
 			HACScience.initializeClusters();
 			HACScience.Cluster();
+			HACScience.clusters[0].SVGNodeName = "HNCluster Science";*/
 
 			WikiCollection WikiGeneticEngineering = new WikiCollection();
 			WikiGeneticEngineering.ParseXML(@"Wikipedia-Genetic-Engineering.xml");
@@ -79,11 +82,12 @@ namespace HNClusterUI
 			HierarchicalCluster HACGeneticEngineering = new HierarchicalCluster(WikiGeneticEngineering);
 			HACGeneticEngineering.initializeClusters();
 			HACGeneticEngineering.Cluster();
+			HACGeneticEngineering.clusters[0].SVGNodeName = "HNCluster Genetic Engineering";
 
 			HAC = new HierarchicalCluster();
 			
 			HAC.clusters.AddRange(HACComputerScience.clusters);
-			HAC.clusters.AddRange(HACScience.clusters);
+			//HAC.clusters.AddRange(HACScience.clusters);
 			HAC.clusters.AddRange(HACGeneticEngineering.clusters);
 
 
@@ -142,7 +146,7 @@ namespace HNClusterUI
 			if (recommenderDisplay.userLoggedOn == true)
 			{
 				//recommenderFeature.userViewedPage(listView.SelectedItems[0].Text);
-				WikiPage wikiPage = HAC.wikiCollection.wikiPages.Find(WikiPage => WikiPage.title == title);
+				WikiPage wikiPage = HAC.FindPage(title);
 				recommenderFeature.userViewedPage(wikiPage);
 				recommenderDisplay.updateLikedPages(recommenderFeature.userData.likedWikiPages);
 			}

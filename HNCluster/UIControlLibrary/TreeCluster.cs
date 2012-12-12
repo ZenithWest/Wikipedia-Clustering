@@ -35,7 +35,7 @@ namespace UIControlLibrary
 				{
 					Cluster.stopwords.Add(stopword);
 				}
-				TreeNode node = new TreeNode("Cluster");
+				TreeNode node = new TreeNode(cluster.SVGNodeName);
 				node.ForeColor = Color.Lime;
 				AddClustersMethod(node, OutputClusters, cluster);
 				treeViewClusters.Nodes.Add(node);

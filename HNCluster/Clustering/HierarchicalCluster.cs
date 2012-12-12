@@ -222,6 +222,19 @@ namespace Clustering
 			AverageClusterIterationTime /= Iterations;
 		}
 
+		public WikiPage FindPage(string title)
+		{
+			foreach (Cluster cluster in clusters)
+			{
+				WikiPage page = cluster.AllPagesInCluster.Find(WikiPage => WikiPage.title == title);
+				if (page != null)
+				{
+					return page;
+				}
+			}
+			return null;
+		}
+
 		public void Cluster2()
 		{
 			ClusterPairs pairs = new ClusterPairs();

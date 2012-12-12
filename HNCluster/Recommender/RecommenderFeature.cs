@@ -49,7 +49,7 @@ namespace Recommender
 
             for (int i = 0; i < pageCount; i++)
             {
-                userData.likedWikiPages[i].tf_IDF_Vec.
+                //userData.likedWikiPages[i].tf_IDF_Vec.
             }
         }
 
