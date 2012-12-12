@@ -184,7 +184,15 @@ namespace HNClusterUI
 			HAC = new HierarchicalCluster(wikiCollection);
 			HAC.initializeClusters();
 			HAC.Cluster();*/
-			graphDisplay1.GenerateGraph(HAC);
+
+			try
+			{
+				graphDisplay1.GenerateGraph(HAC);
+			}
+			catch
+			{
+
+			}
 			this.Invoke(ClusteringWikipediaFinished);
 		}
 
