@@ -109,16 +109,48 @@
       <Link>Wikipedia-Algorithms-and-Data-Structures.xml</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="..\..\Data\Wikipedia-Biology.xml">
+      <Link>Wikipedia-Biology.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\Data\Wikipedia-Chemistry.xml">
+      <Link>Wikipedia-Chemistry.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="..\..\Data\Wikipedia-ComputerScience.xml">
       <Link>Wikipedia-ComputerScience.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\Data\Wikipedia-Computing.xml">
+      <Link>Wikipedia-Computing.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\Data\Wikipedia-Engineering.xml">
+      <Link>Wikipedia-Engineering.xml</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\..\Data\Wikipedia-Genetic-Engineering.xml">
       <Link>Wikipedia-Genetic-Engineering.xml</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="..\..\Data\Wikipedia-Mathematics.xml">
+      <Link>Wikipedia-Mathematics.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\Data\Wikipedia-Philosophy.xml">
+      <Link>Wikipedia-Philosophy.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\Data\Wikipedia-Physics.xml">
+      <Link>Wikipedia-Physics.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="..\..\Data\Wikipedia-Science.xml">
       <Link>Wikipedia-Science.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\Data\Wikipedia-TAMU.xml">
+      <Link>Wikipedia-TAMU.xml</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\..\Data\WikiTestData.xml">

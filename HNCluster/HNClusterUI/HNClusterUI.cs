@@ -53,7 +53,7 @@ namespace HNClusterUI
 
 			Task.Factory.StartNew(ClusterWikipedia);
 		}
-
+		List<WikiPage> AllPages = new List<WikiPage>();
 		public void ClusterWikipedia()
 		{
 			WikiCollection WikiComputerScience = new WikiCollection();
@@ -90,6 +90,10 @@ namespace HNClusterUI
 			//HAC.clusters.AddRange(HACScience.clusters);
 			HAC.clusters.AddRange(HACGeneticEngineering.clusters);
 
+			foreach (Cluster cluster in HAC.clusters)
+			{
+				AllPages.AddRange(cluster.AllPagesInCluster);
+			}
 
 			//wikiCollection.ParseXML(@"Wikipedia-ComputerScience.xml");
 			//wikiCollection.ParseXML(@"Wikipedia-Science.xml");
@@ -191,7 +195,7 @@ namespace HNClusterUI
 
         private void btnGenerateRecs_Click(object sender, EventArgs e)
         {
-            List<WikiPage> recommendedPages = recommenderFeature.generateRecommendations(HAC.clusters[0].AllPagesInCluster);
+            List<WikiPage> recommendedPages = recommenderFeature.generateRecommendations(AllPages);
             recommenderDisplay.updateUserRecommendations(recommendedPages);
         }
 

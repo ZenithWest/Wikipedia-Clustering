@@ -54,7 +54,10 @@ namespace Recommender
                 // If the WikiPage is one that the user like's, no need to calculate distance
                 if (userData.likedWikiPages.Find(WikiPage => WikiPage.title == page.title) == null)
                 {
-                    pageDistances.Add(page.title, cSimilarity.GetDistance(userData.likedPagesCluster.tf_IDF_Vec, page.tf_IDF_Vec));
+						 if (!pageDistances.ContainsKey(page.title))
+						 {
+							 pageDistances.Add(page.title, cSimilarity.GetDistance(userData.likedPagesCluster.tf_IDF_Vec, page.tf_IDF_Vec));
+						 }
                 }
             }
 
