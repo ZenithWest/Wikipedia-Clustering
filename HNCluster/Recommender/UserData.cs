@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Wiki;
+using Clustering;
 
 namespace Recommender
 {
@@ -12,14 +13,14 @@ namespace Recommender
         public string userName;
         public List<string> likedPages;
         public List<WikiPage> likedWikiPages;
-        public TF_IDF_Vector likedPagesCentroid;
+        public Cluster likedPagesCluster;
 
         public UserData()
         {
             userName = "";
             likedPages = new List<string>();
             likedWikiPages = new List<WikiPage>();
-            likedPagesCentroid = new TF_IDF_Vector();
+            likedPagesCluster = new Cluster();
         }
 
         public UserData(string name)
@@ -27,7 +28,7 @@ namespace Recommender
             userName = name;
             likedPages = new List<string>();
             likedWikiPages = new List<WikiPage>();
-            likedPagesCentroid = new TF_IDF_Vector();
+            likedPagesCluster = new Cluster();
         }
     }
 }

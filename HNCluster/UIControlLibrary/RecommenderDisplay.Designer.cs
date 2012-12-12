@@ -61,7 +61,7 @@
             this.listBoxLikedPages.FormattingEnabled = true;
             this.listBoxLikedPages.Location = new System.Drawing.Point(27, 40);
             this.listBoxLikedPages.Name = "listBoxLikedPages";
-            this.listBoxLikedPages.Size = new System.Drawing.Size(296, 238);
+            this.listBoxLikedPages.Size = new System.Drawing.Size(296, 225);
             this.listBoxLikedPages.TabIndex = 2;
             // 
             // label2
@@ -76,7 +76,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(123, 311);
+            this.label3.Location = new System.Drawing.Point(123, 283);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(104, 13);
             this.label3.TabIndex = 4;
@@ -85,9 +85,9 @@
             // listBoxRecommendedPages
             // 
             this.listBoxRecommendedPages.FormattingEnabled = true;
-            this.listBoxRecommendedPages.Location = new System.Drawing.Point(27, 327);
+            this.listBoxRecommendedPages.Location = new System.Drawing.Point(27, 299);
             this.listBoxRecommendedPages.Name = "listBoxRecommendedPages";
-            this.listBoxRecommendedPages.Size = new System.Drawing.Size(296, 238);
+            this.listBoxRecommendedPages.Size = new System.Drawing.Size(296, 225);
             this.listBoxRecommendedPages.TabIndex = 5;
             // 
             // groupBox1
@@ -106,7 +106,7 @@
             // btnGenerateRecs
             // 
             this.btnGenerateRecs.AutoSize = true;
-            this.btnGenerateRecs.Location = new System.Drawing.Point(119, 650);
+            this.btnGenerateRecs.Location = new System.Drawing.Point(119, 590);
             this.btnGenerateRecs.Name = "btnGenerateRecs";
             this.btnGenerateRecs.Size = new System.Drawing.Size(152, 23);
             this.btnGenerateRecs.TabIndex = 2;

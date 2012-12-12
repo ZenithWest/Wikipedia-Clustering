@@ -35,11 +35,12 @@ namespace Recommender
 
             if (configManager.AppSettings.Settings.AllKeys.Contains(username))
             {
-                DialogResult res = MessageBox.Show("Our records show that username has already been created.\n\nWould you like to overwrite the current profile and create a new one with the username and password specified above?", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+                DialogResult res = MessageBox.Show("Our records show that username has already been created.\n\nWould you like to overwrite the current password with one entered in the previous screen?", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
                 if (res == DialogResult.Cancel) return false;
+                configManager.AppSettings.Settings.Remove(username);
             }
 
-            configManager.AppSettings.Settings.Add(new KeyValueConfigurationElement(username, password));
+            configManager.AppSettings.Settings.Add(username, password);
             configManager.Save(ConfigurationSaveMode.Modified);
 
             userIsAuthenticated = true;

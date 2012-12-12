@@ -32,24 +32,40 @@ namespace Recommender
         {
             userData.likedPages.Add(pagename);
             saveUserData();
-            updateUserCentroid();
         }
 
         public void userViewedPage(WikiPage page)
         {
             userData.likedWikiPages.Add(page);
+            userData.likedPagesCluster.AddPage(page);
             saveUserData();
-            updateUserCentroid();
         }
 
-        private void updateUserCentroid()
+        public void generateRecommendations()
         {
+            clusterUsersPages();
+
+            //foreach(
+
+
             int pageCount = userData.likedWikiPages.Count;
             TF_IDF_Vector tempVec = new TF_IDF_Vector();
 
             for (int i = 0; i < pageCount; i++)
             {
-                //userData.likedWikiPages[i].tf_IDF_Vec.
+                //userData.likedWikiPages[i].tf_IDF_Vec
+            }
+        }
+
+        private void clusterUsersPages()
+        {
+            if (userData.likedWikiPages.Count > 1)
+            {
+                // Clear the conents of the cluster to prepare for clustering
+                userData.likedPagesCluster.pages.Clear();
+                userData.likedPagesCluster.AllPagesInCluster.Clear();
+
+                userData.likedPagesCluster.AddPages(userData.likedWikiPages);
             }
         }
 
