@@ -145,12 +145,7 @@ namespace HNClusterUI
 
 			if (recommenderDisplay.userLoggedOn == true)
 			{
-<<<<<<< HEAD
-                WikiPage wikiPage = HAC.clusters[0].AllPagesInCluster.Find(WikiPage => WikiPage.title == title);
-=======
-				//recommenderFeature.userViewedPage(listView.SelectedItems[0].Text);
 				WikiPage wikiPage = HAC.FindPage(title);
->>>>>>> remotes/origin/master
 				recommenderFeature.userViewedPage(wikiPage);
 				recommenderDisplay.updateLikedPages(recommenderFeature.userData.likedWikiPages);
 			}
@@ -196,12 +191,8 @@ namespace HNClusterUI
 
         private void btnGenerateRecs_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
             List<WikiPage> recommendedPages = recommenderFeature.generateRecommendations(HAC.clusters[0].AllPagesInCluster);
             recommenderDisplay.updateUserRecommendations(recommendedPages);
-=======
-
->>>>>>> remotes/origin/master
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
