@@ -72,7 +72,7 @@ namespace HNClusterUI
 			HACScience.initializeClusters();
 			HACScience.Cluster();
 			HACScience.clusters[0].SVGNodeName = "HNCluster Science";
-
+			/*
 			WikiCollection WikiGeneticEngineering = new WikiCollection();
 			WikiGeneticEngineering.ParseXML(@"Wikipedia-Genetic-Engineering.xml");
 			WikiGeneticEngineering.ExtractTokens();
@@ -80,7 +80,7 @@ namespace HNClusterUI
 			HACGeneticEngineering.initializeClusters();
 			HACGeneticEngineering.Cluster();
 			HACGeneticEngineering.clusters[0].SVGNodeName = "HNCluster Genetic Engineering";
-
+			*/
 			WikiCollection WikiBiology = new WikiCollection();
 			WikiBiology.ParseXML(@"Wikipedia-Biology.xml");
 			WikiBiology.ExtractTokens();
@@ -96,7 +96,7 @@ namespace HNClusterUI
 			HACChemistry.initializeClusters();
 			HACChemistry.Cluster();
 			HACChemistry.clusters[0].SVGNodeName = "HNCluster Chemistry";
-
+			/*
 			WikiCollection WikiComputing = new WikiCollection();
 			WikiComputing.ParseXML(@"Wikipedia-Computing.xml");
 			WikiComputing.ExtractTokens();
@@ -104,7 +104,7 @@ namespace HNClusterUI
 			HACComputing.initializeClusters();
 			HACComputing.Cluster();
 			HACComputing.clusters[0].SVGNodeName = "HNCluster Computing";
-
+			*/
 			WikiCollection WikiEngineering = new WikiCollection();
 			WikiEngineering.ParseXML(@"Wikipedia-Engineering.xml");
 			WikiEngineering.ExtractTokens();
@@ -120,7 +120,7 @@ namespace HNClusterUI
 			HACMathematics.initializeClusters();
 			HACMathematics.Cluster();
 			HACMathematics.clusters[0].SVGNodeName = "HNCluster Mathematics";
-
+			/*
 			WikiCollection WikiPhilosophy = new WikiCollection();
 			WikiPhilosophy.ParseXML(@"Wikipedia-Philosophy.xml");
 			WikiPhilosophy.ExtractTokens();
@@ -128,7 +128,7 @@ namespace HNClusterUI
 			HACPhilosophy.initializeClusters();
 			HACPhilosophy.Cluster();
 			HACPhilosophy.clusters[0].SVGNodeName = "HNCluster Philosophy";
-
+			*/
 			WikiCollection WikiPhysics = new WikiCollection();
 			WikiPhysics.ParseXML(@"Wikipedia-Physics.xml");
 			WikiPhysics.ExtractTokens();
@@ -156,15 +156,15 @@ namespace HNClusterUI
 
 			HAC = new HierarchicalCluster();
 			
-			HAC.clusters.AddRange(HACComputing.clusters);
+			//HAC.clusters.AddRange(HACComputing.clusters);
 			HAC.clusters.AddRange(HACComputerScience.clusters);
-			HAC.clusters.AddRange(HACPhilosophy.clusters);
+			//HAC.clusters.AddRange(HACPhilosophy.clusters);
 			HAC.clusters.AddRange(HACBiology.clusters);
 			HAC.clusters.AddRange(HACChemistry.clusters);
 			HAC.clusters.AddRange(HACPhysics.clusters);
 			HAC.clusters.AddRange(HACScience.clusters);
 			HAC.clusters.AddRange(HACMathematics.clusters);
-			HAC.clusters.AddRange(HACGeneticEngineering.clusters);
+			//HAC.clusters.AddRange(HACGeneticEngineering.clusters);
 			HAC.clusters.AddRange(HACEngineering.clusters);
 			HAC.clusters.AddRange(HACTAMU.clusters);
 
