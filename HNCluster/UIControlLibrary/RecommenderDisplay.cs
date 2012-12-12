@@ -41,5 +41,16 @@ namespace UIControlLibrary
 
         }
 
+        public void updateUserRecommendations(List<WikiPage> pageList)
+        {
+            listBoxRecommendedPages.Items.Clear();
+
+            for (int i = 0; i < pageList.Count; i++)
+            {
+                listBoxRecommendedPages.Items.Add(pageList[i].title);
+            }
+
+        }
+
     }
 }
