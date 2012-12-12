@@ -69,6 +69,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Clustering\Clustering.csproj">
+      <Project>{ba1da30c-2711-463e-a8dc-5b86712aab45}</Project>
+      <Name>Clustering</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UIControlLibrary\UIControlLibrary.csproj">
       <Project>{f2fa7c28-c966-4379-8e3f-8185af8b3ba6}</Project>
       <Name>UIControlLibrary</Name>

@@ -59,8 +59,8 @@ namespace HNClusterUI
 			//wikiCollection.ParseXML(@"Wikipedia-ComputerScience.xml");
 			//wikiCollection.ParseXML(@"Wikipedia-Science.xml");
 			//wikiCollection.ParseXML(@"Wikipedia-Genetic-Engineering.xml");
-			//wikiCollection.ParseXML(@"Wikipedia-Algorithms-and-Data-Structures.xml");
-            wikiCollection.ParseXML(@"WikiTestData.xml");           // Use this data file for testing since it is extremely small
+			wikiCollection.ParseXML(@"Wikipedia-Algorithms-and-Data-Structures.xml");
+            //wikiCollection.ParseXML(@"WikiTestData.xml");           // Use this data file for testing since it is extremely small
 			wikiCollection.ExtractTokens();
 			HAC = new HierarchicalCluster(wikiCollection);
 			HAC.initializeClusters();
@@ -109,7 +109,8 @@ namespace HNClusterUI
 			if (recommenderDisplay.userLoggedOn == true)
 			{
 				//recommenderFeature.userViewedPage(listView.SelectedItems[0].Text);
-				WikiPage wikiPage = HAC.wikiCollection.wikiPages.Find(WikiPage => WikiPage.title == title);
+				//WikiPage wikiPage = HAC.wikiCollection.wikiPages.Find(WikiPage => WikiPage.title == title);
+                WikiPage wikiPage = HAC.clusters[0].AllPagesInCluster.Find(WikiPage => WikiPage.title == title);
 				recommenderFeature.userViewedPage(wikiPage);
 				recommenderDisplay.updateLikedPages(recommenderFeature.userData.likedWikiPages);
 			}
@@ -141,6 +142,8 @@ namespace HNClusterUI
 
         private void btnGenerateRecs_Click(object sender, EventArgs e)
         {
+            recommenderFeature.generateRecommendations();
+
 
         }
 
